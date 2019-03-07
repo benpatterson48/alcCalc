@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05959BCDF2FE6EB62AAB9B54 /* Pods_alcCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1CFA489D3303B49E74B6AB /* Pods_alcCalc.framework */; };
+		1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* MainVC.swift */; };
+		1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */; };
 		1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F32230988A001E1F54 /* AppDelegate.swift */; };
 		1DF754F62230988A001E1F54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F52230988A001E1F54 /* ViewController.swift */; };
 		1DF754F92230988A001E1F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF754F72230988A001E1F54 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D0CD8E0223187E0005D82B7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1DF754F02230988A001E1F54 /* alcCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alcCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF754F32230988A001E1F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF754F52230988A001E1F54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +44,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D0CD8DC22318142005D82B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D0CD8E0223187E0005D82B7 /* MainVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D0CD8DD2231814A005D82B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D0CD8DE22318150005D82B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D0CD8DF22318154005D82B7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1DF754E72230988A001E1F54 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +94,17 @@
 		1DF754F22230988A001E1F54 /* alcCalc */ = {
 			isa = PBXGroup;
 			children = (
+				1D0CD8DF22318154005D82B7 /* Services */,
+				1D0CD8DE22318150005D82B7 /* Model */,
+				1D0CD8DD2231814A005D82B7 /* View */,
+				1D0CD8DC22318142005D82B7 /* Controller */,
 				1DF754F32230988A001E1F54 /* AppDelegate.swift */,
 				1DF754F52230988A001E1F54 /* ViewController.swift */,
 				1DF754F72230988A001E1F54 /* Main.storyboard */,
 				1DF754FA2230988D001E1F54 /* Assets.xcassets */,
 				1DF754FC2230988D001E1F54 /* LaunchScreen.storyboard */,
 				1DF754FF2230988D001E1F54 /* Info.plist */,
+				1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */,
 			);
 			path = alcCalc;
 			sourceTree = "<group>";
@@ -100,6 +138,7 @@
 				1DF754ED2230988A001E1F54 /* Frameworks */,
 				1DF754EE2230988A001E1F54 /* Resources */,
 				162B3888FE16F0E2D0BBA694 /* [CP] Embed Pods Frameworks */,
+				1D0CD8E22231967E005D82B7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -149,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF754FE2230988D001E1F54 /* LaunchScreen.storyboard in Resources */,
+				1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */,
 				1DF754FB2230988D001E1F54 /* Assets.xcassets in Resources */,
 				1DF754F92230988A001E1F54 /* Main.storyboard in Resources */,
 			);
@@ -177,6 +217,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-alcCalc/Pods-alcCalc-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1D0CD8E22231967E005D82B7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		B5657F942F741FD4FD3FB3FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF754F62230988A001E1F54 /* ViewController.swift in Sources */,
+				1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */,
 				1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H4AUMB8GAB;
 				INFOPLIST_FILE = alcCalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;

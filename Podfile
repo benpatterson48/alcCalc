@@ -8,7 +8,7 @@ target 'alcCalc' do
   use_frameworks!
 
   # Pods for alcCalc
-  pod 'FirebaseAnalytics' 
+  pod 'Firebase' 
   pod 'Fabric'
   pod 'Crashlytics'
 
