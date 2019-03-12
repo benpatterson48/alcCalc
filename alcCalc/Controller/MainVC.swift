@@ -148,9 +148,21 @@ class MainVC: UIViewController {
         button.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 26)
+        button.addTarget(self, action: #selector(calculateBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    @objc func calculateBtnWasPressed() {
+        if inputFieldTxtField.text == "" {
+            print("Text Field is empty")
+            //implement wiggle
+        } else {
+            let results = ResultsVC()
+            results.modalPresentationStyle = .custom
+            present(results, animated: true, completion: nil)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
