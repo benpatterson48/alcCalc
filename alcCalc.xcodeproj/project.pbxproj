@@ -10,6 +10,7 @@
 		05959BCDF2FE6EB62AAB9B54 /* Pods_alcCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1CFA489D3303B49E74B6AB /* Pods_alcCalc.framework */; };
 		1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* MainVC.swift */; };
 		1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */; };
+		1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */; };
 		1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F32230988A001E1F54 /* AppDelegate.swift */; };
 		1DF754F62230988A001E1F54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F52230988A001E1F54 /* ViewController.swift */; };
 		1DF754F92230988A001E1F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF754F72230988A001E1F54 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		1D0CD8E0223187E0005D82B7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		1DF754F02230988A001E1F54 /* alcCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alcCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF754F32230988A001E1F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF754F52230988A001E1F54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		1D0CD8DD2231814A005D82B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				1DF754F62230988A001E1F54 /* ViewController.swift in Sources */,
 				1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */,
+				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
