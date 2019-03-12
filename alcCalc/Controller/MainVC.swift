@@ -21,7 +21,7 @@ class MainVC: UIViewController {
         let title = UILabel()
         title.textColor = .white
         title.textAlignment = .left
-        title.font = UIFont.systemFont(ofSize: 32, weight: .medium)
+        title.font = UIFont.mainSemiBoldFont(ofSize: 32)
         title.text = "Alcohol Calculator"
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -91,7 +91,7 @@ class MainVC: UIViewController {
         title.text = "About Tracking Method"
         title.textAlignment = .center
         title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
-        title.font = UIFont.boldSystemFont(ofSize: 18)
+        title.font = UIFont.mainMediumFont(ofSize: 18)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
@@ -118,7 +118,7 @@ class MainVC: UIViewController {
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8010220462)
-        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.font = UIFont.mainMediumFont(ofSize: 20)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -147,21 +147,21 @@ class MainVC: UIViewController {
         button.layer.cornerRadius = 10
         button.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 26)
+        button.titleLabel?.font = UIFont.mainBoldFont(ofSize: 26)
         button.addTarget(self, action: #selector(calculateBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     @objc func calculateBtnWasPressed() {
-        if inputFieldTxtField.text == "" {
-            print("Text Field is empty")
-            //implement wiggle
-        } else {
+//        if inputFieldTxtField.text == "" {
+//            print("Text Field is empty")
+//            //implement wiggle
+//        } else {
             let results = ResultsVC()
             results.modalPresentationStyle = .custom
             present(results, animated: true, completion: nil)
-        }
+//        }
     }
 
     override func viewDidLoad() {
