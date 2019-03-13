@@ -10,6 +10,8 @@ import UIKit
 
 class MainVC: UIViewController {
     
+    var calculationMethodAboutText = String()
+    
     private let topViewHeaderBg: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0, green: 0.7743021846, blue: 0.8264589906, alpha: 1)
@@ -62,7 +64,7 @@ class MainVC: UIViewController {
         return lbl
     }()
     
-    private let calcMethodSegmentedControl: UISegmentedControl = {
+    let calcMethodSegmentedControl: UISegmentedControl = {
         let items = ["Calories", "ABV"]
         let segment = UISegmentedControl(items: items)
         segment.selectedSegmentIndex = 0
@@ -70,7 +72,7 @@ class MainVC: UIViewController {
         segment.backgroundColor = .white
         segment.tintColor = #colorLiteral(red: 0, green: 0.7743021846, blue: 0.8264589906, alpha: 1)
         segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
-        segment.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .touchUpInside)
+        segment.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
         segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
@@ -79,10 +81,28 @@ class MainVC: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             print("This is for Calories")
+            aboutTrackMethodLbl.text =
+            """
+            Tracking method description for
+            calories selection method, will
+            change for ABV.
+            """
         case 1:
             print("This is for ABV")
+            aboutTrackMethodLbl.text =
+            """
+            Tracking method description for
+            ABV selection method, will
+            change for calories.
+            """
         default:
             print("This is for Calories")
+            aboutTrackMethodLbl.text =
+            """
+            Tracking method description for
+            calories selection method, will
+            change for ABV.
+            """
         }
     }
     
@@ -99,11 +119,11 @@ class MainVC: UIViewController {
     private let aboutTrackMethodLbl: UILabel = {
         let about = UILabel()
         about.text =
-            """
-            This is where the specific tracking code
-            text will go explaining the tracking method
-            they've chose.
-            """
+        """
+        Tracking method description for
+        calories selection method, will
+        change for ABV.
+        """
         about.textAlignment = .center
         about.numberOfLines = 0
         about.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)

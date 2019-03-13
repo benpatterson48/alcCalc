@@ -10,6 +10,10 @@ import UIKit
 
 class ResultsVC: UIViewController {
     
+    var fatsSelected: Bool = true
+    var carsbSelected: Bool = false
+    var outputSelected: String = "Fats"
+    
     private let contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -64,6 +68,7 @@ class ResultsVC: UIViewController {
         title.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         title.layer.cornerRadius = 5
         title.titleLabel?.font = UIFont.mainMediumFont(ofSize: 16)
+        title.addTarget(self, action: #selector(outputPreferenceWasChanged), for: .touchUpInside)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
@@ -71,13 +76,36 @@ class ResultsVC: UIViewController {
     private let carbsTitleLbl: UIButton = {
         let title = UIButton()
         title.setTitle("Carbs", for: .normal)
-        title.setTitleColor(#colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), for: .normal)
         title.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         title.layer.cornerRadius = 5
         title.titleLabel?.font = UIFont.mainMediumFont(ofSize: 16)
+        title.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+        title.addTarget(self, action: #selector(outputPreferenceWasChanged), for: .touchUpInside)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
+    
+    @objc func outputPreferenceWasChanged() {
+        if fatsSelected == true {
+            carsbSelected = true
+            fatsSelected = false
+            outputSelected = "Carbs"
+            sliderValueChanging(outputResultsSlider)
+            carbsTitleLbl.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+            carbsTitleLbl.titleLabel?.textColor = .white
+            fatsTitleLbl.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            fatsTitleLbl.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+        } else {
+            carsbSelected = false
+            fatsSelected = true
+            outputSelected = "Fats"
+            sliderValueChanging(outputResultsSlider)
+            fatsTitleLbl.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+            fatsTitleLbl.titleLabel?.textColor = .white
+            carbsTitleLbl.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            carbsTitleLbl.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+        }
+    }
     
     private let fatsOutputLbl: UILabel = {
         let output = UILabel()
@@ -101,26 +129,34 @@ class ResultsVC: UIViewController {
     
     private let outputResultsSlider: UISlider = {
         let slider = UISlider()
+        slider.tintColor = #colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1)
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.isContinuous = true
-        slider.addTarget(self, action: #selector(sliderValueChanging(_:)), for: .touchUpInside)
+        slider.addTarget(self, action: #selector(sliderValueChanging(_:)), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
     
     @objc func sliderValueChanging(_ sender: UISlider) {
         let currentValue = Int(sender.value)
-        print("This is the value \(currentValue)")
-        //show current value in label
+        sliderOutputValuePercentageLbl.text = "\(currentValue)% \(outputSelected)"
     }
+    
+    private let sliderOutputValuePercentageLbl: UILabel = {
+        let result = UILabel()
+        result.text = "0% Fats"
+        result.textAlignment = .right
+        result.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        result.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        result.translatesAutoresizingMaskIntoConstraints = false
+        return result
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
         setupContentViewAndConstraints()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissResultsVC))
-        view.addGestureRecognizer(tap)
     }
     
     @objc func dismissResultsVC() {
@@ -193,8 +229,17 @@ class ResultsVC: UIViewController {
         
         contentView.addSubview(outputResultsSlider)
         outputResultsSlider.topAnchor.constraint(equalTo: combinedOutputStackView.bottomAnchor, constant: 24).isActive = true
+        
+        setupSliderAndBottomLabels()
+    }
+    
+    func setupSliderAndBottomLabels() {
+        contentView.addSubview(sliderOutputValuePercentageLbl)
         outputResultsSlider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
         outputResultsSlider.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
+        
+        sliderOutputValuePercentageLbl.trailingAnchor.constraint(equalTo: outputResultsSlider.trailingAnchor).isActive = true
+        sliderOutputValuePercentageLbl.topAnchor.constraint(equalTo: outputResultsSlider.bottomAnchor, constant: 12).isActive = true
     }
 
 }
