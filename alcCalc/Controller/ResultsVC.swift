@@ -10,9 +10,15 @@ import UIKit
 
 class ResultsVC: UIViewController {
     
+    var calories: Double?
     var fatsSelected: Bool = true
     var carsbSelected: Bool = false
     var outputSelected: String = "Fats"
+    
+    func initData(caloriesSent: Double) {
+        self.calories = caloriesSent
+        caloriesLbl.text = "Calories: \(calories!)"
+    }
     
     private let contentView: UIView = {
         let view = UIView()
@@ -32,6 +38,7 @@ class ResultsVC: UIViewController {
     }()
     
     @objc func closeBtnWasPressed() {
+        print("button tapped recognized")
         dismissResultsVC()
     }
     
@@ -54,7 +61,6 @@ class ResultsVC: UIViewController {
     
     private let caloriesLbl: UILabel = {
         let calories = UILabel()
-        calories.text = "Calories:"
         calories.textAlignment = .center
         calories.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         calories.font = UIFont.mainMediumFont(ofSize: 20)
@@ -109,7 +115,7 @@ class ResultsVC: UIViewController {
     
     private let fatsOutputLbl: UILabel = {
         let output = UILabel()
-        output.text = "45g"
+        output.text = "0g"
         output.textAlignment = .left
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
@@ -140,9 +146,27 @@ class ResultsVC: UIViewController {
     
     @objc func sliderValueChanging(_ sender: UISlider) {
         let currentValue = Int(sender.value)
+        let remainderValue = 100 - currentValue
         sliderOutputValuePercentageLbl.text = "\(currentValue)% \(outputSelected)"
+        if fatsSelected == true {
+            fatsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 9))g"
+            carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: remainderValue, gramsConversion: 4))g"
+        } else {
+            fatsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: remainderValue, gramsConversion: 9))g"
+            carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 4))g"
+        }
     }
     
+    func calculateMacros(calories:
+        Double, value: Int, gramsConversion: Double) -> Double {
+        let wholeRemainder: Double = Double(value % 100)
+        let remainder = wholeRemainder * 0.01
+        let calories = remainder * calories
+        let macrosDecimals = calories / gramsConversion
+        let macros = macrosDecimals.rounded(digits: 1)
+        return macros
+    }
+
     private let sliderOutputValuePercentageLbl: UILabel = {
         let result = UILabel()
         result.text = "0% Fats"
@@ -155,11 +179,13 @@ class ResultsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.7)
+        view.isOpaque = false
         setupContentViewAndConstraints()
     }
     
     @objc func dismissResultsVC() {
+        print("dismiss called")
         dismiss(animated: true, completion: nil)
     }
     
@@ -167,8 +193,8 @@ class ResultsVC: UIViewController {
         view.addSubview(contentView)
         view.addSubview(closeBtn)
         contentView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
         contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24).isActive = true
         
         closeBtn.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: -8).isActive = true

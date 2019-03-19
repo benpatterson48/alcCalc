@@ -8,9 +8,11 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITextFieldDelegate {
     
     var calculationMethodAboutText = String()
+    var caloriesSelected: Bool = true
+    var abvSelected: Bool = false
     
     private let topViewHeaderBg: UIView = {
         let view = UIView()
@@ -23,7 +25,7 @@ class MainVC: UIViewController {
         let title = UILabel()
         title.textColor = .white
         title.textAlignment = .left
-        title.font = UIFont.mainSemiBoldFont(ofSize: 32)
+        title.font = UIFont.mainSemiBoldFont(ofSize: 28)
         title.text = "Alcohol Calculator"
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -59,7 +61,7 @@ class MainVC: UIViewController {
         lbl.text = "Flexible Dieting Lifestyle"
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-        lbl.font = UIFont.italicSystemFont(ofSize: 12)
+        lbl.font = UIFont.italicSystemFont(ofSize: 14)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -80,7 +82,8 @@ class MainVC: UIViewController {
     @objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            print("This is for Calories")
+            caloriesSelected = true
+            abvSelected = false
             aboutTrackMethodLbl.text =
             """
             Tracking method description for
@@ -88,7 +91,8 @@ class MainVC: UIViewController {
             change for ABV.
             """
         case 1:
-            print("This is for ABV")
+            caloriesSelected = false
+            abvSelected = true
             aboutTrackMethodLbl.text =
             """
             Tracking method description for
@@ -96,7 +100,8 @@ class MainVC: UIViewController {
             change for calories.
             """
         default:
-            print("This is for Calories")
+            caloriesSelected = true
+            abvSelected = false
             aboutTrackMethodLbl.text =
             """
             Tracking method description for
@@ -143,7 +148,7 @@ class MainVC: UIViewController {
         return lbl
     }()
     
-    private let inputFieldTxtField: UITextField = {
+    let inputFieldTxtField: UITextField = {
         let txt = UITextField()
         txt.borderStyle = .none
         txt.placeholder = "0"
@@ -174,14 +179,14 @@ class MainVC: UIViewController {
     }()
     
     @objc func calculateBtnWasPressed() {
-//        if inputFieldTxtField.text == "" {
-//            print("Text Field is empty")
-//            //implement wiggle
-//        } else {
-            let results = ResultsVC()
-            results.modalPresentationStyle = .custom
-            present(results, animated: true, completion: nil)
-//        }
+        if inputFieldTxtField.text == "" {
+            self.inputFieldTxtField.shake()
+        } else {
+            let resultsVC = ResultsVC()
+            resultsVC.initData(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
+            resultsVC.modalPresentationStyle = .currentContext
+            present(resultsVC, animated: true, completion: nil)
+        }
     }
 
     override func viewDidLoad() {
@@ -189,6 +194,7 @@ class MainVC: UIViewController {
         self.view.backgroundColor = .white
         setupHeaderBGConstraints()
         view.bindToKeyboard()
+        inputFieldTxtField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -207,7 +213,7 @@ class MainVC: UIViewController {
         topViewHeaderBg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topViewHeaderBg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topViewHeaderBg.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topViewHeaderBg.heightAnchor.constraint(equalToConstant: 141).isActive = true
+        topViewHeaderBg.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
         setupHeaderViewsConstraints()
     }
@@ -232,6 +238,7 @@ class MainVC: UIViewController {
                 fdlLogoImgView,
                 fdlTitleNameLbl
             ])
+        view.addSubview(poweredByStackView)
         poweredByStackView.translatesAutoresizingMaskIntoConstraints = false
         poweredByStackView.axis = .vertical
         poweredByStackView.spacing = 5
@@ -246,7 +253,10 @@ class MainVC: UIViewController {
         aboutTrackMethodStackView.spacing = 0
         poweredByStackView.distribution = .fillProportionally
         
-        poweredByStackView.heightAnchor.constraint(equalToConstant: 115).isActive = true
+        let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
+        poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true
+        poweredByStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
+        poweredByStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         poweredByTextLbl.heightAnchor.constraint(equalToConstant: 30).isActive = true
         fdlTitleNameLbl.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
@@ -262,22 +272,21 @@ class MainVC: UIViewController {
         inputFieldUnderLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
         let bodyViewsStackView = UIStackView(arrangedSubviews: [
-                poweredByStackView,
                 calcMethodSegmentedControl,
-                aboutTrackMethodStackView,
                 inputTextFieldStackView,
                 calculateBtn
             ])
         view.addSubview(bodyViewsStackView)
         bodyViewsStackView.translatesAutoresizingMaskIntoConstraints = false
         bodyViewsStackView.axis = .vertical
-        bodyViewsStackView.spacing = 45
-        bodyViewsStackView.distribution = .fillProportionally
+        bodyViewsStackView.spacing = 30
+        bodyViewsStackView.distribution = .fill
         
-        bodyViewsStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
+//        poweredByStackView.bottomAnchor.constraint(equalTo: bodyViewsStackView.topAnchor, constant: -16).isActive = true
+//        bodyViewsStackView.topAnchor.constraint(equalTo: poweredByStackView.bottomAnchor, constant: 16).isActive = true
         bodyViewsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
         bodyViewsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
-        bodyViewsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32).isActive = true
+        bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
 
         aboutTrackMethodStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
