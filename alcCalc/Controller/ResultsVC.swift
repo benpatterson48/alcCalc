@@ -17,7 +17,7 @@ class ResultsVC: UIViewController {
     
     func initData(caloriesSent: Double) {
         self.calories = caloriesSent
-        caloriesLbl.text = "Calories: \(calories!)"
+        caloriesLbl.text = "Cals: \(calories!)"
     }
     
     private let contentView: UIView = {
@@ -63,7 +63,7 @@ class ResultsVC: UIViewController {
         let calories = UILabel()
         calories.textAlignment = .center
         calories.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        calories.font = UIFont.mainMediumFont(ofSize: 20)
+        calories.font = UIFont.mainMediumFont(ofSize: 18)
         calories.translatesAutoresizingMaskIntoConstraints = false
         return calories
     }()
@@ -116,7 +116,7 @@ class ResultsVC: UIViewController {
     private let fatsOutputLbl: UILabel = {
         let output = UILabel()
         output.text = "0g"
-        output.textAlignment = .left
+        output.textAlignment = .center
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
         output.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +126,7 @@ class ResultsVC: UIViewController {
     private let carbsOutputLbl: UILabel = {
         let output = UILabel()
         output.text = "0g"
-        output.textAlignment = .right
+        output.textAlignment = .center
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
         output.translatesAutoresizingMaskIntoConstraints = false
@@ -144,6 +144,26 @@ class ResultsVC: UIViewController {
         return slider
     }()
     
+    private let fatsLbl: UILabel = {
+        let title = UILabel()
+        title.text = "Fats"
+        title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2975973887)
+        title.textAlignment = .center
+        title.font = UIFont.mainFont(ofSize: 12)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
+    private let carbsLbl: UILabel = {
+        let title = UILabel()
+        title.text = "Carbs"
+        title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2975973887)
+        title.textAlignment = .center
+        title.font = UIFont.mainFont(ofSize: 12)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
     @objc func sliderValueChanging(_ sender: UISlider) {
         let currentValue = Int(sender.value)
         let remainderValue = 100 - currentValue
@@ -159,12 +179,20 @@ class ResultsVC: UIViewController {
     
     func calculateMacros(calories:
         Double, value: Int, gramsConversion: Double) -> Double {
-        let wholeRemainder: Double = Double(value % 100)
-        let remainder = wholeRemainder * 0.01
-        let calories = remainder * calories
-        let macrosDecimals = calories / gramsConversion
-        let macros = macrosDecimals.rounded(digits: 1)
-        return macros
+        if value == 100 {
+            let remainder = Double(value) * 0.01
+            let calories = remainder * calories
+            let macrosDecimals = calories / gramsConversion
+            let macros = macrosDecimals.rounded(digits: 1)
+            return macros
+        } else {
+            let wholeRemainder: Double = Double(value % 100)
+            let remainder = wholeRemainder * 0.01
+            let calories = remainder * calories
+            let macrosDecimals = calories / gramsConversion
+            let macros = macrosDecimals.rounded(digits: 1)
+            return macros
+        }
     }
 
     private let sliderOutputValuePercentageLbl: UILabel = {
@@ -172,14 +200,14 @@ class ResultsVC: UIViewController {
         result.text = "0% Fats"
         result.textAlignment = .right
         result.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        result.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        result.font = UIFont.mainMediumFont(ofSize: 18)
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.7)
+        view.backgroundColor = UIColor.clear
         view.isOpaque = false
         setupContentViewAndConstraints()
     }
@@ -209,6 +237,7 @@ class ResultsVC: UIViewController {
         contentView.addSubview(topViewBG)
         topViewBG.addSubview(topViewTitleLbl)
         contentView.addSubview(caloriesLbl)
+        contentView.addSubview(sliderOutputValuePercentageLbl)
         
         topViewBG.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         topViewBG.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -220,23 +249,25 @@ class ResultsVC: UIViewController {
         
         caloriesLbl.topAnchor.constraint(equalTo: topViewBG.bottomAnchor, constant: 24).isActive = true
         caloriesLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
-        caloriesLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        
+        sliderOutputValuePercentageLbl.topAnchor.constraint(equalTo: topViewBG.bottomAnchor, constant: 24).isActive = true
+        sliderOutputValuePercentageLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
         
         setupFatsAndCarbsStackView()
     }
     
     func setupFatsAndCarbsStackView() {
-        let fatsStackView = UIStackView(arrangedSubviews: [fatsTitleLbl, fatsOutputLbl])
+        let fatsStackView = UIStackView(arrangedSubviews: [fatsTitleLbl, fatsOutputLbl, fatsLbl])
         fatsStackView.translatesAutoresizingMaskIntoConstraints = false
         fatsStackView.axis = .vertical
-        fatsStackView.spacing = 5
+        fatsStackView.spacing = 0
         fatsStackView.distribution = .fillProportionally
         fatsTitleLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        let carbsStackView = UIStackView(arrangedSubviews: [carbsTitleLbl, carbsOutputLbl])
+        let carbsStackView = UIStackView(arrangedSubviews: [carbsTitleLbl, carbsOutputLbl, carbsLbl])
         carbsStackView.translatesAutoresizingMaskIntoConstraints = false
         carbsStackView.axis = .vertical
-        carbsStackView.spacing = 5
+        carbsStackView.spacing = 0
         carbsStackView.distribution = .fillProportionally
         carbsTitleLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
@@ -247,25 +278,17 @@ class ResultsVC: UIViewController {
         combinedOutputStackView.axis = .horizontal
         combinedOutputStackView.distribution = .fillEqually
         combinedOutputStackView.alignment = .fill
-        combinedOutputStackView.spacing = 20
+        combinedOutputStackView.spacing = 15
         
         combinedOutputStackView.topAnchor.constraint(equalTo: caloriesLbl.bottomAnchor, constant: 24).isActive = true
-        combinedOutputStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
-        combinedOutputStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
+        combinedOutputStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        combinedOutputStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
         
         contentView.addSubview(outputResultsSlider)
         outputResultsSlider.topAnchor.constraint(equalTo: combinedOutputStackView.bottomAnchor, constant: 24).isActive = true
-        
-        setupSliderAndBottomLabels()
+        outputResultsSlider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        outputResultsSlider.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
     }
     
-    func setupSliderAndBottomLabels() {
-        contentView.addSubview(sliderOutputValuePercentageLbl)
-        outputResultsSlider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
-        outputResultsSlider.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
-        
-        sliderOutputValuePercentageLbl.trailingAnchor.constraint(equalTo: outputResultsSlider.trailingAnchor).isActive = true
-        sliderOutputValuePercentageLbl.topAnchor.constraint(equalTo: outputResultsSlider.bottomAnchor, constant: 12).isActive = true
-    }
-
+    
 }
