@@ -13,6 +13,7 @@ class ResultsVC: UIViewController {
     var calories: Double?
     var fatsSelected: Bool = true
     var carsbSelected: Bool = false
+    var roundedSelected: Bool = true
     var outputSelected: String = "Fats"
     
     func initData(caloriesSent: Double) {
@@ -164,6 +165,42 @@ class ResultsVC: UIViewController {
         return title
     }()
     
+    private let roundedOptionBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("Rounded", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        button.addTarget(self, action: #selector(roundedOrDecimalOptionWasChanged), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let decimalOptionBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("Decimal", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.mainFont(ofSize: 18)
+        button.addTarget(self, action: #selector(roundedOrDecimalOptionWasChanged), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc func roundedOrDecimalOptionWasChanged() {
+        if roundedSelected == true {
+            roundedSelected = false
+            roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+            roundedOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
+            decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
+            decimalOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        } else {
+            roundedSelected = true
+            decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+            decimalOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
+            roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
+            roundedOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        }
+    }
+    
     @objc func sliderValueChanging(_ sender: UISlider) {
         let currentValue = Int(sender.value)
         let remainderValue = 100 - currentValue
@@ -288,6 +325,24 @@ class ResultsVC: UIViewController {
         outputResultsSlider.topAnchor.constraint(equalTo: combinedOutputStackView.bottomAnchor, constant: 24).isActive = true
         outputResultsSlider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
         outputResultsSlider.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        
+        setupRoundedOrDecimalOptionBtnStackView()
+    }
+    
+    func setupRoundedOrDecimalOptionBtnStackView() {
+        let optionsStackView = UIStackView(arrangedSubviews: [roundedOptionBtn, decimalOptionBtn])
+        optionsStackView.axis = .horizontal
+        optionsStackView.spacing = 15
+        optionsStackView.distribution = .fillEqually
+        optionsStackView.alignment = .fill
+
+        contentView.addSubview(optionsStackView)
+        optionsStackView.translatesAutoresizingMaskIntoConstraints = false
+        optionsStackView.topAnchor.constraint(equalTo: outputResultsSlider.bottomAnchor, constant: 24).isActive = true
+        optionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        optionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        roundedOptionBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        decimalOptionBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     
