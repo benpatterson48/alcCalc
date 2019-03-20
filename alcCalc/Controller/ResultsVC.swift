@@ -192,12 +192,14 @@ class ResultsVC: UIViewController {
             roundedOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
             decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
             decimalOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+            sliderValueChanging(outputResultsSlider)
         } else {
             roundedSelected = true
             decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
             decimalOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
             roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
             roundedOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+            sliderValueChanging(outputResultsSlider)
         }
     }
     
@@ -220,15 +222,25 @@ class ResultsVC: UIViewController {
             let remainder = Double(value) * 0.01
             let calories = remainder * calories
             let macrosDecimals = calories / gramsConversion
-            let macros = macrosDecimals.rounded(digits: 1)
-            return macros
+            if roundedSelected == true {
+                let macros = macrosDecimals.rounded(digits: 0)
+                return macros
+            } else {
+                let macros = macrosDecimals.rounded(digits: 1)
+                return macros
+            }
         } else {
             let wholeRemainder: Double = Double(value % 100)
             let remainder = wholeRemainder * 0.01
             let calories = remainder * calories
             let macrosDecimals = calories / gramsConversion
-            let macros = macrosDecimals.rounded(digits: 1)
-            return macros
+            if roundedSelected == true {
+                let macros = macrosDecimals.rounded(digits: 0)
+                return macros
+            } else {
+                let macros = macrosDecimals.rounded(digits: 1)
+                return macros
+            }
         }
     }
 
