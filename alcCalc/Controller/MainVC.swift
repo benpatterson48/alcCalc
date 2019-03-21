@@ -13,6 +13,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
     var calculationMethodAboutText = String()
     var caloriesSelected: Bool = true
     var abvSelected: Bool = false
+    var abvView = ABVInputView()
     
     private let topViewHeaderBg: UIView = {
         let view = UIView()
@@ -79,67 +80,9 @@ class MainVC: UIViewController, UITextFieldDelegate {
         return segment
     }()
     
-    @objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            caloriesSelected = true
-            abvSelected = false
-            aboutTrackMethodLbl.text =
-            """
-            Tracking method description for
-            calories selection method, will
-            change for ABV.
-            """
-        case 1:
-            caloriesSelected = false
-            abvSelected = true
-            aboutTrackMethodLbl.text =
-            """
-            Tracking method description for
-            ABV selection method, will
-            change for calories.
-            """
-        default:
-            caloriesSelected = true
-            abvSelected = false
-            aboutTrackMethodLbl.text =
-            """
-            Tracking method description for
-            calories selection method, will
-            change for ABV.
-            """
-        }
-    }
-    
-    private let aboutTrackMethodTitle: UILabel = {
-        let title = UILabel()
-        title.text = "About Tracking Method"
-        title.textAlignment = .center
-        title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
-        title.font = UIFont.mainMediumFont(ofSize: 18)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        return title
-    }()
-    
-    private let aboutTrackMethodLbl: UILabel = {
-        let about = UILabel()
-        about.text =
-        """
-        Tracking method description for
-        calories selection method, will
-        change for ABV.
-        """
-        about.textAlignment = .center
-        about.numberOfLines = 0
-        about.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-        about.font = UIFont.systemFont(ofSize: 16)
-        about.translatesAutoresizingMaskIntoConstraints = false
-        return about
-    }()
-    
-    private let inputFieldTitleLbl: UILabel = {
+    let inputFieldTitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Click to Enter Calories Below"
+        lbl.text = "Enter Calories Below"
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8010220462)
@@ -147,6 +90,41 @@ class MainVC: UIViewController, UITextFieldDelegate {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
+    
+    func toggleBetweenCaloriesAndAbvMethod() {
+        if caloriesSelected == true {
+            print("Setup for calories")
+            inputFieldTitleLbl.text = "Enter CaloriesBelow"
+            inputFieldTxtField.placeholder = "0"
+            inputFieldTitleLbl.isHidden = false
+            inputFieldTxtField.isHidden = false
+            inputFieldUnderLineView.isHidden = false
+            abvView.isHidden = true
+        } else {
+            print("setup for ABV")
+            inputFieldTitleLbl.isHidden = true
+            inputFieldTxtField.isHidden = true
+            inputFieldUnderLineView.isHidden = true
+            abvView.isHidden = false 
+        }
+    }
+    
+    @objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            caloriesSelected = true
+            abvSelected = false
+            toggleBetweenCaloriesAndAbvMethod()
+        case 1:
+            caloriesSelected = false
+            abvSelected = true
+            toggleBetweenCaloriesAndAbvMethod()
+        default:
+            caloriesSelected = true
+            abvSelected = false
+            toggleBetweenCaloriesAndAbvMethod()
+        }
+    }
     
     let inputFieldTxtField: UITextField = {
         let txt = UITextField()
@@ -160,38 +138,44 @@ class MainVC: UIViewController, UITextFieldDelegate {
         return txt
     }()
     
-    private let inputFieldUnderLineView: UIView = {
+    let inputFieldUnderLineView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let calculateBtn: UIButton = {
+    let calculateBtn: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
         button.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
         button.titleLabel?.font = UIFont.mainBoldFont(ofSize: 26)
-        button.addTarget(self, action: #selector(calculateBtnWasPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(calculateWithCaloriesBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    @objc func calculateBtnWasPressed() {
-        if inputFieldTxtField.text == "" {
-            self.inputFieldTxtField.shake()
+    @objc func calculateWithCaloriesBtnWasPressed() {
+        if caloriesSelected == true {
+            if inputFieldTxtField.text == "" {
+                self.inputFieldTxtField.shake()
+            } else {
+                let resultsVC = ResultsVC()
+                resultsVC.initDataForCalories(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
+                resultsVC.modalPresentationStyle = .currentContext
+                present(resultsVC, animated: true, completion: nil)
+            }
         } else {
-            let resultsVC = ResultsVC()
-            resultsVC.initData(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
-            resultsVC.modalPresentationStyle = .currentContext
-            present(resultsVC, animated: true, completion: nil)
+            print("use ABV")
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        abvView.isHidden = true
         self.view.backgroundColor = .white
+        segmentedControllerIndexChanged(calcMethodSegmentedControl)
         setupHeaderBGConstraints()
         view.bindToKeyboard()
         inputFieldTxtField.delegate = self
@@ -213,7 +197,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         topViewHeaderBg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topViewHeaderBg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topViewHeaderBg.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topViewHeaderBg.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        topViewHeaderBg.heightAnchor.constraint(equalToConstant: 105).isActive = true
         
         setupHeaderViewsConstraints()
     }
@@ -243,15 +227,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         poweredByStackView.axis = .vertical
         poweredByStackView.spacing = 5
         poweredByStackView.distribution = .fillProportionally
-        
-        let aboutTrackMethodStackView = UIStackView(arrangedSubviews: [
-                aboutTrackMethodTitle,
-                aboutTrackMethodLbl
-            ])
-        aboutTrackMethodStackView.translatesAutoresizingMaskIntoConstraints = false
-        aboutTrackMethodStackView.axis = .vertical
-        aboutTrackMethodStackView.spacing = 0
-        poweredByStackView.distribution = .fillProportionally
+
         
         let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
         poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true
@@ -274,6 +250,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         let bodyViewsStackView = UIStackView(arrangedSubviews: [
                 calcMethodSegmentedControl,
                 inputTextFieldStackView,
+                abvView,
                 calculateBtn
             ])
         view.addSubview(bodyViewsStackView)
@@ -282,13 +259,10 @@ class MainVC: UIViewController, UITextFieldDelegate {
         bodyViewsStackView.spacing = 30
         bodyViewsStackView.distribution = .fill
         
-//        poweredByStackView.bottomAnchor.constraint(equalTo: bodyViewsStackView.topAnchor, constant: -16).isActive = true
-//        bodyViewsStackView.topAnchor.constraint(equalTo: poweredByStackView.bottomAnchor, constant: 16).isActive = true
         bodyViewsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
         bodyViewsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
         bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
 
-        aboutTrackMethodStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
         calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }

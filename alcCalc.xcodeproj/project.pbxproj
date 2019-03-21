@@ -34,6 +34,7 @@
 		1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A9FA322380A4200DC98E2 /* UIFont.swift */; };
 		1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */; };
 		1DA88FDB22375ADF0047C7F8 /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FDA22375ADF0047C7F8 /* ResultsVC.swift */; };
+		1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB3A5422433D8000E1D786 /* ABVInputView.swift */; };
 		1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F32230988A001E1F54 /* AppDelegate.swift */; };
 		1DF754F62230988A001E1F54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F52230988A001E1F54 /* ViewController.swift */; };
 		1DF754F92230988A001E1F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF754F72230988A001E1F54 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		1D4A9FA322380A4200DC98E2 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		1DA88FDA22375ADF0047C7F8 /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
+		1DBB3A5422433D8000E1D786 /* ABVInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVInputView.swift; sourceTree = "<group>"; };
 		1DF754F02230988A001E1F54 /* alcCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alcCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF754F32230988A001E1F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF754F52230988A001E1F54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */,
+				1DBB3A5422433D8000E1D786 /* ABVInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */,
 				1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */,
 				1D3FDD9A2239E799008C3C02 /* UITextField.swift in Sources */,
+				1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */,
 				1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1DA88FDB22375ADF0047C7F8 /* ResultsVC.swift in Sources */,

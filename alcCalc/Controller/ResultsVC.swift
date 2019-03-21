@@ -15,8 +15,11 @@ class ResultsVC: UIViewController {
     var carsbSelected: Bool = false
     var roundedSelected: Bool = true
     var outputSelected: String = "Fats"
+    var caloriesSelected: Bool?
+    var abvSelected: Bool?
     
-    func initData(caloriesSent: Double) {
+    func initDataForCalories(caloriesSent: Double) {
+        caloriesSelected = true
         self.calories = caloriesSent
         caloriesLbl.text = "Cals: \(calories!)"
     }
@@ -207,12 +210,16 @@ class ResultsVC: UIViewController {
         let currentValue = Int(sender.value)
         let remainderValue = 100 - currentValue
         sliderOutputValuePercentageLbl.text = "\(currentValue)% \(outputSelected)"
-        if fatsSelected == true {
-            fatsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 9))g"
-            carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: remainderValue, gramsConversion: 4))g"
+        if caloriesSelected == true {
+            if fatsSelected == true {
+                fatsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 9))g"
+                carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: remainderValue, gramsConversion: 4))g"
+            } else {
+                fatsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: remainderValue, gramsConversion: 9))g"
+                carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 4))g"
+            }
         } else {
-            fatsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: remainderValue, gramsConversion: 9))g"
-            carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 4))g"
+            //abv
         }
     }
     
