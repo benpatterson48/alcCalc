@@ -12,7 +12,7 @@ class ABVInputView: UIView {
     
     let percentInputFieldTitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Enter Calories Below"
+        lbl.text = "Enter ABV % Below"
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8010220462)
@@ -23,7 +23,7 @@ class ABVInputView: UIView {
     
     let ouncesInputFieldTitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Enter Calories Below"
+        lbl.text = "Enter Ounces Below"
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8010220462)
@@ -79,21 +79,20 @@ class ABVInputView: UIView {
         let ouncesStackView = UIStackView(arrangedSubviews: [ouncesInputFieldTitleLbl, ouncesInputFieldTxtField, ouncesPercentInputFieldUnderLineView])
         ouncesStackView.translatesAutoresizingMaskIntoConstraints = false
         ouncesStackView.axis = .vertical
-        ouncesStackView.spacing = 5
+        ouncesStackView.spacing = 15
         ouncesStackView.distribution = .fillProportionally
         ouncesPercentInputFieldUnderLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
         let percentStackView = UIStackView(arrangedSubviews: [percentInputFieldTitleLbl, percentInputFieldTxtField, percentInputFieldUnderLineView])
         percentStackView.translatesAutoresizingMaskIntoConstraints = false
         percentStackView.axis = .vertical
-        percentStackView.spacing = 5
+        percentStackView.spacing = 15
         percentStackView.distribution = .fillProportionally
         percentInputFieldUnderLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
         let abvInputsStackView = UIStackView(arrangedSubviews: [ouncesStackView, percentStackView])
         addSubview(abvInputsStackView)
         abvInputsStackView.translatesAutoresizingMaskIntoConstraints = false
-        abvInputsStackView.axis = .horizontal
         abvInputsStackView.spacing = 10
         abvInputsStackView.distribution = .fillEqually
         
@@ -101,6 +100,15 @@ class ABVInputView: UIView {
         abvInputsStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         abvInputsStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         abvInputsStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
+            abvInputsStackView.axis = .vertical
+            abvInputsStackView.spacing = 24
+            ouncesInputFieldTxtField.font = UIFont.boldSystemFont(ofSize: 80)
+            percentInputFieldTxtField.font = UIFont.boldSystemFont(ofSize: 80)
+        } else {
+            abvInputsStackView.axis = .horizontal
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

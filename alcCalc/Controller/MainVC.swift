@@ -93,15 +93,13 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     func toggleBetweenCaloriesAndAbvMethod() {
         if caloriesSelected == true {
-            print("Setup for calories")
-            inputFieldTitleLbl.text = "Enter CaloriesBelow"
+            inputFieldTitleLbl.text = "Enter Calories Below"
             inputFieldTxtField.placeholder = "0"
             inputFieldTitleLbl.isHidden = false
             inputFieldTxtField.isHidden = false
             inputFieldUnderLineView.isHidden = false
             abvView.isHidden = true
         } else {
-            print("setup for ABV")
             inputFieldTitleLbl.isHidden = true
             inputFieldTxtField.isHidden = true
             inputFieldUnderLineView.isHidden = true
@@ -158,21 +156,50 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     @objc func calculateWithCaloriesBtnWasPressed() {
         if caloriesSelected == true {
-            if inputFieldTxtField.text == "" {
-                self.inputFieldTxtField.shake()
-            } else {
-                let resultsVC = ResultsVC()
-                resultsVC.initDataForCalories(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
-                resultsVC.modalPresentationStyle = .currentContext
-                present(resultsVC, animated: true, completion: nil)
-            }
+            calculateBtnWasPressedForCalories()
         } else {
-            print("use ABV")
+            calculateBtnWasPressedForABV()
+        }
+    }
+    
+    func calculateBtnWasPressedForCalories() {
+        if inputFieldTxtField.text == "" {
+            self.inputFieldTxtField.shake()
+            view.endEditing(true)
+            return
+        } else {
+            let resultsVC = ResultsVC()
+            resultsVC.initDataForCalories(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
+            resultsVC.modalPresentationStyle = .custom
+            view.endEditing(true)
+            present(resultsVC, animated: true, completion: nil)
+        }
+    }
+    
+    func calculateBtnWasPressedForABV() {
+        if abvView.ouncesInputFieldTxtField.text == "" || abvView.percentInputFieldTxtField.text == "" {
+            self.inputFieldTxtField.shake()
+            view.endEditing(true)
+            return
+        } else {
+            let ounces = Double(abvView.ouncesInputFieldTxtField.text!)
+            let percent = Double(abvView.percentInputFieldTxtField.text!)
+            let resultsVC = ResultsVC()
+            resultsVC.initDataForABV(ounces: ounces ?? 0, percent: percent ?? 0)
+            view.endEditing(true)
+            resultsVC.modalPresentationStyle = .custom 
+            present(resultsVC, animated: true, completion: nil)
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
+            calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
+            calculateBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
+        }
         abvView.isHidden = true
         self.view.backgroundColor = .white
         segmentedControllerIndexChanged(calcMethodSegmentedControl)
@@ -197,22 +224,21 @@ class MainVC: UIViewController, UITextFieldDelegate {
         topViewHeaderBg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topViewHeaderBg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topViewHeaderBg.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topViewHeaderBg.heightAnchor.constraint(equalToConstant: 105).isActive = true
         
         setupHeaderViewsConstraints()
     }
     
     func setupHeaderViewsConstraints() {
         topViewHeaderBg.addSubview(topViewHeaderTitleLbl)
-        topViewHeaderBg.addSubview(topViewHeaderLearnMoreBtn)
-        topViewHeaderTitleLbl.leadingAnchor.constraint(equalTo: topViewHeaderBg.leadingAnchor, constant: 24).isActive = true
+//        topViewHeaderBg.addSubview(topViewHeaderLearnMoreBtn)
+        topViewHeaderTitleLbl.centerXAnchor.constraint(equalTo: topViewHeaderBg.centerXAnchor).isActive = true
         topViewHeaderTitleLbl.bottomAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: -16).isActive = true
         
-        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -24).isActive = true
-        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
-        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        
+//        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -24).isActive = true
+//        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
+//        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
+//        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
+//
         createPoweredByStackViewAndConstraints()
     }
     
@@ -228,9 +254,6 @@ class MainVC: UIViewController, UITextFieldDelegate {
         poweredByStackView.spacing = 5
         poweredByStackView.distribution = .fillProportionally
 
-        
-        let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
-        poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true
         poweredByStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
         poweredByStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         poweredByTextLbl.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -256,8 +279,8 @@ class MainVC: UIViewController, UITextFieldDelegate {
         view.addSubview(bodyViewsStackView)
         bodyViewsStackView.translatesAutoresizingMaskIntoConstraints = false
         bodyViewsStackView.axis = .vertical
-        bodyViewsStackView.spacing = 30
         bodyViewsStackView.distribution = .fill
+        bodyViewsStackView.spacing = 30
         
         bodyViewsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
         bodyViewsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
@@ -265,6 +288,15 @@ class MainVC: UIViewController, UITextFieldDelegate {
 
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
         calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 135).isActive = true
+            poweredByStackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        } else {
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 105).isActive = true
+            let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
+            poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true
+        }
     }
 
 

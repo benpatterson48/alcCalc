@@ -11,6 +11,8 @@ import UIKit
 class ResultsVC: UIViewController {
     
     var calories: Double?
+    var ounces: Double?
+    var percent: Double?
     var fatsSelected: Bool = true
     var carsbSelected: Bool = false
     var roundedSelected: Bool = true
@@ -22,6 +24,15 @@ class ResultsVC: UIViewController {
         caloriesSelected = true
         self.calories = caloriesSent
         caloriesLbl.text = "Cals: \(calories!)"
+    }
+    
+    func initDataForABV(ounces: Double, percent: Double) {
+        abvSelected = true
+        self.ounces = ounces
+        self.percent = percent
+        caloriesLbl.font = UIFont.mainMediumFont(ofSize: 16)
+        sliderOutputValuePercentageLbl.font = UIFont.mainMediumFont(ofSize: 16)
+        caloriesLbl.text = "Oz: \(self.ounces!), %: \(self.percent!)"
     }
     
     private let contentView: UIView = {
@@ -42,7 +53,6 @@ class ResultsVC: UIViewController {
     }()
     
     @objc func closeBtnWasPressed() {
-        print("button tapped recognized")
         dismissResultsVC()
     }
     
@@ -65,8 +75,9 @@ class ResultsVC: UIViewController {
     
     private let caloriesLbl: UILabel = {
         let calories = UILabel()
-        calories.textAlignment = .center
+        calories.textAlignment = .left
         calories.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        calories.numberOfLines = 0
         calories.font = UIFont.mainMediumFont(ofSize: 18)
         calories.translatesAutoresizingMaskIntoConstraints = false
         return calories
@@ -119,7 +130,6 @@ class ResultsVC: UIViewController {
     
     private let fatsOutputLbl: UILabel = {
         let output = UILabel()
-        output.text = "0g"
         output.textAlignment = .center
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
@@ -129,7 +139,6 @@ class ResultsVC: UIViewController {
     
     private let carbsOutputLbl: UILabel = {
         let output = UILabel()
-        output.text = "0g"
         output.textAlignment = .center
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
@@ -192,7 +201,7 @@ class ResultsVC: UIViewController {
         if roundedSelected == true {
             roundedSelected = false
             roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
-            roundedOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
+            roundedOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 16)
             decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
             decimalOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             sliderValueChanging(outputResultsSlider)
@@ -201,7 +210,7 @@ class ResultsVC: UIViewController {
             decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
             decimalOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
             roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
-            roundedOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+            roundedOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
             sliderValueChanging(outputResultsSlider)
         }
     }
@@ -219,7 +228,13 @@ class ResultsVC: UIViewController {
                 carbsOutputLbl.text = "\(calculateMacros(calories: self.calories!, value: currentValue, gramsConversion: 4))g"
             }
         } else {
-            //abv
+            if fatsSelected == true {
+                fatsOutputLbl.text = "\(calculateABVMacros(ounces: self.ounces!, percent: self.percent!, value: currentValue, gramsConversion: 9))g"
+                carbsOutputLbl.text = "\(calculateABVMacros(ounces: self.ounces!, percent: self.percent!, value: remainderValue, gramsConversion: 4))g"
+            } else {
+                fatsOutputLbl.text = "\(calculateABVMacros(ounces: self.ounces!, percent: self.percent!, value: remainderValue, gramsConversion: 9))g"
+                carbsOutputLbl.text = "\(calculateABVMacros(ounces: self.ounces!, percent: self.percent!, value: currentValue, gramsConversion: 4))"
+            }
         }
     }
     
@@ -250,6 +265,36 @@ class ResultsVC: UIViewController {
             }
         }
     }
+    
+    func calculateABVMacros(ounces: Double, percent: Double, value: Int, gramsConversion: Double) -> Double {
+        if value == 100 {
+            let abvCalories = ounces * (percent * 2.5)
+            let remainder: Double = Double(value) * 0.01
+            let abvCalcCalories = abvCalories * remainder
+            let macrosDecimals = abvCalcCalories / gramsConversion
+            if roundedSelected == true {
+                let macros = macrosDecimals.rounded(digits: 0)
+                return macros
+            } else {
+                let macros = macrosDecimals.rounded(digits: 1)
+                return macros
+            }
+        } else {
+            let abvCalories = ounces * (percent * 2.5)
+            let wholeRemainder: Double = Double(value % 100)
+            let remainder = wholeRemainder * 0.01
+            let abvCalcCalories = abvCalories * remainder
+            let macrosDecimals = abvCalcCalories / gramsConversion
+            if roundedSelected == true {
+                let macros = macrosDecimals.rounded(digits: 0)
+                return macros
+            } else {
+                let macros = macrosDecimals.rounded(digits: 1)
+                return macros
+            }
+        }
+    }
+
 
     private let sliderOutputValuePercentageLbl: UILabel = {
         let result = UILabel()
@@ -263,20 +308,24 @@ class ResultsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.clear
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+            carbsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 30)
+            fatsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 30)
+        }
+        sliderValueChanging(outputResultsSlider)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.7514180223)
         view.isOpaque = false
+        fatsSelected = true
         setupContentViewAndConstraints()
     }
     
     @objc func dismissResultsVC() {
-        print("dismiss called")
         dismiss(animated: true, completion: nil)
     }
     
     func setupContentViewAndConstraints() {
         view.addSubview(contentView)
         view.addSubview(closeBtn)
-        contentView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
         contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24).isActive = true
@@ -305,9 +354,11 @@ class ResultsVC: UIViewController {
         
         caloriesLbl.topAnchor.constraint(equalTo: topViewBG.bottomAnchor, constant: 24).isActive = true
         caloriesLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        caloriesLbl.trailingAnchor.constraint(equalTo: sliderOutputValuePercentageLbl.leadingAnchor, constant: -12).isActive = true
         
         sliderOutputValuePercentageLbl.topAnchor.constraint(equalTo: topViewBG.bottomAnchor, constant: 24).isActive = true
         sliderOutputValuePercentageLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        sliderOutputValuePercentageLbl.leadingAnchor.constraint(equalTo: caloriesLbl.trailingAnchor, constant: 12).isActive = true
         
         setupFatsAndCarbsStackView()
     }
@@ -316,14 +367,14 @@ class ResultsVC: UIViewController {
         let fatsStackView = UIStackView(arrangedSubviews: [fatsTitleLbl, fatsOutputLbl, fatsLbl])
         fatsStackView.translatesAutoresizingMaskIntoConstraints = false
         fatsStackView.axis = .vertical
-        fatsStackView.spacing = 0
+        fatsStackView.spacing = 16
         fatsStackView.distribution = .fillProportionally
         fatsTitleLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         let carbsStackView = UIStackView(arrangedSubviews: [carbsTitleLbl, carbsOutputLbl, carbsLbl])
         carbsStackView.translatesAutoresizingMaskIntoConstraints = false
         carbsStackView.axis = .vertical
-        carbsStackView.spacing = 0
+        carbsStackView.spacing = 16
         carbsStackView.distribution = .fillProportionally
         carbsTitleLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
@@ -336,7 +387,7 @@ class ResultsVC: UIViewController {
         combinedOutputStackView.alignment = .fill
         combinedOutputStackView.spacing = 15
         
-        combinedOutputStackView.topAnchor.constraint(equalTo: caloriesLbl.bottomAnchor, constant: 24).isActive = true
+        combinedOutputStackView.topAnchor.constraint(equalTo: caloriesLbl.bottomAnchor, constant: 32).isActive = true
         combinedOutputStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
         combinedOutputStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
         
@@ -360,6 +411,7 @@ class ResultsVC: UIViewController {
         optionsStackView.topAnchor.constraint(equalTo: outputResultsSlider.bottomAnchor, constant: 24).isActive = true
         optionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
         optionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        optionsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24).isActive = true
         roundedOptionBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
         decimalOptionBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
