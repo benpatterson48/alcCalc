@@ -16,7 +16,7 @@ class ABVInputView: UIView {
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8010220462)
-        lbl.font = UIFont.mainMediumFont(ofSize: 16)
+        lbl.font = UIFont.mainMediumFont(ofSize: 20)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -27,7 +27,7 @@ class ABVInputView: UIView {
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8010220462)
-        lbl.font = UIFont.mainMediumFont(ofSize: 16)
+        lbl.font = UIFont.mainMediumFont(ofSize: 20)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -58,14 +58,14 @@ class ABVInputView: UIView {
     
     let percentInputFieldUnderLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2479666096)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let ouncesPercentInputFieldUnderLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2479666096)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -101,7 +101,7 @@ class ABVInputView: UIView {
         abvInputsStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         abvInputsStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
+        if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
             abvInputsStackView.axis = .vertical
             abvInputsStackView.spacing = 24
             ouncesInputFieldTxtField.font = UIFont.boldSystemFont(ofSize: 80)

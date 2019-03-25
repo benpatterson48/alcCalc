@@ -98,13 +98,20 @@ class MainVC: UIViewController, UITextFieldDelegate {
             inputFieldTitleLbl.isHidden = false
             inputFieldTxtField.isHidden = false
             inputFieldUnderLineView.isHidden = false
-            abvView.isHidden = true
-        } else {
-            inputFieldTitleLbl.isHidden = true
-            inputFieldTxtField.isHidden = true
-            inputFieldUnderLineView.isHidden = true
-            abvView.isHidden = false 
-        }
+            inputFieldTxtField.text = ""
+            UIView.animate(withDuration: 0.2, delay: 0.15 ,animations: {
+                self.abvView.isHidden = true
+            }
+            )} else {
+            abvView.isHidden = false
+            abvView.ouncesInputFieldTxtField.text = ""
+            abvView.percentInputFieldTxtField.text = "" 
+            UIView.animate(withDuration: 0.2, delay: 0.15 ,animations: {
+                self.inputFieldTitleLbl.isHidden = true
+                self.inputFieldTxtField.isHidden = true
+                self.inputFieldUnderLineView.isHidden = true
+            }
+            )}
     }
     
     @objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {
@@ -138,7 +145,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     let inputFieldUnderLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2479666096)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -194,7 +201,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
             calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
             calculateBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
@@ -289,12 +296,13 @@ class MainVC: UIViewController, UITextFieldDelegate {
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
         calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
-        if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
-            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 135).isActive = true
+        if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             poweredByStackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         } else {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 105).isActive = true
             let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
+            bodyViewsStackView.spacing = 30
             poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true
         }
     }

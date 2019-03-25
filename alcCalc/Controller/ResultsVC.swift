@@ -308,12 +308,12 @@ class ResultsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             carbsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 30)
             fatsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 30)
         }
         sliderValueChanging(outputResultsSlider)
-        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.7514180223)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8547463613)
         view.isOpaque = false
         fatsSelected = true
         setupContentViewAndConstraints()
