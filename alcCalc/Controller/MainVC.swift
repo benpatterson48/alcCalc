@@ -178,6 +178,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
             let resultsVC = ResultsVC()
             resultsVC.initDataForCalories(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
             resultsVC.modalPresentationStyle = .custom
+            inputFieldTxtField.text = ""
             view.endEditing(true)
             present(resultsVC, animated: true, completion: nil)
         }
@@ -194,7 +195,9 @@ class MainVC: UIViewController, UITextFieldDelegate {
             let resultsVC = ResultsVC()
             resultsVC.initDataForABV(ounces: ounces ?? 0, percent: percent ?? 0)
             view.endEditing(true)
-            resultsVC.modalPresentationStyle = .custom 
+            resultsVC.modalPresentationStyle = .custom
+            abvView.ouncesInputFieldTxtField.text = ""
+            abvView.percentInputFieldTxtField.text = ""
             present(resultsVC, animated: true, completion: nil)
         }
     }
