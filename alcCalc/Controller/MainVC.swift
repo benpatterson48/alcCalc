@@ -93,14 +93,14 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     func toggleBetweenCaloriesAndAbvMethod() {
         if caloriesSelected == true {
-            inputFieldTitleLbl.text = "Enter Calories Below"
-            inputFieldTxtField.placeholder = "0"
-            inputFieldTitleLbl.isHidden = false
-            inputFieldTxtField.isHidden = false
-            inputFieldUnderLineView.isHidden = false
             inputFieldTxtField.text = ""
-            UIView.animate(withDuration: 0.2, delay: 0.15 ,animations: {
-                self.abvView.isHidden = true
+            abvView.isHidden = true
+            UIView.animate(withDuration: 0.2, delay: 0.0 ,animations: {
+                self.inputFieldTitleLbl.text = "Enter Calories Below"
+                self.inputFieldTxtField.placeholder = "0"
+                self.inputFieldTitleLbl.isHidden = false
+                self.inputFieldTxtField.isHidden = false
+                self.inputFieldUnderLineView.isHidden = false
             }
             )} else {
             abvView.isHidden = false
