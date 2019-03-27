@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Italic.ttf">
+            <string>Montserrat-Italic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -18,36 +23,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="8i2-7E-yLP">
-                                <rect key="frame" x="87.5" y="260" width="200" height="147.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8i2-7E-yLP">
+                                <rect key="frame" x="84" y="101" width="207.5" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUy-gJ-lty">
-                                        <rect key="frame" x="50.5" y="0.0" width="99.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="51.5" y="0.0" width="104.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Italic" family="Montserrat" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fdl_logo" translatesAutoresizingMaskIntoConstraints="NO" id="EIV-T3-Fsm">
-                                        <rect key="frame" x="0.0" y="47.5" width="200" height="100"/>
+                                        <rect key="frame" x="28.5" y="26" width="150" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="Bgz-Sh-dj0"/>
+                                            <constraint firstAttribute="width" constant="150" id="Bgz-Sh-dj0"/>
                                             <constraint firstAttribute="height" constant="100" id="s3j-1E-KnQ"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flexible Dieting Lifestyle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4M-1O-fre">
+                                        <rect key="frame" x="0.0" y="131" width="207.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Italic" family="Montserrat" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-kR-0lW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                <color key="backgroundColor" red="0.0" green="0.77254901960784317" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="m00-ay-dTd"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-vt-4NG">
+                                <rect key="frame" x="32" y="575" width="311" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="C4g-Dq-qvD"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="nEE-vt-4NG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="10Y-f6-EzL"/>
+                            <constraint firstItem="8i2-7E-yLP" firstAttribute="top" secondItem="fcC-kR-0lW" secondAttribute="bottom" constant="16" id="1T7-ta-95i"/>
+                            <constraint firstItem="fcC-kR-0lW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="B0p-3C-f4X"/>
+                            <constraint firstItem="fcC-kR-0lW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IaC-ZN-Gze"/>
                             <constraint firstItem="8i2-7E-yLP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MFI-yd-gCX"/>
-                            <constraint firstItem="8i2-7E-yLP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Ta3-Em-KMO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nEE-vt-4NG" secondAttribute="trailing" constant="32" id="P6q-J7-l3H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nEE-vt-4NG" secondAttribute="bottom" constant="32" id="SDv-kI-Hxw"/>
+                            <constraint firstItem="fcC-kR-0lW" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XF9-vT-m97"/>
+                            <constraint firstItem="nEE-vt-4NG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="zBi-3D-6hL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>

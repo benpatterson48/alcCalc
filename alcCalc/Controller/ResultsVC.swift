@@ -132,6 +132,7 @@ class ResultsVC: UIViewController {
         let output = UILabel()
         output.textAlignment = .center
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        output.adjustsFontSizeToFitWidth = true
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
         output.translatesAutoresizingMaskIntoConstraints = false
         return output
@@ -141,6 +142,7 @@ class ResultsVC: UIViewController {
         let output = UILabel()
         output.textAlignment = .center
         output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        output.adjustsFontSizeToFitWidth = true
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
         output.translatesAutoresizingMaskIntoConstraints = false
         return output
@@ -309,8 +311,8 @@ class ResultsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
-            carbsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 30)
-            fatsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 30)
+            carbsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 26)
+            fatsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 26)
         }
         sliderValueChanging(outputResultsSlider)
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8547463613)

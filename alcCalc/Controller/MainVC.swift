@@ -17,7 +17,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     private let topViewHeaderBg: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0, green: 0.7743021846, blue: 0.8264589906, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0.7725490196, blue: 0.8274509804, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -26,7 +26,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         let title = UILabel()
         title.textColor = .white
         title.textAlignment = .left
-        title.font = UIFont.mainSemiBoldFont(ofSize: 28)
+        title.font = UIFont.mainSemiBoldFont(ofSize: 26)
         title.text = "Alcohol Calculator"
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -36,8 +36,14 @@ class MainVC: UIViewController, UITextFieldDelegate {
         let button = UIButton()
         button.setImage(UIImage(named: "info-Icon"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(linksBtnWasPressed), for: .touchUpInside)
         return button
     }()
+    
+    @objc func linksBtnWasPressed() {
+        let linksVC = LinksVC()
+        presentSlideLeft(viewControllerToPresent: linksVC)
+    }
     
     private let poweredByTextLbl: UILabel = {
         let lbl = UILabel()
@@ -143,6 +149,12 @@ class MainVC: UIViewController, UITextFieldDelegate {
         return txt
     }()
     
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if textField.text?.count ?? 0 > maxLength {
+            textField.deleteBackward()
+        }
+    }
+    
     let inputFieldUnderLineView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2479666096)
@@ -203,12 +215,18 @@ class MainVC: UIViewController, UITextFieldDelegate {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if isEditing {
+            print("were editing")
+            checkMaxLength(textField: inputFieldTxtField, maxLength: 3)
+        }
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+            topViewHeaderTitleLbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
             calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
             calculateBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
+            abvView.ouncesInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
+            abvView.percentInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
         }
         abvView.isHidden = true
         self.view.backgroundColor = .white
@@ -231,24 +249,24 @@ class MainVC: UIViewController, UITextFieldDelegate {
 
     func setupHeaderBGConstraints() {
         view.addSubview(topViewHeaderBg)
+        topViewHeaderBg.addSubview(topViewHeaderLearnMoreBtn)
         topViewHeaderBg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topViewHeaderBg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topViewHeaderBg.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
+    
         setupHeaderViewsConstraints()
     }
     
     func setupHeaderViewsConstraints() {
         topViewHeaderBg.addSubview(topViewHeaderTitleLbl)
-//        topViewHeaderBg.addSubview(topViewHeaderLearnMoreBtn)
-        topViewHeaderTitleLbl.centerXAnchor.constraint(equalTo: topViewHeaderBg.centerXAnchor).isActive = true
+        topViewHeaderTitleLbl.leadingAnchor.constraint(equalTo: topViewHeaderBg.leadingAnchor, constant: 32).isActive = true
         topViewHeaderTitleLbl.bottomAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: -16).isActive = true
         
-//        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -24).isActive = true
-//        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
-//        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
-//        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
-//
+        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -16).isActive = true
+        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
+        
         createPoweredByStackViewAndConstraints()
     }
     
@@ -303,7 +321,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             poweredByStackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         } else {
-            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 105).isActive = true
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
             bodyViewsStackView.spacing = 30
             poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true

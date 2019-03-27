@@ -11,6 +11,10 @@
 		1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* MainVC.swift */; };
 		1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */; };
 		1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D6122494F1F0095E6F2 /* UIDevice.swift */; };
+		1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D63224A787D0095E6F2 /* LinksVC.swift */; };
+		1D196D66224A7AC40095E6F2 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D65224A7AC40095E6F2 /* Links.swift */; };
+		1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D67224A7CDD0095E6F2 /* LinksCell.swift */; };
+		1D196D6A224ABAC50095E6F2 /* UIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D69224ABAC50095E6F2 /* UIVC.swift */; };
 		1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D236E9C223C2FFA00F73F39 /* Double.swift */; };
 		1D3FDD9A2239E799008C3C02 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FDD992239E799008C3C02 /* UITextField.swift */; };
 		1D4A9F8F22380A2400DC98E2 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F7C22380A2400DC98E2 /* Montserrat-LightItalic.ttf */; };
@@ -47,6 +51,10 @@
 		1D0CD8E0223187E0005D82B7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1D196D6122494F1F0095E6F2 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		1D196D63224A787D0095E6F2 /* LinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
+		1D196D65224A7AC40095E6F2 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		1D196D67224A7CDD0095E6F2 /* LinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCell.swift; sourceTree = "<group>"; };
+		1D196D69224ABAC50095E6F2 /* UIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVC.swift; sourceTree = "<group>"; };
 		1D236E9C223C2FFA00F73F39 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		1D3FDD992239E799008C3C02 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		1D4A9F7C22380A2400DC98E2 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -101,6 +109,7 @@
 			children = (
 				1D0CD8E0223187E0005D82B7 /* MainVC.swift */,
 				1DA88FDA22375ADF0047C7F8 /* ResultsVC.swift */,
+				1D196D63224A787D0095E6F2 /* LinksVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -110,6 +119,7 @@
 			children = (
 				1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */,
 				1DBB3A5422433D8000E1D786 /* ABVInputView.swift */,
+				1D196D67224A7CDD0095E6F2 /* LinksCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,6 +127,7 @@
 		1D0CD8DE22318150005D82B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D196D65224A7AC40095E6F2 /* Links.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 				1D3FDD992239E799008C3C02 /* UITextField.swift */,
 				1D236E9C223C2FFA00F73F39 /* Double.swift */,
 				1D196D6122494F1F0095E6F2 /* UIDevice.swift */,
+				1D196D69224ABAC50095E6F2 /* UIVC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,13 +395,17 @@
 			files = (
 				1DF754F62230988A001E1F54 /* ViewController.swift in Sources */,
 				1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */,
+				1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */,
 				1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */,
+				1D196D6A224ABAC50095E6F2 /* UIVC.swift in Sources */,
 				1D3FDD9A2239E799008C3C02 /* UITextField.swift in Sources */,
 				1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */,
 				1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */,
+				1D196D66224A7AC40095E6F2 /* Links.swift in Sources */,
 				1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1DA88FDB22375ADF0047C7F8 /* ResultsVC.swift in Sources */,
+				1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */,
 				1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
