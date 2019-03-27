@@ -96,7 +96,7 @@
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "1024pt.png",
+      "filename" : "1024pt-NoAlpha.png",
       "scale" : "1x"
     }
   ],
