@@ -14,6 +14,7 @@ class LinksVC: UIViewController {
     var linksArray: [Links] = [Links(icon: "instagram", title: "Follow FDL on IG", subTitle: "Access to DAILY content on Flexible Dieting"),
                                Links(icon: "website", title: "FDL Website", subTitle: "Access to tons of content and other FDL offers"),
                                Links(icon: "app", title: "FDL iOS App", subTitle: "Access FDL content and Recipe Vault straight from your phone"),
+                               Links(icon: "cookiebutter", title: "Shop Cookie Butter", subTitle: "Explore our LOVED Macro and Keto-Friendly Cookie Butter"),
                                Links(icon: "review", title: "Leave a Review", subTitle: "Let us know if you love the app!")]
     
     let table: UITableView = {
@@ -65,6 +66,7 @@ class LinksVC: UIViewController {
         setupTableViewAndConstraints()
         self.table.tableFooterView = UIView()
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+            table.isScrollEnabled = true
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
     }
@@ -114,8 +116,14 @@ extension LinksVC: UITableViewDelegate, UITableViewDataSource {
         if let url = URL(string: url) {
             UIApplication.shared.open(url, options: [:])
         } else {
-            print("error")
+            showIncompleteURLAlert()
         }
+    }
+    
+    func showIncompleteURLAlert() {
+        let alert = UIAlertController(title: "Error", message: "Sorry, we couldn't open that link right now. Please try again later.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -125,6 +133,8 @@ extension LinksVC: UITableViewDelegate, UITableViewDataSource {
             openLink(url: "https://flexibledietinglifestyle.com/")
         } else if indexPath.row == 2 {
             openLink(url: "itms-apps://itunes.apple.com/us/app/fdl/id1338879783")
+        } else if indexPath.row == 3 {
+            openLink(url: "http://www.proteincookiebutter.com")
         } else {
             SKStoreReviewController.requestReview()
         }
