@@ -228,6 +228,9 @@ class MainVC: UIViewController, UITextFieldDelegate {
             abvView.ouncesInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
             abvView.percentInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
         }
+        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
         abvView.isHidden = true
         self.view.backgroundColor = .white
         segmentedControllerIndexChanged(calcMethodSegmentedControl)

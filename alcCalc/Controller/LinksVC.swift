@@ -69,6 +69,10 @@ class LinksVC: UIViewController {
             table.isScrollEnabled = true
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
+        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+            table.isScrollEnabled = true
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
     }
     
     func setupTableViewAndConstraints() {
