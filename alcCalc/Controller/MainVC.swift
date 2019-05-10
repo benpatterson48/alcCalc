@@ -17,7 +17,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     private let topViewHeaderBg: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0, green: 0.7725490196, blue: 0.8274509804, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -27,7 +27,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         title.textColor = .white
         title.textAlignment = .left
         title.font = UIFont.mainSemiBoldFont(ofSize: 26)
-        title.text = "Alcohol Calculator"
+        title.text = "Alcohol Conversion"
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
@@ -45,30 +45,21 @@ class MainVC: UIViewController, UITextFieldDelegate {
         presentSlideLeft(viewControllerToPresent: linksVC)
     }
     
-    private let poweredByTextLbl: UILabel = {
+    private let conversionTitleTxtLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Powered by:"
         lbl.textAlignment = .center
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-        lbl.font = UIFont.italicSystemFont(ofSize: 12)
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.75)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
-    
-    private let fdlLogoImgView: UIImageView = {
-        let imgView = UIImageView()
-        imgView.image = UIImage(named: "fdl_logo")
-        imgView.contentMode = .scaleAspectFit
-        imgView.translatesAutoresizingMaskIntoConstraints = false
-        return imgView
-    }()
-    
-    private let fdlTitleNameLbl: UILabel = {
+
+    private let conversionMethodTextLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Flexible Dieting Lifestyle"
         lbl.textAlignment = .center
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
-        lbl.font = UIFont.italicSystemFont(ofSize: 14)
+        lbl.numberOfLines = 0
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+        lbl.font = UIFont.mainFont(ofSize: 14)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -79,7 +70,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         segment.selectedSegmentIndex = 0
         segment.layer.cornerRadius = 5
         segment.backgroundColor = .white
-        segment.tintColor = #colorLiteral(red: 0, green: 0.7743021846, blue: 0.8264589906, alpha: 1)
+        segment.tintColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
         segment.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
         segment.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +94,8 @@ class MainVC: UIViewController, UITextFieldDelegate {
             abvView.isHidden = true
             UIView.animate(withDuration: 0.2, delay: 0.0 ,animations: {
                 self.inputFieldTitleLbl.text = "Enter Calories Below"
+                self.conversionTitleTxtLbl.text = "Calories Selected"
+                self.conversionMethodTextLbl.text = "Calories method converts a drinks calories into carbs and fat macronutrients for easy tracking."
                 self.inputFieldTxtField.placeholder = "0"
                 self.inputFieldTitleLbl.isHidden = false
                 self.inputFieldTxtField.isHidden = false
@@ -110,6 +103,8 @@ class MainVC: UIViewController, UITextFieldDelegate {
             }
             )} else {
             abvView.isHidden = false
+            self.conversionTitleTxtLbl.text = "ABV Method Selected"
+            self.conversionMethodTextLbl.text = "ABV method converts a drinks ounces and alcoholic percentage into carbs and fat macronutrients for easy tracking."
             abvView.ouncesInputFieldTxtField.text = ""
             abvView.percentInputFieldTxtField.text = "" 
             UIView.animate(withDuration: 0.2, delay: 0.15 ,animations: {
@@ -165,7 +160,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
     let calculateBtn: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
-        button.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
         button.titleLabel?.font = UIFont.mainBoldFont(ofSize: 26)
         button.addTarget(self, action: #selector(calculateWithCaloriesBtnWasPressed), for: .touchUpInside)
@@ -216,9 +211,9 @@ class MainVC: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         if isEditing {
-            print("were editing")
             checkMaxLength(textField: inputFieldTxtField, maxLength: 3)
         }
+        
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             topViewHeaderTitleLbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
@@ -227,10 +222,14 @@ class MainVC: UIViewController, UITextFieldDelegate {
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
             abvView.ouncesInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
             abvView.percentInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
+            self.conversionTitleTxtLbl.font = UIFont.mainSemiBoldFont(ofSize: 16)
+            self.conversionMethodTextLbl.font = UIFont.mainFont(ofSize: 12)
         }
+        
         if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
+        
         abvView.isHidden = true
         self.view.backgroundColor = .white
         segmentedControllerIndexChanged(calcMethodSegmentedControl)
@@ -274,22 +273,20 @@ class MainVC: UIViewController, UITextFieldDelegate {
     }
     
     func createPoweredByStackViewAndConstraints() {
-        let poweredByStackView = UIStackView(arrangedSubviews: [
-                poweredByTextLbl,
-                fdlLogoImgView,
-                fdlTitleNameLbl
-            ])
-        view.addSubview(poweredByStackView)
-        poweredByStackView.translatesAutoresizingMaskIntoConstraints = false
-        poweredByStackView.axis = .vertical
-        poweredByStackView.spacing = 5
-        poweredByStackView.distribution = .fillProportionally
-
-        poweredByStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
-        poweredByStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        poweredByTextLbl.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        fdlTitleNameLbl.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
+        let methodInformationStackView = UIStackView(arrangedSubviews: [conversionTitleTxtLbl, conversionMethodTextLbl])
+        view.addSubview(methodInformationStackView)
+        methodInformationStackView.translatesAutoresizingMaskIntoConstraints = false
+        methodInformationStackView.axis = .vertical
+        methodInformationStackView.spacing = 20
+        methodInformationStackView.distribution = .fillProportionally
+
+        methodInformationStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 3/4).isActive = true
+        methodInformationStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        methodInformationStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        conversionTitleTxtLbl.topAnchor.constraint(equalTo: methodInformationStackView.topAnchor, constant: 2).isActive = true
+        conversionMethodTextLbl.bottomAnchor.constraint(equalTo: methodInformationStackView.bottomAnchor, constant: -2).isActive = true
+    
         let inputTextFieldStackView = UIStackView(arrangedSubviews: [
                 inputFieldTitleLbl,
                 inputFieldTxtField,
@@ -321,15 +318,14 @@ class MainVC: UIViewController, UITextFieldDelegate {
         calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+            bodyViewsStackView.spacing = 15
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
-            poweredByStackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 24).isActive = true
         } else {
+            methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
-            let correctHeight = CGFloat((Int(view.frame.height) - 120) / 4)
             bodyViewsStackView.spacing = 30
-            poweredByStackView.heightAnchor.constraint(equalToConstant: correctHeight).isActive = true
         }
     }
-
 
 }

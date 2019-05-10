@@ -103,7 +103,7 @@ class ABVInputView: UIView {
         
         if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
             abvInputsStackView.axis = .vertical
-            abvInputsStackView.spacing = 24
+            abvInputsStackView.spacing = 15
             ouncesInputFieldTxtField.font = UIFont.boldSystemFont(ofSize: 80)
             percentInputFieldTxtField.font = UIFont.boldSystemFont(ofSize: 80)
         } else {

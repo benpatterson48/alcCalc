@@ -58,7 +58,7 @@ class ResultsVC: UIViewController {
     
     private let topViewBG: UIView = {
         let bg = UIView()
-        bg.backgroundColor = #colorLiteral(red: 0, green: 0.7743021846, blue: 0.8264589906, alpha: 1)
+        bg.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         bg.translatesAutoresizingMaskIntoConstraints = false
         return bg
     }()
@@ -86,7 +86,7 @@ class ResultsVC: UIViewController {
     private let fatsTitleLbl: UIButton = {
         let title = UIButton()
         title.setTitle("Fats", for: .normal)
-        title.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        title.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         title.layer.cornerRadius = 5
         title.titleLabel?.font = UIFont.mainMediumFont(ofSize: 16)
         title.addTarget(self, action: #selector(outputPreferenceWasChanged), for: .touchUpInside)
@@ -112,7 +112,7 @@ class ResultsVC: UIViewController {
             fatsSelected = false
             outputSelected = "Carbs"
             sliderValueChanging(outputResultsSlider)
-            carbsTitleLbl.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+            carbsTitleLbl.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
             carbsTitleLbl.titleLabel?.textColor = .white
             fatsTitleLbl.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             fatsTitleLbl.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
@@ -121,7 +121,7 @@ class ResultsVC: UIViewController {
             fatsSelected = true
             outputSelected = "Fats"
             sliderValueChanging(outputResultsSlider)
-            fatsTitleLbl.backgroundColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+            fatsTitleLbl.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
             fatsTitleLbl.titleLabel?.textColor = .white
             carbsTitleLbl.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             carbsTitleLbl.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
@@ -131,7 +131,7 @@ class ResultsVC: UIViewController {
     private let fatsOutputLbl: UILabel = {
         let output = UILabel()
         output.textAlignment = .center
-        output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        output.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         output.adjustsFontSizeToFitWidth = true
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
         output.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +141,7 @@ class ResultsVC: UIViewController {
     private let carbsOutputLbl: UILabel = {
         let output = UILabel()
         output.textAlignment = .center
-        output.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        output.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         output.adjustsFontSizeToFitWidth = true
         output.font = UIFont.mainSemiBoldFont(ofSize: 50)
         output.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +150,7 @@ class ResultsVC: UIViewController {
     
     private let outputResultsSlider: UISlider = {
         let slider = UISlider()
-        slider.tintColor = #colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1)
+        slider.tintColor = #colorLiteral(red: 0.1137254902, green: 0.7921568627, blue: 1, alpha: 1)
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.isContinuous = true
@@ -182,7 +182,7 @@ class ResultsVC: UIViewController {
     private let roundedOptionBtn: UIButton = {
         let button = UIButton()
         button.setTitle("Rounded", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.1137254902, green: 0.7921568627, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
         button.addTarget(self, action: #selector(roundedOrDecimalOptionWasChanged), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -204,14 +204,14 @@ class ResultsVC: UIViewController {
             roundedSelected = false
             roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
             roundedOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 16)
-            decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
+            decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.1137254902, green: 0.7921568627, blue: 1, alpha: 1), for: .normal)
             decimalOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             sliderValueChanging(outputResultsSlider)
         } else {
             roundedSelected = true
             decimalOptionBtn.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
             decimalOptionBtn.titleLabel?.font = UIFont.mainFont(ofSize: 18)
-            roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.1725490196, green: 0.7607843137, blue: 0.8156862745, alpha: 1), for: .normal)
+            roundedOptionBtn.setTitleColor(#colorLiteral(red: 0.1137254902, green: 0.7921568627, blue: 1, alpha: 1), for: .normal)
             roundedOptionBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
             sliderValueChanging(outputResultsSlider)
         }

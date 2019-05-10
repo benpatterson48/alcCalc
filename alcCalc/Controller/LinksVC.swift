@@ -23,7 +23,7 @@ class LinksVC: UIViewController {
         table.separatorStyle = .singleLine
         table.separatorInset.left = 16
         table.separatorInset.right = 16
-        table.separatorColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 0.7496521832)
+        table.separatorColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 0.5)
         table.register(LinksCell.self, forCellReuseIdentifier: "cellId")
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -31,7 +31,7 @@ class LinksVC: UIViewController {
     
     let topViewHeaderBg: UIView = {
         let top = UIView()
-        top.backgroundColor = #colorLiteral(red: 0, green: 0.7743021846, blue: 0.8264589906, alpha: 1)
+        top.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         top.translatesAutoresizingMaskIntoConstraints = false
         return top
     }()
