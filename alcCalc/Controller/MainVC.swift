@@ -32,18 +32,18 @@ class MainVC: UIViewController, UITextFieldDelegate {
         return title
     }()
     
-    private let topViewHeaderLearnMoreBtn: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "info-Icon"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(linksBtnWasPressed), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func linksBtnWasPressed() {
-        let linksVC = LinksVC()
-        presentSlideLeft(viewControllerToPresent: linksVC)
-    }
+//    private let topViewHeaderLearnMoreBtn: UIButton = {
+//        let button = UIButton()
+//        button.setImage(UIImage(named: "info-Icon"), for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(linksBtnWasPressed), for: .touchUpInside)
+//        return button
+//    }()
+//
+//    @objc func linksBtnWasPressed() {
+//        let linksVC = LinksVC()
+//        presentSlideLeft(viewControllerToPresent: linksVC)
+//    }
     
     private let conversionTitleTxtLbl: UILabel = {
         let lbl = UILabel()
@@ -251,7 +251,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
 
     func setupHeaderBGConstraints() {
         view.addSubview(topViewHeaderBg)
-        topViewHeaderBg.addSubview(topViewHeaderLearnMoreBtn)
+//        topViewHeaderBg.addSubview(topViewHeaderLearnMoreBtn)
         topViewHeaderBg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topViewHeaderBg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topViewHeaderBg.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -261,13 +261,13 @@ class MainVC: UIViewController, UITextFieldDelegate {
     
     func setupHeaderViewsConstraints() {
         topViewHeaderBg.addSubview(topViewHeaderTitleLbl)
-        topViewHeaderTitleLbl.leadingAnchor.constraint(equalTo: topViewHeaderBg.leadingAnchor, constant: 32).isActive = true
+        topViewHeaderTitleLbl.centerXAnchor.constraint(equalTo: topViewHeaderBg.centerXAnchor).isActive = true 
         topViewHeaderTitleLbl.bottomAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: -16).isActive = true
         
-        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -16).isActive = true
-        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
+//        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -16).isActive = true
+//        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
+//        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
+//        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
         
         createPoweredByStackViewAndConstraints()
     }

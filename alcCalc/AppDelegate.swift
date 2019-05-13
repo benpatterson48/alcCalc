@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.sharedSDK().debug = true
         
         window = UIWindow()
-        let mainVC = MainVC()
-        window?.rootViewController = mainVC
+        let startVC = TabBarController()
+        window?.rootViewController = startVC
         window?.makeKeyAndVisible()
         
         return true
