@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsVC: UIViewController {
+class AlcoholResultsVC: UIViewController {
     
     var calories: Double?
     var ounces: Double?

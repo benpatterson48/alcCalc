@@ -23,7 +23,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let macrosBarItem = UITabBarItem(title: "Personal", image: UIImage(named: "personalMacrosGrey"), selectedImage: UIImage(named: "personalMacros"))
         personalMacrosVC.tabBarItem = macrosBarItem
         
-        let alcoholMacrosVC = MainVC()
+        let alcoholMacrosVC = AlcoholVC()
         let alcoholBarItem = UITabBarItem(title: "Alcohol", image: UIImage(named: "selectedAlcoholGrey"), selectedImage: UIImage(named: "selectedAlcohol"))
         alcoholMacrosVC.tabBarItem = alcoholBarItem
         

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05959BCDF2FE6EB62AAB9B54 /* Pods_alcCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1CFA489D3303B49E74B6AB /* Pods_alcCalc.framework */; };
-		1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* MainVC.swift */; };
+		1D0CD8E1223187E0005D82B7 /* AlcoholVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */; };
 		1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */; };
 		1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D6122494F1F0095E6F2 /* UIDevice.swift */; };
 		1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D63224A787D0095E6F2 /* LinksVC.swift */; };
@@ -37,8 +37,12 @@
 		1D4A9FA022380A2400DC98E2 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F8D22380A2400DC98E2 /* Montserrat-SemiBoldItalic.ttf */; };
 		1D4A9FA122380A2400DC98E2 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F8E22380A2400DC98E2 /* Montserrat-ExtraBoldItalic.ttf */; };
 		1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A9FA322380A4200DC98E2 /* UIFont.swift */; };
+		1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D70BA6D228B1626006DE7F3 /* Calculations.swift */; };
+		1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D70BA6F228B60A8006DE7F3 /* MacroResultsVC.swift */; };
 		1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */; };
-		1DA88FDB22375ADF0047C7F8 /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FDA22375ADF0047C7F8 /* ResultsVC.swift */; };
+		1DA88FDB22375ADF0047C7F8 /* AlcoholResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FDA22375ADF0047C7F8 /* AlcoholResultsVC.swift */; };
+		1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB960B3228A7CD900DCC3EA /* WordButtons.swift */; };
+		1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB960B5228A923900DCC3EA /* WordOptions.swift */; };
 		1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB3A5422433D8000E1D786 /* ABVInputView.swift */; };
 		1DDAF7EC228A128A00CCCCB8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */; };
 		1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */; };
@@ -49,7 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D0CD8E0223187E0005D82B7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholVC.swift; sourceTree = "<group>"; };
 		1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1D196D6122494F1F0095E6F2 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		1D196D63224A787D0095E6F2 /* LinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
@@ -78,8 +82,12 @@
 		1D4A9F8D22380A2400DC98E2 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		1D4A9F8E22380A2400DC98E2 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		1D4A9FA322380A4200DC98E2 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		1D70BA6D228B1626006DE7F3 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
+		1D70BA6F228B60A8006DE7F3 /* MacroResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroResultsVC.swift; sourceTree = "<group>"; };
 		1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
-		1DA88FDA22375ADF0047C7F8 /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
+		1DA88FDA22375ADF0047C7F8 /* AlcoholResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholResultsVC.swift; sourceTree = "<group>"; };
+		1DB960B3228A7CD900DCC3EA /* WordButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordButtons.swift; sourceTree = "<group>"; };
+		1DB960B5228A923900DCC3EA /* WordOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordOptions.swift; sourceTree = "<group>"; };
 		1DBB3A5422433D8000E1D786 /* ABVInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVInputView.swift; sourceTree = "<group>"; };
 		1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosVC.swift; sourceTree = "<group>"; };
@@ -109,11 +117,12 @@
 		1D0CD8DC22318142005D82B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1D0CD8E0223187E0005D82B7 /* MainVC.swift */,
-				1DA88FDA22375ADF0047C7F8 /* ResultsVC.swift */,
+				1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */,
+				1DA88FDA22375ADF0047C7F8 /* AlcoholResultsVC.swift */,
 				1D196D63224A787D0095E6F2 /* LinksVC.swift */,
 				1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */,
 				1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */,
+				1D70BA6F228B60A8006DE7F3 /* MacroResultsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -124,6 +133,8 @@
 				1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */,
 				1DBB3A5422433D8000E1D786 /* ABVInputView.swift */,
 				1D196D67224A7CDD0095E6F2 /* LinksCell.swift */,
+				1DB960B3228A7CD900DCC3EA /* WordButtons.swift */,
+				1DB960B5228A923900DCC3EA /* WordOptions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +150,7 @@
 		1D0CD8DF22318154005D82B7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1D70BA6D228B1626006DE7F3 /* Calculations.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -396,18 +408,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0CD8E1223187E0005D82B7 /* MainVC.swift in Sources */,
+				1D0CD8E1223187E0005D82B7 /* AlcoholVC.swift in Sources */,
 				1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */,
 				1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */,
 				1D196D6A224ABAC50095E6F2 /* UIVC.swift in Sources */,
 				1D3FDD9A2239E799008C3C02 /* UITextField.swift in Sources */,
 				1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */,
 				1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */,
+				1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */,
+				1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */,
 				1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */,
 				1D196D66224A7AC40095E6F2 /* Links.swift in Sources */,
+				1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */,
 				1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
-				1DA88FDB22375ADF0047C7F8 /* ResultsVC.swift in Sources */,
+				1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */,
+				1DA88FDB22375ADF0047C7F8 /* AlcoholResultsVC.swift in Sources */,
 				1DDAF7EC228A128A00CCCCB8 /* TabBarController.swift in Sources */,
 				1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */,
 				1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */,

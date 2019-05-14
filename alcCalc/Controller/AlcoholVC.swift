@@ -1,5 +1,5 @@
 //
-//  MainVC.swift
+//  AlcoholVC.swift
 //  alcCalc
 //
 //  Created by Ben Patterson on 3/7/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController, UITextFieldDelegate {
+class AlcoholVC: UIViewController, UITextFieldDelegate {
     
     var calculationMethodAboutText = String()
     var caloriesSelected: Bool = true
@@ -25,7 +25,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
     private let topViewHeaderTitleLbl: UILabel = {
         let title = UILabel()
         title.textColor = .white
-        title.textAlignment = .left
+        title.textAlignment = .center
         title.font = UIFont.mainSemiBoldFont(ofSize: 26)
         title.text = "Alcohol Conversion"
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         let lbl = UILabel()
         lbl.textAlignment = .center
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.75)
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 20)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -182,7 +182,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
             view.endEditing(true)
             return
         } else {
-            let resultsVC = ResultsVC()
+            let resultsVC = AlcoholResultsVC()
             resultsVC.initDataForCalories(caloriesSent: Double(Int(inputFieldTxtField.text!)!))
             resultsVC.modalPresentationStyle = .custom
             inputFieldTxtField.text = ""
@@ -199,7 +199,7 @@ class MainVC: UIViewController, UITextFieldDelegate {
         } else {
             let ounces = Double(abvView.ouncesInputFieldTxtField.text!)
             let percent = Double(abvView.percentInputFieldTxtField.text!)
-            let resultsVC = ResultsVC()
+            let resultsVC = AlcoholResultsVC()
             resultsVC.initDataForABV(ounces: ounces ?? 0, percent: percent ?? 0)
             view.endEditing(true)
             resultsVC.modalPresentationStyle = .custom
@@ -213,23 +213,12 @@ class MainVC: UIViewController, UITextFieldDelegate {
         if isEditing {
             checkMaxLength(textField: inputFieldTxtField, maxLength: 3)
         }
-        
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
-            topViewHeaderTitleLbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
-            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
-            calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
-            calculateBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
-            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
-            abvView.ouncesInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
-            abvView.percentInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
-            self.conversionTitleTxtLbl.font = UIFont.mainSemiBoldFont(ofSize: 16)
-            self.conversionMethodTextLbl.font = UIFont.mainFont(ofSize: 12)
+            changeScreenFor5()
         }
-        
         if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
-        
         abvView.isHidden = true
         self.view.backgroundColor = .white
         segmentedControllerIndexChanged(calcMethodSegmentedControl)
@@ -243,10 +232,19 @@ class MainVC: UIViewController, UITextFieldDelegate {
     @objc func dismissKeyboard() {
         if inputFieldTxtField.isEditing == true {
             view.endEditing(true)
-            calculateBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
-            calculateBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
-            calculateBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32).isActive = true
         }
+    }
+    
+    func changeScreenFor5() {
+        topViewHeaderTitleLbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
+        topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        calculateBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
+        abvView.ouncesInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
+        abvView.percentInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
+        self.conversionTitleTxtLbl.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        self.conversionMethodTextLbl.font = UIFont.mainFont(ofSize: 12)
     }
 
     func setupHeaderBGConstraints() {
@@ -283,7 +281,6 @@ class MainVC: UIViewController, UITextFieldDelegate {
 
         methodInformationStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 3/4).isActive = true
         methodInformationStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        methodInformationStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         conversionTitleTxtLbl.topAnchor.constraint(equalTo: methodInformationStackView.topAnchor, constant: 2).isActive = true
         conversionMethodTextLbl.bottomAnchor.constraint(equalTo: methodInformationStackView.bottomAnchor, constant: -2).isActive = true
     
@@ -310,9 +307,9 @@ class MainVC: UIViewController, UITextFieldDelegate {
         bodyViewsStackView.distribution = .fill
         bodyViewsStackView.spacing = 30
         
-        bodyViewsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
-        bodyViewsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
-        bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        bodyViewsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
+        bodyViewsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32).isActive = true
 
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
         calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -320,11 +317,12 @@ class MainVC: UIViewController, UITextFieldDelegate {
         if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
             bodyViewsStackView.spacing = 15
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
-            methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 24).isActive = true
+            methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 32).isActive = true
         } else {
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             bodyViewsStackView.spacing = 30
+            bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true 
         }
     }
 
