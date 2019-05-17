@@ -162,7 +162,7 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         button.layer.cornerRadius = 10
         button.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
-        button.titleLabel?.font = UIFont.mainBoldFont(ofSize: 26)
+        button.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
         button.addTarget(self, action: #selector(calculateWithCaloriesBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -213,10 +213,10 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         if isEditing {
             checkMaxLength(textField: inputFieldTxtField, maxLength: 3)
         }
-        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             changeScreenFor5()
         }
-        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
         abvView.isHidden = true
@@ -239,7 +239,7 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         topViewHeaderTitleLbl.font = UIFont.mainSemiBoldFont(ofSize: 22)
         topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        calculateBtn.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        calculateBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
         calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
         abvView.ouncesInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
         abvView.percentInputFieldTitleLbl.font = UIFont.mainMediumFont(ofSize: 16)
@@ -309,19 +309,29 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         
         bodyViewsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
         bodyViewsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32).isActive = true
+        bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
 
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+        if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
             bodyViewsStackView.spacing = 15
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 32).isActive = true
-        } else {
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
+            methodInformationStackView.spacing = 5
+            calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
-            bodyViewsStackView.spacing = 30
+            bodyViewsStackView.spacing = 10
+            bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        } else {
+            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+            methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
+            methodInformationStackView.spacing = 5
+            topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
+            bodyViewsStackView.spacing = 10
             bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true 
         }
     }

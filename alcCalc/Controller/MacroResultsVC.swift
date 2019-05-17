@@ -72,12 +72,28 @@ class MacroResultsVC: UIViewController {
         return title
     }()
     
+    private let disclaimerLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.text = """
+        There are 4 calories for every gram of carbohydrate/ protein and 9 calories for every gram of fat.
+        
+        These macros are an estimation, please seek a fitness coach or nutritionist help if you're unsure about your results or do not understand what they mean
+        """
+        lbl.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+        lbl.numberOfLines = 0
+        lbl.textAlignment = .center
+        lbl.font = UIFont.mainItalicFont(ofSize: 12)
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
     func addViews() {
         view.addSubview(contentView)
         view.addSubview(closeBtn)
         contentView.addSubview(topViewBG)
         topViewBG.addSubview(topViewTitleLbl)
         contentView.addSubview(resultsView)
+        contentView.addSubview(disclaimerLbl)
         addContentViewConstraints()
     }
     
@@ -90,7 +106,7 @@ class MacroResultsVC: UIViewController {
     }
     
     func addContentViewConstraints() {
-        contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32).isActive = true
         contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
         
@@ -114,7 +130,16 @@ class MacroResultsVC: UIViewController {
         resultsView.topAnchor.constraint(equalTo: topViewBG.bottomAnchor, constant: 24).isActive = true
         resultsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         resultsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
-        resultsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24).isActive = true
+        resultsView.bottomAnchor.constraint(equalTo: disclaimerLbl.topAnchor, constant: -50).isActive = true
+        
+        addDisclaimerConstraints()
+    }
+    
+    func addDisclaimerConstraints() {
+        disclaimerLbl.topAnchor.constraint(equalTo: resultsView.bottomAnchor, constant: 50).isActive = true
+        disclaimerLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        disclaimerLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        disclaimerLbl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24).isActive = true
     }
 
 }

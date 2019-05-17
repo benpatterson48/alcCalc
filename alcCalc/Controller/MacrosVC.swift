@@ -74,7 +74,7 @@ class MacrosVC: UIViewController {
         button.layer.cornerRadius = 10
         button.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
-        button.titleLabel?.font = UIFont.mainBoldFont(ofSize: 26)
+        button.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
         button.addTarget(self, action: #selector(calcBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -88,7 +88,6 @@ class MacrosVC: UIViewController {
         self.fat = calc.calcFats(goalCals: goalCals ?? 0)
         self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, maintenanceCals: maintenanceCals ?? 0)
         transitionToResults()
-        print("This is maintenance: \(maintenanceCals), this is goal cals: \(goalCals), this is protein: \(protein), this is carbs: \(carb), this is fats: \(fat)")
     }
     
     func transitionToResults() {
@@ -210,11 +209,11 @@ class MacrosVC: UIViewController {
     }
     
     func changeByDevice() {
-        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        } else if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+        } else if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
         }
     }
@@ -250,6 +249,13 @@ class MacrosVC: UIViewController {
         macroStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         createStackViewsAndConstraints()
+        
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+            macroStackView.spacing = 5
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
+            macroStackView.spacing = 5
+        } else if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
+        }
     }
     
     func createStackViewsAndConstraints() {
@@ -281,13 +287,26 @@ class MacrosVC: UIViewController {
         view.addSubview(contentStackView)
         contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 7/8).isActive = true
         contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32).isActive = true
+        contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
         
         optionsStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: 8).isActive = true
         optionsStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -8).isActive = true
 
-        calculateBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         calculateBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+            contentStackView.spacing = 15
+            calculateBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+            macroTextLbl.font = UIFont.mainFont(ofSize: 14)
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
+            contentStackView.spacing = 40
+            calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+            macroTextLbl.font = UIFont.mainFont(ofSize: 14)
+        } else if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
+        }
     }
 
 

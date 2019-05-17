@@ -14,6 +14,12 @@ class WordOptions: UIButton {
         setTitleColor(#colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1), for: .normal)
         titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
         translatesAutoresizingMaskIntoConstraints = false
+        
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+            titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 12)
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
+            titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

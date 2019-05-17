@@ -16,7 +16,13 @@ class WordButtons: UIButton {
         layer.cornerRadius = 5
         titleLabel?.adjustsFontSizeToFitWidth = true 
         titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 20)
-        translatesAutoresizingMaskIntoConstraints = false 
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+            titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 14)
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
+            titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -12,11 +12,11 @@ class ResultsView: UIView {
     
     let maintenanceCalsLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Maintenance Cals"
+        lbl.text = "Maintenance"
         lbl.numberOfLines = 0
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainMediumFont(ofSize: 12)
+        lbl.font = UIFont.mainMediumFont(ofSize: 16)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -25,18 +25,18 @@ class ResultsView: UIView {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 40)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
     
     let goalCalsLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Target Cals"
+        lbl.text = "Target"
         lbl.numberOfLines = 0
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainMediumFont(ofSize: 12)
+        lbl.font = UIFont.mainMediumFont(ofSize: 16)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -45,18 +45,18 @@ class ResultsView: UIView {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 40)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
     
     let proteinTitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Protein"
+        lbl.text = "Protein (g)"
         lbl.numberOfLines = 0
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainMediumFont(ofSize: 12)
+        lbl.font = UIFont.mainMediumFont(ofSize: 16)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -65,18 +65,18 @@ class ResultsView: UIView {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 32)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
     
     let carbTitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Carbs"
+        lbl.text = "Carbs (g)"
         lbl.numberOfLines = 0
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainMediumFont(ofSize: 12)
+        lbl.font = UIFont.mainMediumFont(ofSize: 16)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -85,18 +85,18 @@ class ResultsView: UIView {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 32)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
     
     let fatTitleLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Fats"
+        lbl.text = "Fats (g)"
         lbl.numberOfLines = 0
-        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+        lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainMediumFont(ofSize: 12)
+        lbl.font = UIFont.mainMediumFont(ofSize: 16)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -105,7 +105,7 @@ class ResultsView: UIView {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 16)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 32)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -113,30 +113,33 @@ class ResultsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         constructStackViews()
-        
-        print("🔥🔥🔥 This is the protein: \(proteinResultsLbl.text)")
     }
     
     func constructStackViews() {
         let maintenanceStackView = UIStackView(arrangedSubviews: [maintenanceCalsLbl, maintenanceResultLbl])
         maintenanceStackView.translatesAutoresizingMaskIntoConstraints = false
         maintenanceStackView.axis = .vertical
+        maintenanceStackView.spacing = 5
         maintenanceStackView.distribution = .fillProportionally
         let goalStackView = UIStackView(arrangedSubviews: [goalCalsLbl, goalResultLbl])
         goalStackView.translatesAutoresizingMaskIntoConstraints = false
         goalStackView.axis = .vertical
+        goalStackView.spacing = 5
         goalStackView.distribution = .fillProportionally
-        let proteinStackView = UIStackView(arrangedSubviews: [proteinTitleLbl, proteinResultsLbl])
+        let proteinStackView = UIStackView(arrangedSubviews: [proteinResultsLbl, proteinTitleLbl])
         proteinStackView.translatesAutoresizingMaskIntoConstraints = false
         proteinStackView.axis = .vertical
+        proteinStackView.spacing = 10
         proteinStackView.distribution = .fillProportionally
-        let carbsStackView = UIStackView(arrangedSubviews: [carbTitleLbl, carbsResultsLbl])
+        let carbsStackView = UIStackView(arrangedSubviews: [carbsResultsLbl, carbTitleLbl])
         carbsStackView.translatesAutoresizingMaskIntoConstraints = false
         carbsStackView.axis = .vertical
+        carbsStackView.spacing = 10
         carbsStackView.distribution = .fillProportionally
-        let fatsStackView = UIStackView(arrangedSubviews: [fatTitleLbl, fatsResultsLbl])
+        let fatsStackView = UIStackView(arrangedSubviews: [fatsResultsLbl, fatTitleLbl])
         fatsStackView.translatesAutoresizingMaskIntoConstraints = false
         fatsStackView.axis = .vertical
+        fatsStackView.spacing = 10
         fatsStackView.distribution = .fillProportionally
         let caloriesStackView = UIStackView(arrangedSubviews: [maintenanceStackView, goalStackView])
         caloriesStackView.axis = .horizontal
@@ -152,7 +155,7 @@ class ResultsView: UIView {
         combinedStackView.translatesAutoresizingMaskIntoConstraints = false
         combinedStackView.axis = .vertical
         combinedStackView.distribution = .fillEqually
-        combinedStackView.spacing = 32
+        combinedStackView.spacing = 50
         
         addSubview(combinedStackView)
         combinedStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
