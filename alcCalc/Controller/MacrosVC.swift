@@ -87,7 +87,17 @@ class MacrosVC: UIViewController {
         self.protein = calc.calcProtein(weight: weight)
         self.fat = calc.calcFats(goalCals: goalCals ?? 0)
         self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, maintenanceCals: maintenanceCals ?? 0)
+        transitionToResults()
         print("This is maintenance: \(maintenanceCals), this is goal cals: \(goalCals), this is protein: \(protein), this is carbs: \(carb), this is fats: \(fat)")
+    }
+    
+    func transitionToResults() {
+        let resultsVC = MacroResultsVC()
+        resultsVC.initData(maintenanceResults: maintenanceCals!, goalResults: goalCals!, proteinResults: protein!, carbResults: carb!, fatResults: fat!)
+        resultsVC.modalPresentationStyle = .custom
+        weightInputTextField.text = ""
+        view.endEditing(true)
+        present(resultsVC, animated: true, completion: nil)
     }
     
     private let weightTitle: UILabel = {

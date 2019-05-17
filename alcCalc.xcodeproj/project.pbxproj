@@ -50,6 +50,7 @@
 		1DF754F92230988A001E1F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF754F72230988A001E1F54 /* Main.storyboard */; };
 		1DF754FB2230988D001E1F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF754FA2230988D001E1F54 /* Assets.xcassets */; };
 		1DF754FE2230988D001E1F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF754FC2230988D001E1F54 /* LaunchScreen.storyboard */; };
+		1DFB66B0228D1465003CB9BB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB66AF228D1465003CB9BB /* ResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		1DF754FA2230988D001E1F54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DF754FD2230988D001E1F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DF754FF2230988D001E1F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DFB66AF228D1465003CB9BB /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		CA2A9A4893B825233E094523 /* Pods-alcCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alcCalc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alcCalc/Pods-alcCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		DF1CFA489D3303B49E74B6AB /* Pods_alcCalc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alcCalc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55DB761A42CE69FD772B85E /* Pods-alcCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alcCalc.release.xcconfig"; path = "Pods/Target Support Files/Pods-alcCalc/Pods-alcCalc.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				1D196D67224A7CDD0095E6F2 /* LinksCell.swift */,
 				1DB960B3228A7CD900DCC3EA /* WordButtons.swift */,
 				1DB960B5228A923900DCC3EA /* WordOptions.swift */,
+				1DFB66AF228D1465003CB9BB /* ResultsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				TargetAttributes = {
 					1DF754EF2230988A001E1F54 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -421,6 +425,7 @@
 				1D196D66224A7AC40095E6F2 /* Links.swift in Sources */,
 				1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */,
 				1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */,
+				1DFB66B0228D1465003CB9BB /* ResultsView.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */,
 				1DA88FDB22375ADF0047C7F8 /* AlcoholResultsVC.swift in Sources */,
@@ -584,7 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.benpatterson.alcoholMacroConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -604,7 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.benpatterson.alcoholMacroConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
