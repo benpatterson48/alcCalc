@@ -17,18 +17,17 @@ class Calculations {
         return protein
     }
     
-    func calcCarbs(protein: Int, fats: Int, maintenanceCals: Int) -> Int {
+    func calcCarbs(protein: Int, fats: Int, goalCals: Int) -> Int {
         let proteinCals = protein * 4
         let fatCals = fats * 9
         let cals = proteinCals + fatCals
-        let remainingCals = maintenanceCals - cals
+        let remainingCals = goalCals - cals
         let carbs = remainingCals / 4
         return carbs
     }
     
     func calcFats(goalCals: Int) -> Int {
         let fatCals = Double(goalCals) * 0.3
-        print("This is our fat cals: \(fatCals)")
         let fats = fatCals / 9
         return Int(fats)
     }

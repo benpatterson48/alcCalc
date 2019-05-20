@@ -86,7 +86,7 @@ class MacrosVC: UIViewController {
         self.goalCals = calc.calcGoalCals(maintenanceCals: maintenanceCals ?? 0, bodyCompGoal: bodyGoal ?? 0)
         self.protein = calc.calcProtein(weight: weight)
         self.fat = calc.calcFats(goalCals: goalCals ?? 0)
-        self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, maintenanceCals: maintenanceCals ?? 0)
+        self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, goalCals: goalCals ?? 0)
         transitionToResults()
     }
     
