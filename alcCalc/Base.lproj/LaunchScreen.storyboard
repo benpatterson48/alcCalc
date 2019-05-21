@@ -21,17 +21,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-kR-0lW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beer" translatesAutoresizingMaskIntoConstraints="NO" id="DwZ-6E-0ZU">
-                                        <rect key="frame" x="67.5" y="244.5" width="240" height="128"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="DwZ-6E-0ZU">
+                                        <rect key="frame" x="77.5" y="208.5" width="200" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="eha-aS-g1B"/>
-                                            <constraint firstAttribute="height" constant="128" id="fZg-Ws-ayC"/>
+                                            <constraint firstAttribute="width" constant="200" id="eha-aS-g1B"/>
+                                            <constraint firstAttribute="height" constant="200" id="fZg-Ws-ayC"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.67450980392156867" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="DwZ-6E-0ZU" firstAttribute="centerX" secondItem="fcC-kR-0lW" secondAttribute="centerX" id="Y3E-lt-5BI"/>
+                                    <constraint firstItem="DwZ-6E-0ZU" firstAttribute="centerX" secondItem="fcC-kR-0lW" secondAttribute="centerX" constant="-10" id="Y3E-lt-5BI"/>
                                     <constraint firstItem="DwZ-6E-0ZU" firstAttribute="centerY" secondItem="fcC-kR-0lW" secondAttribute="centerY" constant="-25" id="fTg-8r-gLP"/>
                                 </constraints>
                             </view>
@@ -52,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="beer" width="640" height="640"/>
+        <image name="icon" width="250" height="250"/>
     </resources>
 </document>

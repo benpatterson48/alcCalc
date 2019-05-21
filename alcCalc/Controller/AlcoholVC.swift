@@ -32,19 +32,6 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         return title
     }()
     
-//    private let topViewHeaderLearnMoreBtn: UIButton = {
-//        let button = UIButton()
-//        button.setImage(UIImage(named: "info-Icon"), for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(linksBtnWasPressed), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    @objc func linksBtnWasPressed() {
-//        let linksVC = LinksVC()
-//        presentSlideLeft(viewControllerToPresent: linksVC)
-//    }
-    
     private let conversionTitleTxtLbl: UILabel = {
         let lbl = UILabel()
         lbl.textAlignment = .center
@@ -162,7 +149,6 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         button.layer.cornerRadius = 10
         button.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
-        button.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
         button.addTarget(self, action: #selector(calculateWithCaloriesBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -210,9 +196,6 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
     }
 
     override func viewDidLoad() {
-        if isEditing {
-            checkMaxLength(textField: inputFieldTxtField, maxLength: 3)
-        }
         if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             changeScreenFor5()
         }
@@ -262,11 +245,6 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         topViewHeaderTitleLbl.centerXAnchor.constraint(equalTo: topViewHeaderBg.centerXAnchor).isActive = true 
         topViewHeaderTitleLbl.bottomAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: -16).isActive = true
         
-//        topViewHeaderLearnMoreBtn.trailingAnchor.constraint(equalTo: topViewHeaderBg.trailingAnchor, constant: -16).isActive = true
-//        topViewHeaderLearnMoreBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
-//        topViewHeaderLearnMoreBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
-//        topViewHeaderLearnMoreBtn.centerYAnchor.constraint(equalTo: topViewHeaderTitleLbl.centerYAnchor).isActive = true
-        
         createPoweredByStackViewAndConstraints()
     }
     
@@ -311,11 +289,12 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         bodyViewsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
 
-        calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
         calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
             bodyViewsStackView.spacing = 15
+            calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 32).isActive = true
         } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {

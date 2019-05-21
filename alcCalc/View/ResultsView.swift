@@ -32,11 +32,11 @@ class ResultsView: UIView {
     
     let goalCalsLbl: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Target"
+        lbl.text = "Target Calories"
         lbl.numberOfLines = 0
         lbl.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainMediumFont(ofSize: 16)
+        lbl.font = UIFont.mainMediumFont(ofSize: 18)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -45,7 +45,7 @@ class ResultsView: UIView {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         lbl.textAlignment = .center
-        lbl.font = UIFont.mainSemiBoldFont(ofSize: 40)
+        lbl.font = UIFont.mainSemiBoldFont(ofSize: 48)
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
@@ -116,32 +116,28 @@ class ResultsView: UIView {
     }
     
     func constructStackViews() {
-        let maintenanceStackView = UIStackView(arrangedSubviews: [maintenanceCalsLbl, maintenanceResultLbl])
-        maintenanceStackView.translatesAutoresizingMaskIntoConstraints = false
-        maintenanceStackView.axis = .vertical
-        maintenanceStackView.spacing = 5
-        maintenanceStackView.distribution = .fillProportionally
         let goalStackView = UIStackView(arrangedSubviews: [goalCalsLbl, goalResultLbl])
         goalStackView.translatesAutoresizingMaskIntoConstraints = false
         goalStackView.axis = .vertical
-        goalStackView.spacing = 5
+        goalStackView.spacing = 10
         goalStackView.distribution = .fillProportionally
+        goalCalsLbl.heightAnchor.constraint(equalToConstant: 20).isActive = true 
         let proteinStackView = UIStackView(arrangedSubviews: [proteinResultsLbl, proteinTitleLbl])
         proteinStackView.translatesAutoresizingMaskIntoConstraints = false
         proteinStackView.axis = .vertical
-        proteinStackView.spacing = 10
+        proteinStackView.spacing = 0
         proteinStackView.distribution = .fillProportionally
         let carbsStackView = UIStackView(arrangedSubviews: [carbsResultsLbl, carbTitleLbl])
         carbsStackView.translatesAutoresizingMaskIntoConstraints = false
         carbsStackView.axis = .vertical
-        carbsStackView.spacing = 10
+        carbsStackView.spacing = 0
         carbsStackView.distribution = .fillProportionally
         let fatsStackView = UIStackView(arrangedSubviews: [fatsResultsLbl, fatTitleLbl])
         fatsStackView.translatesAutoresizingMaskIntoConstraints = false
         fatsStackView.axis = .vertical
-        fatsStackView.spacing = 10
+        fatsStackView.spacing = 0
         fatsStackView.distribution = .fillProportionally
-        let caloriesStackView = UIStackView(arrangedSubviews: [maintenanceStackView, goalStackView])
+        let caloriesStackView = UIStackView(arrangedSubviews: [goalStackView])
         caloriesStackView.axis = .horizontal
         caloriesStackView.distribution = .fillEqually
         caloriesStackView.alignment = .fill
@@ -155,7 +151,7 @@ class ResultsView: UIView {
         combinedStackView.translatesAutoresizingMaskIntoConstraints = false
         combinedStackView.axis = .vertical
         combinedStackView.distribution = .fillEqually
-        combinedStackView.spacing = 50
+        combinedStackView.spacing = 35
         
         addSubview(combinedStackView)
         combinedStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true

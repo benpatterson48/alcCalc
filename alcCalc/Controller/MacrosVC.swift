@@ -102,16 +102,38 @@ class MacrosVC: UIViewController {
     private let weightTitle: UILabel = {
         let weightTitle = UILabel()
         weightTitle.text = "Enter Weight:"
-        weightTitle.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.75)
-        weightTitle.font = UIFont.mainSemiBoldFont(ofSize: 18)
+        weightTitle.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.65)
+        weightTitle.textAlignment = .center
+        weightTitle.font = UIFont.mainSemiBoldFont(ofSize: 14)
         weightTitle.translatesAutoresizingMaskIntoConstraints = false
         return weightTitle
+    }()
+    
+    private let optionsTitle: UILabel = {
+        let optionsTitle = UILabel()
+        optionsTitle.text = "Surplus or Deficit:"
+        optionsTitle.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.65)
+        optionsTitle.textAlignment = .center
+        optionsTitle.font = UIFont.mainSemiBoldFont(ofSize: 14)
+        optionsTitle.translatesAutoresizingMaskIntoConstraints = false
+        return optionsTitle
+    }()
+    
+    private let rangeTitle: UILabel = {
+        let rangeTitle = UILabel()
+        rangeTitle.text = "Macro Range:"
+        rangeTitle.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.65)
+        rangeTitle.textAlignment = .center
+        rangeTitle.font = UIFont.mainSemiBoldFont(ofSize: 14)
+        rangeTitle.translatesAutoresizingMaskIntoConstraints = false
+        return rangeTitle
     }()
     
     private let weightInputTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+        textField.textAlignment = .center
         textField.keyboardType = .numberPad
         textField.font = UIFont.boldSystemFont(ofSize: 32)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -127,6 +149,7 @@ class MacrosVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("This is the model: \(UIDevice.current.name)")
         self.view.backgroundColor = .white
         setupButtons()
         addViews()
@@ -233,75 +256,80 @@ class MacrosVC: UIViewController {
         topViewHeaderTitleLbl.bottomAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: -16).isActive = true
         topViewHeaderTitleLbl.centerXAnchor.constraint(equalTo: topViewHeaderBg.centerXAnchor).isActive = true
         
-        createMacroExplanationStackView()
-    }
-    
-    func createMacroExplanationStackView() {
-        let macroStackView = UIStackView(arrangedSubviews: [macroTitleLbl, macroTextLbl])
-        macroStackView.translatesAutoresizingMaskIntoConstraints = false
-        macroStackView.axis = .vertical
-        macroStackView.distribution = .fillProportionally
-        macroStackView.spacing = 20
-        
-        view.addSubview(macroStackView)
-        macroStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 32).isActive = true
-        macroStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 3/4).isActive = true
-        macroStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
         createStackViewsAndConstraints()
-        
-        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
-            macroStackView.spacing = 5
-        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
-            macroStackView.spacing = 5
-        } else if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
-        }
     }
     
     func createStackViewsAndConstraints() {
+        let macroStackView = UIStackView(arrangedSubviews: [macroTextLbl])
+        macroStackView.translatesAutoresizingMaskIntoConstraints = false
+        macroStackView.axis = .vertical
+        macroStackView.distribution = .fillProportionally
+        macroStackView.spacing = 10
+        
         let weightStackView = UIStackView(arrangedSubviews: [weightTitle, weightInputTextField, inputFieldUnderLineView])
         weightStackView.translatesAutoresizingMaskIntoConstraints = false
         weightStackView.axis = .vertical
         weightStackView.distribution = .fillProportionally
         weightStackView.spacing = 5
         inputFieldUnderLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        inputFieldUnderLineView.widthAnchor.constraint(equalTo: weightStackView.widthAnchor, multiplier: 1/2).isActive = true
         
         let optionsStackView = UIStackView(arrangedSubviews: [surplusButton, deficitButton])
         optionsStackView.translatesAutoresizingMaskIntoConstraints = false
         optionsStackView.axis = .horizontal
         optionsStackView.distribution = .fillEqually
         optionsStackView.spacing = 20
+        surplusButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        deficitButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         let macroRangeOptions = UIStackView(arrangedSubviews: [lowEndButton, moderateButton, highEndButton])
         macroRangeOptions.translatesAutoresizingMaskIntoConstraints = false
         macroRangeOptions.axis = .horizontal
         macroRangeOptions.distribution = .fillEqually
         
-        let contentStackView = UIStackView(arrangedSubviews: [weightStackView, optionsStackView, macroRangeOptions, calculateBtn])
+        let optionsWithTitleStackView = UIStackView(arrangedSubviews: [optionsTitle, optionsStackView])
+        optionsWithTitleStackView.translatesAutoresizingMaskIntoConstraints = false
+        optionsWithTitleStackView.axis = .vertical
+        optionsWithTitleStackView.distribution = .fillProportionally
+        optionsWithTitleStackView.spacing = 20
+        
+        let rangeStackView = UIStackView(arrangedSubviews: [rangeTitle, macroRangeOptions])
+        rangeStackView.translatesAutoresizingMaskIntoConstraints = false
+        rangeStackView.axis = .vertical
+        rangeStackView.distribution = .fillProportionally
+        rangeStackView.spacing = 20
+        
+        let contentStackView = UIStackView(arrangedSubviews: [macroStackView, weightStackView, optionsWithTitleStackView, rangeStackView, calculateBtn])
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.axis = .vertical
         contentStackView.distribution = .fillProportionally
-        contentStackView.spacing = 65
+        contentStackView.spacing = 50
         
         view.addSubview(contentStackView)
-        contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 7/8).isActive = true
+        contentStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 24).isActive = true
+        contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
         contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
         
         optionsStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: 8).isActive = true
         optionsStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -8).isActive = true
+        rangeTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        weightTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        optionsTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputFieldUnderLineView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputFieldUnderLineView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/2).isActive = true
 
         calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         calculateBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             contentStackView.spacing = 15
+            macroStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             macroTextLbl.font = UIFont.mainFont(ofSize: 14)
         } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             contentStackView.spacing = 40
+            macroStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             macroTextLbl.font = UIFont.mainFont(ofSize: 14)

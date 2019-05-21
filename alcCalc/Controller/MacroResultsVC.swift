@@ -106,7 +106,7 @@ class MacroResultsVC: UIViewController {
     }
     
     func addContentViewConstraints() {
-        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
         contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
         
