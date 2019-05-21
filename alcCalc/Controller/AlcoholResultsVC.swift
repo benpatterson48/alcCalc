@@ -310,7 +310,7 @@ class AlcoholResultsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             carbsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 26)
             fatsOutputLbl.font = UIFont.mainSemiBoldFont(ofSize: 26)
         }
