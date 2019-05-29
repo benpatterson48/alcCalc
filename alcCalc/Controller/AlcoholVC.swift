@@ -196,10 +196,10 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
     }
 
     override func viewDidLoad() {
-        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             changeScreenFor5()
         }
-        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
         abvView.isHidden = true
@@ -285,19 +285,19 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         bodyViewsStackView.distribution = .fill
         bodyViewsStackView.spacing = 30
         
-        bodyViewsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
+        bodyViewsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 7/8).isActive = true
         bodyViewsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
 
         calcMethodSegmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
         calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+        if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
             bodyViewsStackView.spacing = 15
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 32).isActive = true
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
             methodInformationStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true

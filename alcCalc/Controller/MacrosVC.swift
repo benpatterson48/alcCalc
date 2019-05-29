@@ -14,6 +14,7 @@ class MacrosVC: UIViewController {
     
     let surplusButton = WordButtons()
     let deficitButton = WordButtons()
+	let maintenanceButton = WordButtons()
     let lowEndButton = WordOptions()
     let moderateButton = WordOptions()
     let highEndButton = WordOptions()
@@ -81,20 +82,25 @@ class MacrosVC: UIViewController {
     }()
     
     @objc func calcBtnWasPressed() {
-        let weight = Int( weightInputTextField.text!) ?? 0
-        self.maintenanceCals = calc.calcMaintenanceCals(weight: weight, goalSpeed: bodyGoalSpeed ?? 0)
-        self.goalCals = calc.calcGoalCals(maintenanceCals: maintenanceCals ?? 0, bodyCompGoal: bodyGoal ?? 0)
-        self.protein = calc.calcProtein(weight: weight)
-        self.fat = calc.calcFats(goalCals: goalCals ?? 0)
-        self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, goalCals: goalCals ?? 0)
-        transitionToResults()
+		if weightInputTextField.text == "" {
+			self.weightInputTextField.shake()
+			view.endEditing(true)
+			return
+		} else {
+			let weight = Int( weightInputTextField.text!)!
+			self.maintenanceCals = calc.calcMaintenanceCals(weight: weight, goalSpeed: bodyGoalSpeed ?? 0)
+			self.goalCals = calc.calcGoalCals(maintenanceCals: maintenanceCals ?? 0, bodyCompGoal: bodyGoal ?? 0)
+			self.protein = calc.calcProtein(weight: weight)
+			self.fat = calc.calcFats(goalCals: goalCals ?? 0)
+			self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, goalCals: goalCals ?? 0)
+			transitionToResults()
+		}
     }
     
     func transitionToResults() {
         let resultsVC = MacroResultsVC()
         resultsVC.initData(maintenanceResults: maintenanceCals!, goalResults: goalCals!, proteinResults: protein!, carbResults: carb!, fatResults: fat!)
         resultsVC.modalPresentationStyle = .custom
-        weightInputTextField.text = ""
         view.endEditing(true)
         present(resultsVC, animated: true, completion: nil)
     }
@@ -149,7 +155,7 @@ class MacrosVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("This is the model: \(UIDevice.current.modelName)")
+        print("This is the model: \(UIDevice.current.name)")
         self.view.backgroundColor = .white
         setupButtons()
         addViews()
@@ -166,6 +172,7 @@ class MacrosVC: UIViewController {
     func addButtonActions() {
         surplusButton.addTarget(self, action: #selector(surplusButtonWasPressed), for: .touchUpInside)
         deficitButton.addTarget(self, action: #selector(deficitButtonWasPressed), for: .touchUpInside)
+		maintenanceButton.addTarget(self, action: #selector(maintenanceButtonWasPressed), for: .touchUpInside)
         lowEndButton.addTarget(self, action: #selector(lowEndButtonWasPressed), for: .touchUpInside)
         moderateButton.addTarget(self, action: #selector(moderateButtonWasPressed), for: .touchUpInside)
         highEndButton.addTarget(self, action: #selector(highEndButtonWasPressed), for: .touchUpInside)
@@ -177,6 +184,8 @@ class MacrosVC: UIViewController {
         surplusButton.setTitleColor(.white, for: .normal)
         deficitButton.setTitleColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
         deficitButton.backgroundColor = .white
+		maintenanceButton.setTitleColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
+		maintenanceButton.backgroundColor = .white
     }
     
     @objc func deficitButtonWasPressed() {
@@ -185,7 +194,19 @@ class MacrosVC: UIViewController {
         deficitButton.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         surplusButton.setTitleColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
         surplusButton.backgroundColor = .white
+		maintenanceButton.setTitleColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
+		maintenanceButton.backgroundColor = .white
     }
+	
+	@objc func maintenanceButtonWasPressed() {
+		bodyGoal = 0
+		maintenanceButton.setTitleColor(.white, for: .normal)
+		maintenanceButton.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
+		surplusButton.setTitleColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
+		surplusButton.backgroundColor = .white
+		deficitButton.setTitleColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1), for: .normal)
+		deficitButton.backgroundColor = .white
+	}
     
     @objc func lowEndButtonWasPressed() {
         bodyGoalSpeed = 12
@@ -211,6 +232,7 @@ class MacrosVC: UIViewController {
     func setupButtons() {
         surplusButton.setTitle("SURPLUS", for: .normal)
         deficitButton.setTitle("DEFICIT", for: .normal)
+		maintenanceButton.setTitle("MAINTAIN", for: .normal)
         lowEndButton.setTitle("LOW-END", for: .normal)
         lowEndButton.contentHorizontalAlignment = .left
         moderateButton.setTitle("MODERATE", for: .normal)
@@ -232,11 +254,11 @@ class MacrosVC: UIViewController {
     }
     
     func changeByDevice() {
-        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        } else if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+        } else if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
         }
     }
@@ -273,12 +295,13 @@ class MacrosVC: UIViewController {
         weightStackView.spacing = 5
         inputFieldUnderLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
         
-        let optionsStackView = UIStackView(arrangedSubviews: [surplusButton, deficitButton])
+        let optionsStackView = UIStackView(arrangedSubviews: [surplusButton, maintenanceButton, deficitButton])
         optionsStackView.translatesAutoresizingMaskIntoConstraints = false
         optionsStackView.axis = .horizontal
         optionsStackView.distribution = .fillEqually
-        optionsStackView.spacing = 20
+        optionsStackView.spacing = 5
         surplusButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		maintenanceButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         deficitButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         let macroRangeOptions = UIStackView(arrangedSubviews: [lowEndButton, moderateButton, highEndButton])
@@ -306,7 +329,7 @@ class MacrosVC: UIViewController {
         
         view.addSubview(contentStackView)
         contentStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 24).isActive = true
-        contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
+        contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 7/8).isActive = true
         contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
         
@@ -321,19 +344,19 @@ class MacrosVC: UIViewController {
         calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         calculateBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
+        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
             contentStackView.spacing = 15
             macroStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             macroTextLbl.font = UIFont.mainFont(ofSize: 14)
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
             contentStackView.spacing = 40
             macroStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             macroTextLbl.font = UIFont.mainFont(ofSize: 14)
-        } else if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+        } else if UIDevice.current.name == "iPhone X" || UIDevice.current.name == "iPhone XR" || UIDevice.current.name == "iPhone XS" || UIDevice.current.name == "iPhone XS Max" {
         }
     }
 
