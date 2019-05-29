@@ -18,9 +18,9 @@ class WordButtons: UIButton {
         titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
         translatesAutoresizingMaskIntoConstraints = false
         
-        if UIDevice.current.name == "iPhone 5s" || UIDevice.current.name == "iPhone SE" {
+        if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 12)
-        } else if UIDevice.current.name == "iPhone 6" || UIDevice.current.name == "iPhone 7" || UIDevice.current.name == "iPhone 8" {
+        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
             titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 14)
         }
     }
