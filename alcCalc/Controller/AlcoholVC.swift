@@ -199,7 +199,7 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             changeScreenFor5()
         }
-        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" || UIDevice.current.modelName == "iPhone 7 Plus" || UIDevice.current.modelName == "iPhone 8 Plus" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
         abvView.isHidden = true
@@ -297,14 +297,14 @@ class AlcoholVC: UIViewController, UITextFieldDelegate {
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 32).isActive = true
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" || UIDevice.current.modelName == "iPhone 7 Plus" || UIDevice.current.modelName == "iPhone 8 Plus" {
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true
             methodInformationStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
             bodyViewsStackView.spacing = 10
-            bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+            bodyViewsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
         } else {
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             methodInformationStackView.topAnchor.constraint(equalTo: topViewHeaderBg.bottomAnchor, constant: 16).isActive = true

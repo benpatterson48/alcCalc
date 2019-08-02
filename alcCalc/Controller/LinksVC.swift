@@ -69,7 +69,7 @@ class LinksVC: UIViewController {
             table.isScrollEnabled = true
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }
-        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" || UIDevice.current.modelName == "iPhone 7 Plus" || UIDevice.current.modelName == "iPhone 8 Plus" {
             table.isScrollEnabled = true
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }

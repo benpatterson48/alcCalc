@@ -256,7 +256,7 @@ class MacrosVC: UIViewController {
     func changeByDevice() {
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" || UIDevice.current.modelName == "iPhone 7 Plus" || UIDevice.current.modelName == "iPhone 8 Plus" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 85).isActive = true
         } else if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
             topViewHeaderBg.heightAnchor.constraint(equalToConstant: 110).isActive = true
@@ -350,7 +350,7 @@ class MacrosVC: UIViewController {
             calculateBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
             calculateBtn.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
             macroTextLbl.font = UIFont.mainFont(ofSize: 14)
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" || UIDevice.current.modelName == "iPhone 7 Plus" || UIDevice.current.modelName == "iPhone 8 Plus" {
             contentStackView.spacing = 40
             macroStackView.spacing = 5
             calculateBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true

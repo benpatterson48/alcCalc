@@ -101,7 +101,7 @@ class ABVInputView: UIView {
         abvInputsStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         abvInputsStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" {
+        if UIDevice.current.modelName == "iPhone X" || UIDevice.current.modelName == "iPhone XR" || UIDevice.current.modelName == "iPhone XS" || UIDevice.current.modelName == "iPhone XS Max" || UIDevice.current.modelName == "iPhone 7 Plus" || UIDevice.current.modelName == "iPhone 8 Plus" {
             abvInputsStackView.axis = .vertical
             abvInputsStackView.spacing = 5
             percentStackView.spacing = 5

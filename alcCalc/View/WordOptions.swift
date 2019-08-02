@@ -17,7 +17,7 @@ class WordOptions: UIButton {
         
         if UIDevice.current.modelName == "iPhone 5s" || UIDevice.current.modelName == "iPhone SE" {
             titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 12)
-        } else if UIDevice.current.modelName == "iPhone 6" || UIDevice.current.modelName == "iPhone 7" || UIDevice.current.modelName == "iPhone 8" {
+        } else {
             titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
         }
     }
