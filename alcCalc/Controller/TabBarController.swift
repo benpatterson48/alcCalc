@@ -19,16 +19,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let personalMacrosVC = MacrosVC()
-        let macrosBarItem = UITabBarItem(title: "Personal", image: UIImage(named: "personalMacrosGrey"), selectedImage: UIImage(named: "personalMacros"))
-        personalMacrosVC.tabBarItem = macrosBarItem
+        let macrosVC = Macros()
+        let macrosBarItem = UITabBarItem(title: "Personal", image: UIImage(named: "unmacros"), selectedImage: UIImage(named: "macros"))
+        macrosVC.tabBarItem = macrosBarItem
         
-        let alcoholMacrosVC = AlcoholVC()
-        let alcoholBarItem = UITabBarItem(title: "Alcohol", image: UIImage(named: "selectedAlcoholGrey"), selectedImage: UIImage(named: "selectedAlcohol"))
-        alcoholMacrosVC.tabBarItem = alcoholBarItem
+        let alcoholVC = Alcohol()
+        let alcoholBarItem = UITabBarItem(title: "Alcohol", image: UIImage(named: "unalcohol"), selectedImage: UIImage(named: "alcohol"))
+        alcoholVC.tabBarItem = alcoholBarItem
+		
+		let resourcesVC = Resources()
+		let resourcesBarItem = UITabBarItem(title: "Resouces", image: UIImage(named: "unresources"), selectedImage: UIImage(named: "resources"))
+		resourcesVC.tabBarItem = resourcesBarItem
         
-        self.tabBar.barTintColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
-        self.viewControllers = [personalMacrosVC, alcoholMacrosVC]
+        self.tabBar.barTintColor = UIColor.Main.background
+        self.viewControllers = [macrosVC, alcoholVC, resourcesVC]
         
     }
 
