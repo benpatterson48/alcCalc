@@ -12,8 +12,8 @@ class ActivityDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDa
 	
 	let activityLevels: [Activity] = [
 		Activity(title: "Sedentary", text: "Little movement, desk jobs and 1-2 workouts a week.", multiplier: 1.2),
-		Activity(title: "Moderately Active", text: "Trains 3 times per week and has somewhat active lifestyle", multiplier: 1.4),
-		Activity(title: "Above Average", text: "Trains 4-6 times per week and has a pretty active lifestyle", multiplier: 1.6),
+		Activity(title: "Moderately Active", text: "Trains 3 times per week and is somewhat active", multiplier: 1.4),
+		Activity(title: "Above Average", text: "Trains 4-6 times per week and is pretty active", multiplier: 1.6),
 		Activity(title: "Very Active", text: "Trains 5-7 days per week and is very active daily", multiplier: 1.8),
 		Activity(title: "Competitive Athlete", text: "Competitive Athlete with very high energy demands", multiplier: 2.0)
 	]

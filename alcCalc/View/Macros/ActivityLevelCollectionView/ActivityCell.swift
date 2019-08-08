@@ -32,7 +32,7 @@ class ActivityCell: UICollectionViewCell {
 		let title = UILabel()
 		title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
 		title.textAlignment = .left
-		title.font = UIFont.systemFont(ofSize: 16)
+		title.font = UIFont.systemFont(ofSize: 18)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
 	}()
@@ -42,7 +42,7 @@ class ActivityCell: UICollectionViewCell {
 		text.numberOfLines = 0
 		text.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
 		text.textAlignment = .left
-		text.font = UIFont.systemFont(ofSize: 14)
+		text.font = UIFont.systemFont(ofSize: 16)
 		text.translatesAutoresizingMaskIntoConstraints = false
 		return text
 	}()
@@ -50,14 +50,18 @@ class ActivityCell: UICollectionViewCell {
 	override var isSelected: Bool {
 		didSet {
 			if self.isSelected == true {
-				self.activitySelection.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+				self.activitySelection.textColor = .black
+				self.activityExample.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.75)
 				self.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
 				layer.borderWidth = 3.0
+				self.activitySelection.font = UIFont.systemFont(ofSize: 18, weight: .medium)
 				self.radioImage.image = UIImage(named: "selected")
 			} else {
-				self.activitySelection.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+				self.activitySelection.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+				self.activityExample.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
 				self.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 0.5)
 				layer.borderWidth = 1.0
+				self.activitySelection.font = UIFont.systemFont(ofSize: 18)
 				self.radioImage.image = UIImage(named: "unselected")
 			}
 		}

@@ -10,13 +10,13 @@
 		05959BCDF2FE6EB62AAB9B54 /* Pods_alcCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1CFA489D3303B49E74B6AB /* Pods_alcCalc.framework */; };
 		1D0CD8E1223187E0005D82B7 /* AlcoholVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */; };
 		1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */; };
-		1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D6122494F1F0095E6F2 /* UIDevice.swift */; };
+		1D196D6222494F1F0095E6F2 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D6122494F1F0095E6F2 /* Devices.swift */; };
 		1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D63224A787D0095E6F2 /* LinksVC.swift */; };
 		1D196D66224A7AC40095E6F2 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D65224A7AC40095E6F2 /* Links.swift */; };
 		1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D67224A7CDD0095E6F2 /* LinksCell.swift */; };
-		1D196D6A224ABAC50095E6F2 /* UIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D69224ABAC50095E6F2 /* UIVC.swift */; };
+		1D196D6A224ABAC50095E6F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D69224ABAC50095E6F2 /* ViewController.swift */; };
 		1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D236E9C223C2FFA00F73F39 /* Double.swift */; };
-		1D3FDD9A2239E799008C3C02 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FDD992239E799008C3C02 /* UITextField.swift */; };
+		1D3FDD9A2239E799008C3C02 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FDD992239E799008C3C02 /* TextField.swift */; };
 		1D4A9F8F22380A2400DC98E2 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F7C22380A2400DC98E2 /* Montserrat-LightItalic.ttf */; };
 		1D4A9F9022380A2400DC98E2 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F7D22380A2400DC98E2 /* Montserrat-Medium.ttf */; };
 		1D4A9F9122380A2400DC98E2 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F7E22380A2400DC98E2 /* Montserrat-BoldItalic.ttf */; };
@@ -36,13 +36,13 @@
 		1D4A9F9F22380A2400DC98E2 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F8C22380A2400DC98E2 /* Montserrat-Italic.ttf */; };
 		1D4A9FA022380A2400DC98E2 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F8D22380A2400DC98E2 /* Montserrat-SemiBoldItalic.ttf */; };
 		1D4A9FA122380A2400DC98E2 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F8E22380A2400DC98E2 /* Montserrat-ExtraBoldItalic.ttf */; };
-		1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A9FA322380A4200DC98E2 /* UIFont.swift */; };
+		1D4A9FA422380A4200DC98E2 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A9FA322380A4200DC98E2 /* Font.swift */; };
 		1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D70BA6D228B1626006DE7F3 /* Calculations.swift */; };
 		1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D70BA6F228B60A8006DE7F3 /* MacroResultsVC.swift */; };
 		1D8F204122FA302F00AAA2BF /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204022FA302F00AAA2BF /* Macros.swift */; };
 		1D8F204322FA304400AAA2BF /* Alcohol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204222FA304400AAA2BF /* Alcohol.swift */; };
 		1D8F204522FA305E00AAA2BF /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204422FA305E00AAA2BF /* Resources.swift */; };
-		1D8F204722FA8AF900AAA2BF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204622FA8AF900AAA2BF /* UIColor.swift */; };
+		1D8F204722FA8AF900AAA2BF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204622FA8AF900AAA2BF /* Color.swift */; };
 		1D8F204B22FA8E9800AAA2BF /* MacrosContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204A22FA8E9800AAA2BF /* MacrosContentView.swift */; };
 		1D8F204D22FA8FF800AAA2BF /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */; };
 		1D8F205122FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F205022FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift */; };
@@ -57,6 +57,7 @@
 		1DC9B37522FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37422FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift */; };
 		1DC9B37722FB4E90007C4BE2 /* CalculateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37622FB4E90007C4BE2 /* CalculateButton.swift */; };
 		1DC9B37B22FBDD31007C4BE2 /* AlcoholContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37A22FBDD31007C4BE2 /* AlcoholContentView.swift */; };
+		1DC9B37D22FBE289007C4BE2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37C22FBE289007C4BE2 /* String.swift */; };
 		1DDAF7EC228A128A00CCCCB8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */; };
 		1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */; };
 		1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F32230988A001E1F54 /* AppDelegate.swift */; };
@@ -69,13 +70,13 @@
 /* Begin PBXFileReference section */
 		1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholVC.swift; sourceTree = "<group>"; };
 		1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		1D196D6122494F1F0095E6F2 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		1D196D6122494F1F0095E6F2 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		1D196D63224A787D0095E6F2 /* LinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
 		1D196D65224A7AC40095E6F2 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		1D196D67224A7CDD0095E6F2 /* LinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCell.swift; sourceTree = "<group>"; };
-		1D196D69224ABAC50095E6F2 /* UIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVC.swift; sourceTree = "<group>"; };
+		1D196D69224ABAC50095E6F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D236E9C223C2FFA00F73F39 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		1D3FDD992239E799008C3C02 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		1D3FDD992239E799008C3C02 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1D4A9F7C22380A2400DC98E2 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		1D4A9F7D22380A2400DC98E2 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		1D4A9F7E22380A2400DC98E2 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -95,13 +96,13 @@
 		1D4A9F8C22380A2400DC98E2 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		1D4A9F8D22380A2400DC98E2 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		1D4A9F8E22380A2400DC98E2 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		1D4A9FA322380A4200DC98E2 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		1D4A9FA322380A4200DC98E2 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		1D70BA6D228B1626006DE7F3 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		1D70BA6F228B60A8006DE7F3 /* MacroResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroResultsVC.swift; sourceTree = "<group>"; };
 		1D8F204022FA302F00AAA2BF /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		1D8F204222FA304400AAA2BF /* Alcohol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alcohol.swift; sourceTree = "<group>"; };
 		1D8F204422FA305E00AAA2BF /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
-		1D8F204622FA8AF900AAA2BF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		1D8F204622FA8AF900AAA2BF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1D8F204A22FA8E9800AAA2BF /* MacrosContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosContentView.swift; sourceTree = "<group>"; };
 		1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		1D8F205022FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithInfoBtnAndIcon.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		1DC9B37422FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelCollectionView.swift; sourceTree = "<group>"; };
 		1DC9B37622FB4E90007C4BE2 /* CalculateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateButton.swift; sourceTree = "<group>"; };
 		1DC9B37A22FBDD31007C4BE2 /* AlcoholContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholContentView.swift; sourceTree = "<group>"; };
+		1DC9B37C22FBE289007C4BE2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosVC.swift; sourceTree = "<group>"; };
 		1DF754F02230988A001E1F54 /* alcCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alcCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,12 +221,13 @@
 		1D4A9FA222380A3300DC98E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1D4A9FA322380A4200DC98E2 /* UIFont.swift */,
-				1D3FDD992239E799008C3C02 /* UITextField.swift */,
+				1D4A9FA322380A4200DC98E2 /* Font.swift */,
+				1D3FDD992239E799008C3C02 /* TextField.swift */,
 				1D236E9C223C2FFA00F73F39 /* Double.swift */,
-				1D196D6122494F1F0095E6F2 /* UIDevice.swift */,
-				1D196D69224ABAC50095E6F2 /* UIVC.swift */,
-				1D8F204622FA8AF900AAA2BF /* UIColor.swift */,
+				1D196D6122494F1F0095E6F2 /* Devices.swift */,
+				1D196D69224ABAC50095E6F2 /* ViewController.swift */,
+				1D8F204622FA8AF900AAA2BF /* Color.swift */,
+				1DC9B37C22FBE289007C4BE2 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -504,20 +507,21 @@
 				1D8F204122FA302F00AAA2BF /* Macros.swift in Sources */,
 				1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */,
 				1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */,
-				1D196D6A224ABAC50095E6F2 /* UIVC.swift in Sources */,
-				1D3FDD9A2239E799008C3C02 /* UITextField.swift in Sources */,
+				1D196D6A224ABAC50095E6F2 /* ViewController.swift in Sources */,
+				1D3FDD9A2239E799008C3C02 /* TextField.swift in Sources */,
 				1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */,
-				1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */,
+				1D196D6222494F1F0095E6F2 /* Devices.swift in Sources */,
 				1D8F205122FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift in Sources */,
 				1D8F204322FA304400AAA2BF /* Alcohol.swift in Sources */,
 				1DC9B37222FB1AC3007C4BE2 /* ActivityDataSource.swift in Sources */,
 				1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */,
 				1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */,
+				1DC9B37D22FBE289007C4BE2 /* String.swift in Sources */,
 				1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */,
 				1D196D66224A7AC40095E6F2 /* Links.swift in Sources */,
-				1D8F204722FA8AF900AAA2BF /* UIColor.swift in Sources */,
+				1D8F204722FA8AF900AAA2BF /* Color.swift in Sources */,
 				1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */,
-				1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */,
+				1D4A9FA422380A4200DC98E2 /* Font.swift in Sources */,
 				1D8F205322FA98BD00AAA2BF /* ActivityCell.swift in Sources */,
 				1DC9B37522FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift in Sources */,
 				1DFB66B0228D1465003CB9BB /* ResultsView.swift in Sources */,

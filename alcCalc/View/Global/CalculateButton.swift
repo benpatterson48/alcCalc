@@ -14,7 +14,7 @@ class CalculateButton: UIButton {
 		layer.cornerRadius = 10
 		setTitle("CALCULATE", for: .normal)
 		setTitleColor(.white, for: .normal)
-		titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+		titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
 		self.backgroundColor = UIColor.Main.blue
 		translatesAutoresizingMaskIntoConstraints = false
 		heightAnchor.constraint(equalToConstant: 50).isActive = true 

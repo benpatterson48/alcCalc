@@ -59,10 +59,10 @@ class Macros: UIViewController, UIScrollViewDelegate {
 		contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 		contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
 		
-		macrosView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+		macrosView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 24).isActive = true
 		macrosView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
 		macrosView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
-		macrosView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+		macrosView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
 	}
 	
 }

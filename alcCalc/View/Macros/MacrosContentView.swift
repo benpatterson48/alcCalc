@@ -115,6 +115,7 @@ class MacrosContentView: UIView {
 		createMajorStackView()
 		setupCollectionView()
 		self.activityTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+		calculateButton.titleLabel?.attributedText = calculateButton.titleLabel?.text?.increaseLetterSpacing()
 	}
 	
 	func setupCollectionView() {
