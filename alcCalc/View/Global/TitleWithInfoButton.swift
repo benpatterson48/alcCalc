@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleWithInfoBtnAndIcon: UIView {
+class TitleWithInfoButton: UIView {
 	
 	let icon: UIImageView = {
 		let icon = UIImageView()
@@ -23,7 +23,7 @@ class TitleWithInfoBtnAndIcon: UIView {
 		let title = UILabel()
 		title.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
 		title.textAlignment = .left
-		title.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+		title.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
 	}()
@@ -43,9 +43,8 @@ class TitleWithInfoBtnAndIcon: UIView {
 		createStackView()
 	}
 	
-	public convenience init(iconImage: String, titleText: String) {
+	public convenience init(titleText: String) {
 		self.init()
-		self.icon.image = UIImage(named: iconImage)
 		self.title.text = titleText
 	}
 	

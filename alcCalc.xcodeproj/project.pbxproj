@@ -16,6 +16,8 @@
 		1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D67224A7CDD0095E6F2 /* LinksCell.swift */; };
 		1D196D6A224ABAC50095E6F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D69224ABAC50095E6F2 /* ViewController.swift */; };
 		1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D236E9C223C2FFA00F73F39 /* Double.swift */; };
+		1D2DA67122FC61AC0007D281 /* ABVMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2DA67022FC61AC0007D281 /* ABVMethodView.swift */; };
+		1D2DA67322FC62000007D281 /* CalorieMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2DA67222FC62000007D281 /* CalorieMethodView.swift */; };
 		1D3FDD9A2239E799008C3C02 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3FDD992239E799008C3C02 /* TextField.swift */; };
 		1D4A9F8F22380A2400DC98E2 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F7C22380A2400DC98E2 /* Montserrat-LightItalic.ttf */; };
 		1D4A9F9022380A2400DC98E2 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A9F7D22380A2400DC98E2 /* Montserrat-Medium.ttf */; };
@@ -45,7 +47,7 @@
 		1D8F204722FA8AF900AAA2BF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204622FA8AF900AAA2BF /* Color.swift */; };
 		1D8F204B22FA8E9800AAA2BF /* MacrosContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204A22FA8E9800AAA2BF /* MacrosContentView.swift */; };
 		1D8F204D22FA8FF800AAA2BF /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */; };
-		1D8F205122FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F205022FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift */; };
+		1D8F205122FA942200AAA2BF /* TitleWithInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F205022FA942200AAA2BF /* TitleWithInfoButton.swift */; };
 		1D8F205322FA98BD00AAA2BF /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F205222FA98BD00AAA2BF /* ActivityCell.swift */; };
 		1D8F205522FA9B6000AAA2BF /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F205422FA9B6000AAA2BF /* Activity.swift */; };
 		1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */; };
@@ -76,6 +78,8 @@
 		1D196D67224A7CDD0095E6F2 /* LinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCell.swift; sourceTree = "<group>"; };
 		1D196D69224ABAC50095E6F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D236E9C223C2FFA00F73F39 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		1D2DA67022FC61AC0007D281 /* ABVMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVMethodView.swift; sourceTree = "<group>"; };
+		1D2DA67222FC62000007D281 /* CalorieMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieMethodView.swift; sourceTree = "<group>"; };
 		1D3FDD992239E799008C3C02 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1D4A9F7C22380A2400DC98E2 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		1D4A9F7D22380A2400DC98E2 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -105,7 +109,7 @@
 		1D8F204622FA8AF900AAA2BF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1D8F204A22FA8E9800AAA2BF /* MacrosContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosContentView.swift; sourceTree = "<group>"; };
 		1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
-		1D8F205022FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithInfoBtnAndIcon.swift; sourceTree = "<group>"; };
+		1D8F205022FA942200AAA2BF /* TitleWithInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithInfoButton.swift; sourceTree = "<group>"; };
 		1D8F205222FA98BD00AAA2BF /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		1D8F205422FA9B6000AAA2BF /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
@@ -260,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				1D8F204A22FA8E9800AAA2BF /* MacrosContentView.swift */,
-				1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */,
 				1DC9B37322FB1B86007C4BE2 /* ActivityLevelCollectionView */,
 			);
 			path = Macros;
@@ -270,8 +273,9 @@
 			isa = PBXGroup;
 			children = (
 				1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */,
-				1D8F205022FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift */,
+				1D8F205022FA942200AAA2BF /* TitleWithInfoButton.swift */,
 				1DC9B37622FB4E90007C4BE2 /* CalculateButton.swift */,
+				1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -290,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				1DC9B37A22FBDD31007C4BE2 /* AlcoholContentView.swift */,
+				1D2DA67222FC62000007D281 /* CalorieMethodView.swift */,
+				1D2DA67022FC61AC0007D281 /* ABVMethodView.swift */,
 			);
 			path = Alcohol;
 			sourceTree = "<group>";
@@ -511,7 +517,9 @@
 				1D3FDD9A2239E799008C3C02 /* TextField.swift in Sources */,
 				1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */,
 				1D196D6222494F1F0095E6F2 /* Devices.swift in Sources */,
-				1D8F205122FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift in Sources */,
+				1D2DA67322FC62000007D281 /* CalorieMethodView.swift in Sources */,
+				1D8F205122FA942200AAA2BF /* TitleWithInfoButton.swift in Sources */,
+				1D2DA67122FC61AC0007D281 /* ABVMethodView.swift in Sources */,
 				1D8F204322FA304400AAA2BF /* Alcohol.swift in Sources */,
 				1DC9B37222FB1AC3007C4BE2 /* ActivityDataSource.swift in Sources */,
 				1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */,

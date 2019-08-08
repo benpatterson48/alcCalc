@@ -10,11 +10,11 @@ import UIKit
 
 class MacrosContentView: UIView {
 	
-	let ageTitle = TitleWithInfoBtnAndIcon(iconImage: "age", titleText: "Age")
-	let weightTitle = TitleWithInfoBtnAndIcon(iconImage: "weight", titleText: "Weight")
-	let heightTitle = TitleWithInfoBtnAndIcon(iconImage: "height", titleText: "Height")
-	let genderTitle = TitleWithInfoBtnAndIcon(iconImage: "gender", titleText: "Gender")
-	let activityTitle = TitleWithInfoBtnAndIcon(iconImage: "activity", titleText: "Activity Level")
+	let ageTitle = TitleWithInfoButton(titleText: "Age")
+	let weightTitle = TitleWithInfoButton(titleText: "Weight")
+	let heightTitle = TitleWithInfoButton(titleText: "Height")
+	let genderTitle = TitleWithInfoButton(titleText: "Gender")
+	let activityTitle = TitleWithInfoButton(titleText: "Activity Level")
 	
 	let activityCollectionView = ActivityLevelCollectionView(frame: .zero, collectionViewLayout: .init())
 	
@@ -60,7 +60,7 @@ class MacrosContentView: UIView {
 	lazy var genderStackView: UIStackView = {
 		let stack = UIStackView(arrangedSubviews: [self.genderTitle, self.genderSwitch])
 		stack.axis = .vertical
-		stack.spacing = 10
+		stack.spacing = 25
 		stack.distribution = .fillProportionally
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		return stack

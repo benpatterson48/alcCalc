@@ -19,6 +19,7 @@ class Macros: UIViewController, UIScrollViewDelegate {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		addViews()
+		view.bindToKeyboard()
 		view.backgroundColor = .white
 		topView.backgroundColor = .white 
 		
