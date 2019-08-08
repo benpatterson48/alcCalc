@@ -21,9 +21,9 @@ class TitleWithInfoBtnAndIcon: UIView {
 	
 	let title: UILabel = {
 		let title = UILabel()
-		title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+		title.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
 		title.textAlignment = .left
-		title.font = UIFont.systemFont(ofSize: 12)
+		title.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
 	}()
@@ -54,11 +54,11 @@ class TitleWithInfoBtnAndIcon: UIView {
 	}
 	
 	func createStackView() {
-		let stack = UIStackView(arrangedSubviews: [icon, title, infoButton])
+		let stack = UIStackView(arrangedSubviews: [title, infoButton])
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .horizontal
 		stack.spacing = 5
-		stack.alignment = .top
+		stack.alignment = .leading
 		stack.distribution = .fillProportionally
 		
 		addSubview(stack)

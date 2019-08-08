@@ -11,20 +11,26 @@ import UIKit
 class MacrosContentView: UIView {
 	
 	let ageTitle = TitleWithInfoBtnAndIcon(iconImage: "age", titleText: "Age")
+	let weightTitle = TitleWithInfoBtnAndIcon(iconImage: "weight", titleText: "Weight")
 	let heightTitle = TitleWithInfoBtnAndIcon(iconImage: "height", titleText: "Height")
-	let genderTitle = TitleWithInfoBtnAndIcon(iconImage: "geneder", titleText: "Gender")
+	let genderTitle = TitleWithInfoBtnAndIcon(iconImage: "gender", titleText: "Gender")
 	let activityTitle = TitleWithInfoBtnAndIcon(iconImage: "activity", titleText: "Activity Level")
 	
+	let activityCollectionView = ActivityLevelCollectionView(frame: .zero, collectionViewLayout: .init())
+	
 	let ageInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 18), placeholder: "yrs")
+	let weightInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 18), placeholder: "lbs")
 	let heightFeetInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 18), placeholder: "ft")
 	let heightInchesInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 18), placeholder: "in")
-	let weightInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 18), placeholder: "lbs")
+	
+	let calculateButton = CalculateButton()
 	
 	let title: UILabel = {
 		let title = UILabel()
+		title.text = "Estimate Macros"
 		title.textColor = UIColor.Main.text
 		title.textAlignment = .left
-		title.font = UIFont.boldSystemFont(ofSize: 32)
+		title.font = UIFont.boldSystemFont(ofSize: 30)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
 	}()
@@ -36,9 +42,108 @@ class MacrosContentView: UIView {
 		segment.layer.cornerRadius = 10
 		segment.backgroundColor = .white
 		segment.tintColor = UIColor.Main.blue
+		segment.heightAnchor.constraint(equalToConstant: 30).isActive = true 
 		segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
 		segment.translatesAutoresizingMaskIntoConstraints = false
 		return segment
 	}()
+	
+	lazy var heightStack: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.heightFeetInputView, self.heightInchesInputView])
+		stack.axis = .horizontal
+		stack.distribution = .fillEqually
+		stack.spacing = 10
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	lazy var genderStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.genderTitle, self.genderSwitch])
+		stack.axis = .vertical
+		stack.spacing = 10
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	lazy var heightStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.heightTitle, self.heightStack])
+		stack.axis = .vertical
+		stack.spacing = 25
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	lazy var ageStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.ageTitle, self.ageInputView])
+		stack.axis = .vertical
+		stack.spacing = 25
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	lazy var heightAgeHorizontalStack: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.heightStackView, self.ageStackView])
+		stack.distribution = .fillProportionally
+		stack.spacing = 30
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	lazy var weightStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.weightTitle, self.weightInputView])
+		stack.axis = .vertical
+		stack.spacing = 25
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	lazy var activityStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.activityTitle, self.activityCollectionView])
+		stack.axis = .vertical
+		stack.spacing = 25
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
+	}()
+	
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		createMajorStackView()
+		setupCollectionView()
+		self.activityTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+	}
+	
+	func setupCollectionView() {
+		self.activityCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -32).isActive = true
+		self.activityCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 32).isActive = true
+		self.activityCollectionView.heightAnchor.constraint(equalToConstant: 125).isActive = true
+		self.activityCollectionView.backgroundColor = .white
+		
+		self.activityCollectionView.contentInset.left = 32
+		self.activityCollectionView.contentInset.right = 16
+	}
+	
+	func createMajorStackView() {
+		let majorStackView = UIStackView(arrangedSubviews: [title, genderStackView, heightAgeHorizontalStack, weightStackView, activityStackView, calculateButton])
+		majorStackView.translatesAutoresizingMaskIntoConstraints = false
+		majorStackView.axis = .vertical
+		majorStackView.distribution = .fillProportionally
+		majorStackView.alignment = .fill
+		majorStackView.spacing = 40
+		
+		addSubview(majorStackView)
+		majorStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+		majorStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+		majorStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+		majorStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 	
 }

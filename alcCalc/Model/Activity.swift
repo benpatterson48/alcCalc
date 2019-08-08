@@ -10,12 +10,12 @@ import Foundation
 
 struct Activity {
 	var title: String
-	var radioImage: String
 	var text: String
+	var multiplier: Double
 	
-	init(title: String, radioImage: String, text: String) {
+	init(title: String, text: String, multiplier: Double) {
 		self.title = title
-		self.radioImage = radioImage
 		self.text = text
+		self.multiplier = multiplier
 	}
 }

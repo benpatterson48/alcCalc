@@ -31,8 +31,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 		let resourcesBarItem = UITabBarItem(title: "Resouces", image: UIImage(named: "unresources"), selectedImage: UIImage(named: "resources"))
 		resourcesVC.tabBarItem = resourcesBarItem
         
-        self.tabBar.barTintColor = UIColor.Main.background
-        self.viewControllers = [macrosVC, alcoholVC, resourcesVC]
+        self.tabBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.viewControllers = [macrosVC, alcoholVC]
         
     }
 

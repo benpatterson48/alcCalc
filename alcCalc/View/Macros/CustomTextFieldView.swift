@@ -21,7 +21,7 @@ class CustomTextFieldView: UIView {
 	
 	let underline: UIView = {
 		let view = UIView()
-		view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.heightAnchor.constraint(equalToConstant: 2).isActive = true
 		return view

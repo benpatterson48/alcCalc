@@ -53,6 +53,10 @@
 		1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB960B3228A7CD900DCC3EA /* WordButtons.swift */; };
 		1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB960B5228A923900DCC3EA /* WordOptions.swift */; };
 		1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB3A5422433D8000E1D786 /* ABVInputView.swift */; };
+		1DC9B37222FB1AC3007C4BE2 /* ActivityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37122FB1AC3007C4BE2 /* ActivityDataSource.swift */; };
+		1DC9B37522FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37422FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift */; };
+		1DC9B37722FB4E90007C4BE2 /* CalculateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37622FB4E90007C4BE2 /* CalculateButton.swift */; };
+		1DC9B37B22FBDD31007C4BE2 /* AlcoholContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9B37A22FBDD31007C4BE2 /* AlcoholContentView.swift */; };
 		1DDAF7EC228A128A00CCCCB8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */; };
 		1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */; };
 		1DF754F42230988A001E1F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF754F32230988A001E1F54 /* AppDelegate.swift */; };
@@ -108,6 +112,10 @@
 		1DB960B3228A7CD900DCC3EA /* WordButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordButtons.swift; sourceTree = "<group>"; };
 		1DB960B5228A923900DCC3EA /* WordOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordOptions.swift; sourceTree = "<group>"; };
 		1DBB3A5422433D8000E1D786 /* ABVInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVInputView.swift; sourceTree = "<group>"; };
+		1DC9B37122FB1AC3007C4BE2 /* ActivityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDataSource.swift; sourceTree = "<group>"; };
+		1DC9B37422FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelCollectionView.swift; sourceTree = "<group>"; };
+		1DC9B37622FB4E90007C4BE2 /* CalculateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateButton.swift; sourceTree = "<group>"; };
+		1DC9B37A22FBDD31007C4BE2 /* AlcoholContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholContentView.swift; sourceTree = "<group>"; };
 		1DDAF7EB228A128A00CCCCB8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1DDAF7ED228A140100CCCCB8 /* MacrosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosVC.swift; sourceTree = "<group>"; };
 		1DF754F02230988A001E1F54 /* alcCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alcCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +159,7 @@
 			children = (
 				1D8F204922FA8E0F00AAA2BF /* Deprecated */,
 				1D8F204F22FA93FA00AAA2BF /* Global */,
+				1DC9B37922FBDD1A007C4BE2 /* Alcohol */,
 				1D8F204E22FA93E900AAA2BF /* Macros */,
 			);
 			path = View;
@@ -249,7 +258,7 @@
 			children = (
 				1D8F204A22FA8E9800AAA2BF /* MacrosContentView.swift */,
 				1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */,
-				1D8F205222FA98BD00AAA2BF /* ActivityCell.swift */,
+				1DC9B37322FB1B86007C4BE2 /* ActivityLevelCollectionView */,
 			);
 			path = Macros;
 			sourceTree = "<group>";
@@ -259,8 +268,27 @@
 			children = (
 				1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */,
 				1D8F205022FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift */,
+				1DC9B37622FB4E90007C4BE2 /* CalculateButton.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		1DC9B37322FB1B86007C4BE2 /* ActivityLevelCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1D8F205222FA98BD00AAA2BF /* ActivityCell.swift */,
+				1DC9B37122FB1AC3007C4BE2 /* ActivityDataSource.swift */,
+				1DC9B37422FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift */,
+			);
+			path = ActivityLevelCollectionView;
+			sourceTree = "<group>";
+		};
+		1DC9B37922FBDD1A007C4BE2 /* Alcohol */ = {
+			isa = PBXGroup;
+			children = (
+				1DC9B37A22FBDD31007C4BE2 /* AlcoholContentView.swift */,
+			);
+			path = Alcohol;
 			sourceTree = "<group>";
 		};
 		1DF754E72230988A001E1F54 = {
@@ -482,6 +510,7 @@
 				1D196D6222494F1F0095E6F2 /* UIDevice.swift in Sources */,
 				1D8F205122FA942200AAA2BF /* TitleWithInfoBtnAndIcon.swift in Sources */,
 				1D8F204322FA304400AAA2BF /* Alcohol.swift in Sources */,
+				1DC9B37222FB1AC3007C4BE2 /* ActivityDataSource.swift in Sources */,
 				1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */,
 				1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */,
 				1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */,
@@ -490,11 +519,14 @@
 				1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */,
 				1D4A9FA422380A4200DC98E2 /* UIFont.swift in Sources */,
 				1D8F205322FA98BD00AAA2BF /* ActivityCell.swift in Sources */,
+				1DC9B37522FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift in Sources */,
 				1DFB66B0228D1465003CB9BB /* ResultsView.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */,
 				1DA88FDB22375ADF0047C7F8 /* AlcoholResultsVC.swift in Sources */,
 				1DDAF7EC228A128A00CCCCB8 /* TabBarController.swift in Sources */,
+				1DC9B37722FB4E90007C4BE2 /* CalculateButton.swift in Sources */,
+				1DC9B37B22FBDD31007C4BE2 /* AlcoholContentView.swift in Sources */,
 				1D8F204522FA305E00AAA2BF /* Resources.swift in Sources */,
 				1D8F205522FA9B6000AAA2BF /* Activity.swift in Sources */,
 				1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */,
