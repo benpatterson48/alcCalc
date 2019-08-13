@@ -52,6 +52,11 @@
 		1D8F205522FA9B6000AAA2BF /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F205422FA9B6000AAA2BF /* Activity.swift */; };
 		1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */; };
 		1DA88FDB22375ADF0047C7F8 /* AlcoholResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88FDA22375ADF0047C7F8 /* AlcoholResultsVC.swift */; };
+		1DB6634D2302736900452455 /* MacroResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6634C2302736900452455 /* MacroResults.swift */; };
+		1DB66350230273A400452455 /* MacroResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6634F230273A400452455 /* MacroResultsView.swift */; };
+		1DB6635223027B2400452455 /* SubHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6635123027B2400452455 /* SubHeaderLabel.swift */; };
+		1DB6635423027CE800452455 /* ResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB6635323027CE800452455 /* ResultLabel.swift */; };
+		1DB66357230280AD00452455 /* ResultAndTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB66356230280AD00452455 /* ResultAndTitleStackView.swift */; };
 		1DB960B4228A7CD900DCC3EA /* WordButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB960B3228A7CD900DCC3EA /* WordButtons.swift */; };
 		1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB960B5228A923900DCC3EA /* WordOptions.swift */; };
 		1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB3A5422433D8000E1D786 /* ABVInputView.swift */; };
@@ -114,6 +119,11 @@
 		1D8F205422FA9B6000AAA2BF /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		1DA88FD8223754420047C7F8 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		1DA88FDA22375ADF0047C7F8 /* AlcoholResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholResultsVC.swift; sourceTree = "<group>"; };
+		1DB6634C2302736900452455 /* MacroResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroResults.swift; sourceTree = "<group>"; };
+		1DB6634F230273A400452455 /* MacroResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroResultsView.swift; sourceTree = "<group>"; };
+		1DB6635123027B2400452455 /* SubHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubHeaderLabel.swift; sourceTree = "<group>"; };
+		1DB6635323027CE800452455 /* ResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLabel.swift; sourceTree = "<group>"; };
+		1DB66356230280AD00452455 /* ResultAndTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAndTitleStackView.swift; sourceTree = "<group>"; };
 		1DB960B3228A7CD900DCC3EA /* WordButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordButtons.swift; sourceTree = "<group>"; };
 		1DB960B5228A923900DCC3EA /* WordOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordOptions.swift; sourceTree = "<group>"; };
 		1DBB3A5422433D8000E1D786 /* ABVInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVInputView.swift; sourceTree = "<group>"; };
@@ -156,6 +166,7 @@
 				1D8F204022FA302F00AAA2BF /* Macros.swift */,
 				1D8F204222FA304400AAA2BF /* Alcohol.swift */,
 				1D8F204422FA305E00AAA2BF /* Resources.swift */,
+				1DB6634C2302736900452455 /* MacroResults.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +178,7 @@
 				1D8F204F22FA93FA00AAA2BF /* Global */,
 				1DC9B37922FBDD1A007C4BE2 /* Alcohol */,
 				1D8F204E22FA93E900AAA2BF /* Macros */,
+				1DB6634E2302738A00452455 /* Results */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +290,25 @@
 				1D8F204C22FA8FF800AAA2BF /* CustomTextFieldView.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		1DB6634E2302738A00452455 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				1DB6635523027CED00452455 /* Macros */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
+		1DB6635523027CED00452455 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				1DB6634F230273A400452455 /* MacroResultsView.swift */,
+				1DB6635123027B2400452455 /* SubHeaderLabel.swift */,
+				1DB6635323027CE800452455 /* ResultLabel.swift */,
+				1DB66356230280AD00452455 /* ResultAndTitleStackView.swift */,
+			);
+			path = Macros;
 			sourceTree = "<group>";
 		};
 		1DC9B37322FB1B86007C4BE2 /* ActivityLevelCollectionView */ = {
@@ -526,20 +557,25 @@
 				1DB960B6228A923900DCC3EA /* WordOptions.swift in Sources */,
 				1DC9B37D22FBE289007C4BE2 /* String.swift in Sources */,
 				1DDAF7EE228A140100CCCCB8 /* MacrosVC.swift in Sources */,
+				1DB66350230273A400452455 /* MacroResultsView.swift in Sources */,
 				1D196D66224A7AC40095E6F2 /* Links.swift in Sources */,
 				1D8F204722FA8AF900AAA2BF /* Color.swift in Sources */,
 				1D70BA70228B60A8006DE7F3 /* MacroResultsVC.swift in Sources */,
 				1D4A9FA422380A4200DC98E2 /* Font.swift in Sources */,
 				1D8F205322FA98BD00AAA2BF /* ActivityCell.swift in Sources */,
 				1DC9B37522FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift in Sources */,
+				1DB6635223027B2400452455 /* SubHeaderLabel.swift in Sources */,
 				1DFB66B0228D1465003CB9BB /* ResultsView.swift in Sources */,
+				1DB6635423027CE800452455 /* ResultLabel.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */,
+				1DB66357230280AD00452455 /* ResultAndTitleStackView.swift in Sources */,
 				1DA88FDB22375ADF0047C7F8 /* AlcoholResultsVC.swift in Sources */,
 				1DDAF7EC228A128A00CCCCB8 /* TabBarController.swift in Sources */,
 				1DC9B37722FB4E90007C4BE2 /* CalculateButton.swift in Sources */,
 				1DC9B37B22FBDD31007C4BE2 /* AlcoholContentView.swift in Sources */,
 				1D8F204522FA305E00AAA2BF /* Resources.swift in Sources */,
+				1DB6634D2302736900452455 /* MacroResults.swift in Sources */,
 				1D8F205522FA9B6000AAA2BF /* Activity.swift in Sources */,
 				1D196D68224A7CDD0095E6F2 /* LinksCell.swift in Sources */,
 				1D8F204B22FA8E9800AAA2BF /* MacrosContentView.swift in Sources */,

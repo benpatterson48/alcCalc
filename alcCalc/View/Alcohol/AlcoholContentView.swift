@@ -76,7 +76,8 @@ class AlcoholContentView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		addViews()
-		abvView.isHidden = true 
+		abvView.isHidden = true
+		calculateButton.titleLabel?.attributedText = calculateButton.titleLabel?.text?.increaseLetterSpacing()
 	}
 	
 	func addViews() {

@@ -25,7 +25,14 @@ class Macros: UIViewController, UIScrollViewDelegate {
 		
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
+		macrosView.calculateButton.addTarget(self, action: #selector(calculateButtonWasPressed), for: .touchUpInside)
     }
+	
+	@objc func calculateButtonWasPressed() {
+		let results = MacroResults()
+		results.modalPresentationStyle = .overCurrentContext
+		present(results, animated: true, completion: nil)
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)

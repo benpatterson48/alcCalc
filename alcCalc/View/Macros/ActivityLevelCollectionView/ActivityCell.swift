@@ -25,6 +25,9 @@ class ActivityCell: UICollectionViewCell {
 		image.contentMode = .scaleAspectFit
 		image.image = UIImage(named: "unselected")
 		image.translatesAutoresizingMaskIntoConstraints = false
+		
+		image.heightAnchor.constraint(equalToConstant: 24).isActive = true
+		image.widthAnchor.constraint(equalToConstant: 24).isActive = true 
 		return image
 	}()
 	
@@ -60,7 +63,7 @@ class ActivityCell: UICollectionViewCell {
 				self.activitySelection.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
 				self.activityExample.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
 				self.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 0.5)
-				layer.borderWidth = 1.0
+				layer.borderWidth = 2.0
 				self.activitySelection.font = UIFont.systemFont(ofSize: 18)
 				self.radioImage.image = UIImage(named: "unselected")
 			}
@@ -73,7 +76,7 @@ class ActivityCell: UICollectionViewCell {
 		setupView()
 		layer.cornerRadius = 10
 		layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 0.5)
-		layer.borderWidth = 1.0
+		layer.borderWidth = 2.0
 	}
 	
 	func setupView() {

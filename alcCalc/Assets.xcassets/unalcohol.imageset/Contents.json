@@ -2,15 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "unalcohol.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "unalcohol@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "unalcohol@3x.png",
       "scale" : "3x"
     }
   ],
