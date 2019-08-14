@@ -29,6 +29,7 @@ class MacroResultsView: UIView {
 	var macrosTitle = TitleWithInfoButton(titleText: "Macros")
 	var caloriesTitle = TitleWithInfoButton(titleText: "Calories")
 	var disclaimerTitle = TitleWithInfoButton(titleText: "Disclaimer")
+	var macroGoalsTitle = TitleWithInfoButton(titleText: "Current Goal")
 	
 	lazy var tdeeStack = ResultAndTitleStackView(arrangedSubviews: [self.tdeeResult, self.tdeeCalsTitle])
 	lazy var goalStack = ResultAndTitleStackView(arrangedSubviews: [self.goalResult, self.goalCalsTitle])
@@ -46,6 +47,19 @@ class MacroResultsView: UIView {
 		close.widthAnchor.constraint(equalToConstant: 25).isActive = true
 		close.heightAnchor.constraint(equalToConstant: 25).isActive = true
 		return close
+	}()
+	
+	let macroGoals: UISegmentedControl = {
+		let items = ["Deficit", "Maintenace", "Surplus"]
+		let segment = UISegmentedControl(items: items)
+		segment.selectedSegmentIndex = 0
+		segment.layer.cornerRadius = 10
+		segment.backgroundColor = .white
+		segment.tintColor = UIColor.Main.blue
+		segment.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
+		segment.translatesAutoresizingMaskIntoConstraints = false
+		return segment
 	}()
 
 	lazy var caloriesStack: UIStackView = {
@@ -109,12 +123,12 @@ class MacroResultsView: UIView {
 		closeButton.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
 		closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
 		
-		let contentStack = UIStackView(arrangedSubviews: [caloriesTitle, caloriesStack, macrosTitle, macrosStack, disclaimerTitle, disclaimerLabel])
+		let contentStack = UIStackView(arrangedSubviews: [macrosTitle, macroGoals, caloriesTitle, caloriesStack, macrosTitle, macrosStack, disclaimerTitle, disclaimerLabel])
 		addSubview(contentStack)
 		contentStack.translatesAutoresizingMaskIntoConstraints = false
 		contentStack.axis = .vertical
 		contentStack.distribution = .fillProportionally
-		contentStack.spacing = 30
+		contentStack.spacing = 20
 		
 		contentStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24).isActive = true
 		contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true

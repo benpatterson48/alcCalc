@@ -76,27 +76,27 @@ class MacrosVC: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0, green: 0.6745098039, blue: 0.9294117647, alpha: 1)
         button.setTitle("CALCULATE", for: .normal)
         button.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 22)
-        button.addTarget(self, action: #selector(calcBtnWasPressed), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(calcBtnWasPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    @objc func calcBtnWasPressed() {
-		if weightInputTextField.text == "" {
-			self.weightInputTextField.shake()
-			view.endEditing(true)
-			return
-		} else {
-			let weight = Int( weightInputTextField.text!)!
-			self.maintenanceCals = calc.calcMaintenanceCals(weight: weight, goalSpeed: bodyGoalSpeed ?? 0)
-			self.goalCals = calc.calcGoalCals(maintenanceCals: maintenanceCals ?? 0, bodyCompGoal: bodyGoal ?? 0)
-			self.protein = calc.calcProtein(weight: weight)
-			self.fat = calc.calcFats(goalCals: goalCals ?? 0)
-			self.carb = calc.calcCarbs(protein: protein ?? 0, fats: fat ?? 0, goalCals: goalCals ?? 0)
-			transitionToResults()
-		}
-    }
-    
+//    @objc func calcBtnWasPressed() {
+//		if weightInputTextField.text == "" {
+//			self.weightInputTextField.shake()
+//			view.endEditing(true)
+//			return
+//		} else {
+//			let weight = Int( weightInputTextField.text!)!
+//			self.maintenanceCals = calc.calculateRestingCalories(weight: weight, goalSpeed: bodyGoalSpeed ?? 0)
+//			self.goalCals = calc.calculateGoalCalories(maintenanceCals: maintenanceCals ?? 0, bodyCompGoal: bodyGoal ?? 0)
+//			self.protein = calc.calculateProtein(weight: weight)
+//			self.fat = calc.calculateFats(goalCals: goalCals ?? 0)
+//			self.carb = calc.calculateCarbs(protein: protein ?? 0, fats: fat ?? 0, goalCals: goalCals ?? 0)
+//			transitionToResults()
+//		}
+//    }
+	
     func transitionToResults() {
         let resultsVC = MacroResultsVC()
         resultsVC.initData(maintenanceResults: maintenanceCals!, goalResults: goalCals!, proteinResults: protein!, carbResults: carb!, fatResults: fat!)

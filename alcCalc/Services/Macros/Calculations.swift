@@ -12,12 +12,12 @@ class Calculations {
     
     static let instance = Calculations()
     
-    func calcProtein(weight: Int) -> Int {
+    func calculateProtein(weight: Int) -> Int {
         let protein = weight * 1
         return protein
     }
     
-    func calcCarbs(protein: Int, fats: Int, goalCals: Int) -> Int {
+    func calculateCarbs(protein: Int, fats: Int, goalCals: Int) -> Int {
         let proteinCals = protein * 4
         let fatCals = fats * 9
         let cals = proteinCals + fatCals
@@ -26,21 +26,31 @@ class Calculations {
         return carbs
     }
     
-    func calcFats(goalCals: Int) -> Int {
+    func calculateFats(goalCals: Int) -> Int {
         let fatCals = Double(goalCals) * 0.3
         let fats = fatCals / 9
         return Int(fats)
     }
     
-    func calcMaintenanceCals(weight: Int, goalSpeed: Int) -> Int {
-        let maintenanceCals = weight * goalSpeed
-        return maintenanceCals
+	func calculateRestingCalories(weight: Double, height: Double, age: Double, genderDouble: Double) -> Double {
+		return 10 * weight + 6.25 * height - 5 * age + genderDouble
     }
     
-    func calcGoalCals(maintenanceCals: Int, bodyCompGoal: Int) -> Int {
-        let goalCals = maintenanceCals + bodyCompGoal
-        return goalCals
+    func calculateTDEECalories(restingCalories: Double, activityMultiplier: Double) -> Double {
+        return restingCalories * activityMultiplier
     }
 
+	func calculateGoalCalories(tdeeCalories: Double, macroGoalsDoulbe: Double) -> Double {
+		return tdeeCalories + macroGoalsDoulbe
+	}
+	
+	func convertHeightToCentimeters(feet: Double, inches: Double) -> Double {
+		let inches = (feet * 12) + inches
+		return inches * 2.54 
+	}
+	
+	func convertWeightToKG(pounds: Double) -> Double {
+		return pounds / 2.2
+	}
     
 }
