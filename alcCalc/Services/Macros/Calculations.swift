@@ -41,5 +41,6 @@ class Calculations {
         let goalCals = maintenanceCals + bodyCompGoal
         return goalCals
     }
+
     
 }

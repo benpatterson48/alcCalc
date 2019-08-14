@@ -10,6 +10,10 @@
 		05959BCDF2FE6EB62AAB9B54 /* Pods_alcCalc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1CFA489D3303B49E74B6AB /* Pods_alcCalc.framework */; };
 		1D0CD8E1223187E0005D82B7 /* AlcoholVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */; };
 		1D0CD8E4223197EE005D82B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */; };
+		1D16D1E02302FAD3001F9AF2 /* AlcoholResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D1DF2302FAD3001F9AF2 /* AlcoholResultsView.swift */; };
+		1D16D1E22302FAED001F9AF2 /* AlcoholResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D1E12302FAED001F9AF2 /* AlcoholResults.swift */; };
+		1D16D1E423035A25001F9AF2 /* HorizontalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D1E323035A25001F9AF2 /* HorizontalStack.swift */; };
+		1D16D1E823039C7A001F9AF2 /* AlcCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D1E723039C7A001F9AF2 /* AlcCalculations.swift */; };
 		1D196D6222494F1F0095E6F2 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D6122494F1F0095E6F2 /* Devices.swift */; };
 		1D196D64224A787D0095E6F2 /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D63224A787D0095E6F2 /* LinksVC.swift */; };
 		1D196D66224A7AC40095E6F2 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D196D65224A7AC40095E6F2 /* Links.swift */; };
@@ -77,6 +81,10 @@
 /* Begin PBXFileReference section */
 		1D0CD8E0223187E0005D82B7 /* AlcoholVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholVC.swift; sourceTree = "<group>"; };
 		1D0CD8E3223197EE005D82B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1D16D1DF2302FAD3001F9AF2 /* AlcoholResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholResultsView.swift; sourceTree = "<group>"; };
+		1D16D1E12302FAED001F9AF2 /* AlcoholResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholResults.swift; sourceTree = "<group>"; };
+		1D16D1E323035A25001F9AF2 /* HorizontalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStack.swift; sourceTree = "<group>"; };
+		1D16D1E723039C7A001F9AF2 /* AlcCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcCalculations.swift; sourceTree = "<group>"; };
 		1D196D6122494F1F0095E6F2 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		1D196D63224A787D0095E6F2 /* LinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
 		1D196D65224A7AC40095E6F2 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 				1D8F204222FA304400AAA2BF /* Alcohol.swift */,
 				1D8F204422FA305E00AAA2BF /* Resources.swift */,
 				1DB6634C2302736900452455 /* MacroResults.swift */,
+				1D16D1E12302FAED001F9AF2 /* AlcoholResults.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -195,9 +204,35 @@
 		1D0CD8DF22318154005D82B7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1D70BA6D228B1626006DE7F3 /* Calculations.swift */,
+				1D16D1E623039C6A001F9AF2 /* Alcohol */,
+				1D16D1E523039C4E001F9AF2 /* Macros */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1D16D1DE2302FABC001F9AF2 /* Alcohol */ = {
+			isa = PBXGroup;
+			children = (
+				1D16D1DF2302FAD3001F9AF2 /* AlcoholResultsView.swift */,
+				1D16D1E323035A25001F9AF2 /* HorizontalStack.swift */,
+			);
+			path = Alcohol;
+			sourceTree = "<group>";
+		};
+		1D16D1E523039C4E001F9AF2 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				1D70BA6D228B1626006DE7F3 /* Calculations.swift */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		1D16D1E623039C6A001F9AF2 /* Alcohol */ = {
+			isa = PBXGroup;
+			children = (
+				1D16D1E723039C7A001F9AF2 /* AlcCalculations.swift */,
+			);
+			path = Alcohol;
 			sourceTree = "<group>";
 		};
 		1D4A9F7A2238098300DC98E2 /* Resources */ = {
@@ -295,6 +330,7 @@
 		1DB6634E2302738A00452455 /* Results */ = {
 			isa = PBXGroup;
 			children = (
+				1D16D1DE2302FABC001F9AF2 /* Alcohol */,
 				1DB6635523027CED00452455 /* Macros */,
 			);
 			path = Results;
@@ -539,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D16D1E22302FAED001F9AF2 /* AlcoholResults.swift in Sources */,
 				1D8F204D22FA8FF800AAA2BF /* CustomTextFieldView.swift in Sources */,
 				1D0CD8E1223187E0005D82B7 /* AlcoholVC.swift in Sources */,
 				1D8F204122FA302F00AAA2BF /* Macros.swift in Sources */,
@@ -546,6 +583,7 @@
 				1D236E9D223C2FFA00F73F39 /* Double.swift in Sources */,
 				1D196D6A224ABAC50095E6F2 /* ViewController.swift in Sources */,
 				1D3FDD9A2239E799008C3C02 /* TextField.swift in Sources */,
+				1D16D1E423035A25001F9AF2 /* HorizontalStack.swift in Sources */,
 				1DBB3A5522433D8000E1D786 /* ABVInputView.swift in Sources */,
 				1D196D6222494F1F0095E6F2 /* Devices.swift in Sources */,
 				1D2DA67322FC62000007D281 /* CalorieMethodView.swift in Sources */,
@@ -565,8 +603,10 @@
 				1D8F205322FA98BD00AAA2BF /* ActivityCell.swift in Sources */,
 				1DC9B37522FB1BB0007C4BE2 /* ActivityLevelCollectionView.swift in Sources */,
 				1DB6635223027B2400452455 /* SubHeaderLabel.swift in Sources */,
+				1D16D1E823039C7A001F9AF2 /* AlcCalculations.swift in Sources */,
 				1DFB66B0228D1465003CB9BB /* ResultsView.swift in Sources */,
 				1DB6635423027CE800452455 /* ResultLabel.swift in Sources */,
+				1D16D1E02302FAD3001F9AF2 /* AlcoholResultsView.swift in Sources */,
 				1DA88FD9223754420047C7F8 /* KeyboardBoundView.swift in Sources */,
 				1D70BA6E228B1626006DE7F3 /* Calculations.swift in Sources */,
 				1DB66357230280AD00452455 /* ResultAndTitleStackView.swift in Sources */,

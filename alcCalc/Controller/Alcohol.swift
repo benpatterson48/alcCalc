@@ -30,12 +30,47 @@ class Alcohol: UIViewController {
 		
 		let segment = alcoholView.methodSwitch
 		segment.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
+		alcoholView.calculateButton.addTarget(self, action: #selector(calculateButtonWasPressed), for: .touchUpInside)
+		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1300)
 		scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+	}
+	
+	@objc func calculateButtonWasPressed() {
+		let alcoholResults = AlcoholResults()
+		alcoholResults.modalPresentationStyle = .overCurrentContext
+		if caloriesSelected == true {
+			if alcoholView.calorieView.calorieInputView.textField.text != "" {
+				view.endEditing(true)
+				let calories = Double(alcoholView.calorieView.calorieInputView.textField.text!)
+				alcoholResults.initDataForCalories(caloriesSent: calories ?? 0)
+				present(alcoholResults, animated: true, completion: nil)
+			} else {
+				view.endEditing(true)
+				showIncompleteInputsAlert()
+			}
+		} else if abvSelected == true {
+			if alcoholView.abvView.abvPercentInputView.textField.text != "" && alcoholView.abvView.ouncesInputView.textField.text != "" {
+				view.endEditing(true)
+				let ounces = Double(alcoholView.abvView.ouncesInputView.textField.text!)
+				let percent = Double(alcoholView.abvView.abvPercentInputView.textField.text!)
+				alcoholResults.initDataForABV(ounces: ounces ?? 0, percent: percent ?? 0)
+				present(alcoholResults, animated: true, completion: nil)
+			} else {
+				view.endEditing(true)
+				showIncompleteInputsAlert()
+			}
+		}
+	}
+	
+	func showIncompleteInputsAlert() {
+		let alert = UIAlertController(title: "Incomplete Fields", message: "Please complete the form before trying to calculate", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+		present(alert, animated: true, completion: nil)
 	}
 	
 	@objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {

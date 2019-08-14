@@ -14,7 +14,7 @@ class MacroResults: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
+		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
 		addViews()
 		addResultAmounts()
 	}
@@ -23,8 +23,14 @@ class MacroResults: UIViewController {
 		view.addSubview(contentView)
 		contentView.translatesAutoresizingMaskIntoConstraints = false
 		addConstraints()
+		
+		contentView.closeButton.addTarget(self, action: #selector(closeOutModalButtonPressed), for: .touchUpInside)
 	}
 	
+	@objc func closeOutModalButtonPressed() {
+		dismiss(animated: true, completion: nil)
+	}
+
 	fileprivate func addResultAmounts() {
 		contentView.tdeeResult.text = "2,300"
 		contentView.goalResult.text = "1,700"
@@ -40,7 +46,5 @@ class MacroResults: UIViewController {
 		contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 		contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 	}
-	
-	
-	
+
 }
