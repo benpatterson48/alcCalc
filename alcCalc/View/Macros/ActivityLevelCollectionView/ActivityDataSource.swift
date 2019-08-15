@@ -28,6 +28,10 @@ class ActivityDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDa
 		return cell
 	}
 	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		activityIndicatorSelected = activityLevels[indexPath.item].multiplier
+	}
+	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: 225, height: 125)
 	}

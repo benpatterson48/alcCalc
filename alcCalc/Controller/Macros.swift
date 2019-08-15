@@ -8,10 +8,14 @@
 
 import UIKit
 
+var activityIndicatorSelected: Double = 1.2 
 class Macros: UIViewController, UIScrollViewDelegate {
 	
 	var scrollView = UIScrollView()
 	var contentView = UIView()
+	
+	var maleSelected: Bool = true
+	var femaleSelected: Bool = false
 	
 	var topView = UIView()
 	let macrosView = MacrosContentView()
@@ -25,13 +29,34 @@ class Macros: UIViewController, UIScrollViewDelegate {
 		
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
+		macrosView.genderSwitch.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
 		macrosView.calculateButton.addTarget(self, action: #selector(calculateButtonWasPressed), for: .touchUpInside)
-    }
+	}
 	
 	@objc func calculateButtonWasPressed() {
 		let results = MacroResults()
 		results.modalPresentationStyle = .overCurrentContext
+		let age = Double(macrosView.ageInputView.textField.text!)
+		let weight = Double(macrosView.weightInputView.textField.text!)
+		let heightFeet = Double(macrosView.heightFeetInputView.textField.text!)
+		let heghtInches = Double(macrosView.heightInchesInputView.textField.text!)
+		let activity = activityIndicatorSelected
+		results.initData(age: age ?? 0, weightPounds: weight ?? 0, heightFeet: heightFeet ?? 0, heightInches: heghtInches ?? 0, maleSelected: maleSelected, activityMultiplier: activity)
 		present(results, animated: true, completion: nil)
+	}
+	
+	@objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {
+		switch sender.selectedSegmentIndex {
+		case 0:
+			maleSelected = true
+			femaleSelected = false
+		case 1:
+			maleSelected = false
+			femaleSelected = true
+		default:
+			maleSelected = true
+			femaleSelected = false
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

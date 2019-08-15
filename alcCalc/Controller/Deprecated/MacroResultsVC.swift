@@ -10,7 +10,7 @@ import UIKit
 
 class MacroResultsVC: UIViewController {
     
-    var resultsView = ResultsView()
+    var resultsView = MacroResultsView()
     
     var maintenanceCals: Int?
     var goalCals: Int?
@@ -24,7 +24,7 @@ class MacroResultsVC: UIViewController {
         protein = proteinResults
         carb = carbResults
         fat = fatResults
-        setupResults()
+//        setupResults()
     }
 
     override func viewDidLoad() {
@@ -97,13 +97,13 @@ class MacroResultsVC: UIViewController {
         addContentViewConstraints()
     }
     
-    func setupResults() {
-        resultsView.maintenanceResultLbl.text = "\(maintenanceCals ?? 0)"
-        resultsView.goalResultLbl.text = "\(goalCals ?? 0)"
-        resultsView.proteinResultsLbl.text = "\(protein ?? 0)"
-        resultsView.carbsResultsLbl.text = "\(carb ?? 0)"
-        resultsView.fatsResultsLbl.text = "\(fat ?? 0)"
-    }
+//    func setupResults() {
+//        resultsView.maintenanceResultLbl.text = "\(maintenanceCals ?? 0)"
+//        resultsView.goalResultLbl.text = "\(goalCals ?? 0)"
+//        resultsView.proteinResultsLbl.text = "\(protein ?? 0)"
+//        resultsView.carbsResultsLbl.text = "\(carb ?? 0)"
+//        resultsView.fatsResultsLbl.text = "\(fat ?? 0)"
+//    }
     
     func addContentViewConstraints() {
         contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
