@@ -56,7 +56,6 @@ class TitleWithInfoButton: UIView {
 		let stack = UIStackView(arrangedSubviews: [title, infoButton])
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .horizontal
-		stack.spacing = 5
 		stack.alignment = .top
 		stack.distribution = .fillProportionally
 		

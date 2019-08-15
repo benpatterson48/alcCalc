@@ -36,13 +36,23 @@ class Macros: UIViewController, UIScrollViewDelegate {
 	@objc func calculateButtonWasPressed() {
 		let results = MacroResults()
 		results.modalPresentationStyle = .overCurrentContext
-		let age = Double(macrosView.ageInputView.textField.text!)
-		let weight = Double(macrosView.weightInputView.textField.text!)
-		let heightFeet = Double(macrosView.heightFeetInputView.textField.text!)
-		let heghtInches = Double(macrosView.heightInchesInputView.textField.text!)
-		let activity = activityIndicatorSelected
-		results.initData(age: age ?? 0, weightPounds: weight ?? 0, heightFeet: heightFeet ?? 0, heightInches: heghtInches ?? 0, maleSelected: maleSelected, activityMultiplier: activity)
-		present(results, animated: true, completion: nil)
+		if macrosView.ageInputView.textField.text != "" && macrosView.weightInputView.textField.text != "" && macrosView.heightFeetInputView.textField.text != "" && macrosView.heightInchesInputView.textField.text != "" {
+			let age = Double(macrosView.ageInputView.textField.text!)
+			let weight = Double(macrosView.weightInputView.textField.text!)
+			let heightFeet = Double(macrosView.heightFeetInputView.textField.text!)
+			let heghtInches = Double(macrosView.heightInchesInputView.textField.text!)
+			let activity = activityIndicatorSelected
+			results.initData(age: age ?? 0, weightPounds: weight ?? 0, heightFeet: heightFeet ?? 0, heightInches: heghtInches ?? 0, maleSelected: maleSelected, activityMultiplier: activity)
+			present(results, animated: true, completion: nil)
+		} else {
+			showIncompleteInputsAlert()
+		}
+	}
+	
+	func showIncompleteInputsAlert() {
+		let alert = UIAlertController(title: "Incomplete Fields", message: "Please complete the form before trying to calculate", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+		present(alert, animated: true, completion: nil)
 	}
 	
 	@objc func segmentedControllerIndexChanged(_ sender: UISegmentedControl) {

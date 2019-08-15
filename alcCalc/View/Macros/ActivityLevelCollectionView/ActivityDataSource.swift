@@ -30,6 +30,7 @@ class ActivityDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDa
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		activityIndicatorSelected = activityLevels[indexPath.item].multiplier
+		collectionView.selectItem(at: IndexPath(item: indexPath.item, section: 0), animated: true, scrollPosition: .centeredHorizontally)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

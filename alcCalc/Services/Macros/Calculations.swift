@@ -12,9 +12,14 @@ class Calculations {
 	
 	static let instance = Calculations()
 	
-	func calculateProtein(weight: Double) -> Double {
-		let protein = weight * 1
-		return protein
+	func calculateProtein(weight: Double, deficit: Bool) -> Double {
+		if deficit == true {
+			let protein = weight * 1
+			return protein
+		} else {
+			let protein = weight * 0.82
+			return protein
+		}
 	}
 	
 	func calculateCarbs(protein: Double, fats: Double, goalCals: Double) -> Double {
@@ -56,6 +61,10 @@ class Calculations {
 	func convertWeightToKG(pounds: Double) -> Double {
 		let kg = pounds / 2.2
 		return kg
+	}
+	
+	func calculateDeficitCalories(pounds: Double) -> Double {
+		return (pounds * 0.005) * (3500 / 7)
 	}
 	
 }

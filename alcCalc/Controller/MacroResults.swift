@@ -52,11 +52,11 @@ class MacroResults: UIViewController {
 		}
 		
 		if deficitSelected == true {
-			self.macroGoalsDouble = -500
+			self.macroGoalsDouble = calculate.calculateDeficitCalories(pounds: weightPounds)
 		} else if maintenanceSelected == true {
 			self.macroGoalsDouble = 0
 		} else {
-			self.macroGoalsDouble = 500
+			self.macroGoalsDouble = 400
 		}
 		
 		updateValues()
@@ -64,18 +64,18 @@ class MacroResults: UIViewController {
 	
 	func updateValues() {
 		if deficitSelected == true {
-			self.macroGoalsDouble = -500
+			self.macroGoalsDouble = calculate.calculateDeficitCalories(pounds: weightPounds)
 		} else if maintenanceSelected == true {
 			self.macroGoalsDouble = 0
 		} else {
-			self.macroGoalsDouble = 500
+			self.macroGoalsDouble = 400
 		}
 		
 		let resting = calculate.calculateRestingCalories(weight: weightKG, height: heightCentimeters, age: age, genderDouble: genderDouble)
 		let tdee = calculate.calculateTDEECalories(restingCalories: resting, activityMultiplier: activityMultiplier)
 		let goal = calculate.calculateGoalCalories(tdeeCalories: tdee, macroGoalsDoulbe: macroGoalsDouble)
 		
-		let protein = calculate.calculateProtein(weight: weightPounds)
+		let protein = calculate.calculateProtein(weight: weightPounds, deficit: deficitSelected)
 		let fat = calculate.calculateFats(goalCals: goal)
 		let carb = calculate.calculateCarbs(protein: protein, fats: fat, goalCals: goal)
 		
