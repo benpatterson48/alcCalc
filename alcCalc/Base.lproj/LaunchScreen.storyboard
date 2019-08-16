@@ -20,7 +20,20 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-kR-0lW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alccalc-icon" translatesAutoresizingMaskIntoConstraints="NO" id="6fc-7f-S9j">
+                                        <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="jma-JE-3ID"/>
+                                            <constraint firstAttribute="height" constant="250" id="nbB-rj-O4C"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6fc-7f-S9j" firstAttribute="centerY" secondItem="fcC-kR-0lW" secondAttribute="centerY" id="i3k-V6-HhK"/>
+                                    <constraint firstItem="6fc-7f-S9j" firstAttribute="centerX" secondItem="fcC-kR-0lW" secondAttribute="centerX" id="iOB-Ug-QrC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,4 +51,7 @@
             <point key="canvasLocation" x="-358" y="360"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="alccalc-icon" width="1670" height="1980"/>
+    </resources>
 </document>
