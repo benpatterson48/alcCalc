@@ -27,6 +27,7 @@ class ABVMethodView: UIView {
 		super.init(frame: frame)
 		addViews()
 		backgroundColor = .white
+		abvMethodTitle.title.numberOfLines = 0
 	}
 	
 	func addViews() {

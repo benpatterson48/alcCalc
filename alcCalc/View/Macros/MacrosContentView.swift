@@ -30,9 +30,20 @@ class MacrosContentView: UIView {
 		title.text = "Estimate Macros"
 		title.textColor = UIColor.Main.text
 		title.textAlignment = .left
+		title.adjustsFontSizeToFitWidth = true
 		title.font = UIFont.boldSystemFont(ofSize: 30)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
+	}()
+	
+	let infoButton: UIButton = {
+		let info = UIButton()
+		info.contentMode = .scaleAspectFit
+		info.translatesAutoresizingMaskIntoConstraints = false
+		info.setBackgroundImage(UIImage(named: "info"), for: .normal)
+		info.widthAnchor.constraint(equalToConstant: 25).isActive = true
+		info.heightAnchor.constraint(equalToConstant: 25).isActive = true
+		return info
 	}()
 	
 	let genderSwitch: UISegmentedControl = {
@@ -46,6 +57,14 @@ class MacrosContentView: UIView {
 		segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
 		segment.translatesAutoresizingMaskIntoConstraints = false
 		return segment
+	}()
+	
+	lazy var titleStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.title, self.infoButton])
+		stack.axis = .horizontal
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
 	}()
 	
 	lazy var heightStack: UIStackView = {
@@ -129,7 +148,7 @@ class MacrosContentView: UIView {
 	}
 	
 	func createMajorStackView() {
-		let majorStackView = UIStackView(arrangedSubviews: [title, genderStackView, heightAgeHorizontalStack, weightStackView, activityStackView, calculateButton])
+		let majorStackView = UIStackView(arrangedSubviews: [titleStackView, genderStackView, heightAgeHorizontalStack, weightStackView, activityStackView, calculateButton])
 		majorStackView.translatesAutoresizingMaskIntoConstraints = false
 		majorStackView.axis = .vertical
 		majorStackView.distribution = .fillProportionally

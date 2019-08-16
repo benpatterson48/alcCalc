@@ -164,3 +164,4 @@ class ResultsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

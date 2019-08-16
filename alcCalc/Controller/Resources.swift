@@ -9,7 +9,7 @@
 import UIKit
 
 class Resources: UIViewController {
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
  		view.backgroundColor = .green

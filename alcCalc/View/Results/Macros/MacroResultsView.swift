@@ -128,7 +128,11 @@ class MacroResultsView: UIView {
 		contentStack.translatesAutoresizingMaskIntoConstraints = false
 		contentStack.axis = .vertical
 		contentStack.distribution = .fillProportionally
-		contentStack.spacing = 20
+		if UIDevice.current.name == "iPhone SE" {
+			contentStack.spacing = 10
+		} else {
+			contentStack.spacing = 20
+		}
 		
 		contentStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24).isActive = true
 		contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true

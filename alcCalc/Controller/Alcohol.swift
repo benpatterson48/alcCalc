@@ -21,9 +21,13 @@ class Alcohol: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		addViews()
+		setDoneOnKeyboard()
 		view.bindToKeyboard()
 		view.backgroundColor = .white
 		topView.backgroundColor = .white
+		
+		alcoholView.abvView.ouncesInputView.textField.keyboardType = .decimalPad
+		alcoholView.abvView.abvPercentInputView.textField.keyboardType = .decimalPad
 		
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
@@ -31,7 +35,7 @@ class Alcohol: UIViewController {
 		let segment = alcoholView.methodSwitch
 		segment.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
 		alcoholView.calculateButton.addTarget(self, action: #selector(calculateButtonWasPressed), for: .touchUpInside)
-		
+		alcoholView.infoButton.addTarget(self, action: #selector(showPopupView), for: .touchUpInside)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +43,34 @@ class Alcohol: UIViewController {
 		scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1300)
 		scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
 	}
+	
+	func setDoneOnKeyboard() {
+		let calories = alcoholView.calorieView.calorieInputView.textField
+		let ounces = alcoholView.abvView.ouncesInputView.textField
+		let percent = alcoholView.abvView.abvPercentInputView.textField
+		
+		let keyboardToolbar = UIToolbar()
+		keyboardToolbar.sizeToFit()
+		let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+		keyboardToolbar.items = [flexBarButton, doneBarButton]
+		calories.inputAccessoryView = keyboardToolbar
+		ounces.inputAccessoryView = keyboardToolbar
+		percent.inputAccessoryView = keyboardToolbar
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
+	
+	@objc func showPopupView() {
+		let view = AlcoholPopupView()
+		let popup = PopupVC(viewfor: view)
+		popup.modalPresentationStyle = .overCurrentContext
+		popup.modalTransitionStyle = .crossDissolve
+		present(popup, animated: true, completion: nil)
+	}
+	
 	
 	@objc func calculateButtonWasPressed() {
 		let alcoholResults = AlcoholResults()
@@ -134,7 +166,7 @@ class Alcohol: UIViewController {
 		contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 		contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
 		
-		alcoholView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 24).isActive = true
+		alcoholView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
 		alcoholView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
 		alcoholView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
 		alcoholView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true

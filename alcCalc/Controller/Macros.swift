@@ -23,14 +23,44 @@ class Macros: UIViewController, UIScrollViewDelegate {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		addViews()
-		view.bindToKeyboard()
+		setDoneOnKeyboard()
 		view.backgroundColor = .white
-		topView.backgroundColor = .white 
+		topView.backgroundColor = .white
 		
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
 		macrosView.genderSwitch.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
 		macrosView.calculateButton.addTarget(self, action: #selector(calculateButtonWasPressed), for: .touchUpInside)
+		macrosView.infoButton.addTarget(self, action: #selector(showPopupView), for: .touchUpInside)
+	}
+	
+	func setDoneOnKeyboard() {
+		let feet = macrosView.heightFeetInputView.textField
+		let inches = macrosView.heightInchesInputView.textField
+		let age = macrosView.ageInputView.textField
+		let weight = macrosView.weightInputView.textField
+		
+		let keyboardToolbar = UIToolbar()
+		keyboardToolbar.sizeToFit()
+		let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+		keyboardToolbar.items = [flexBarButton, doneBarButton]
+		feet.inputAccessoryView = keyboardToolbar
+		inches.inputAccessoryView = keyboardToolbar
+		age.inputAccessoryView = keyboardToolbar
+		weight.inputAccessoryView = keyboardToolbar
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
+	
+	@objc func showPopupView() {
+		let view = MacroPopupView()
+		let popup = PopupVC(viewfor: view)
+		popup.modalPresentationStyle = .overCurrentContext
+		popup.modalTransitionStyle = .crossDissolve
+		present(popup, animated: true, completion: nil)
 	}
 	
 	@objc func calculateButtonWasPressed() {
@@ -102,7 +132,7 @@ class Macros: UIViewController, UIScrollViewDelegate {
 		contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 		contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
 		
-		macrosView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 24).isActive = true
+		macrosView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
 		macrosView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
 		macrosView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
 		macrosView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true

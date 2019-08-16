@@ -11,7 +11,7 @@ import UIKit
 class CalorieMethodView: UIView {
 	
 	let calorieMethodTitle = TitleWithInfoButton(titleText: "Enter beverage calories:")
-	let calorieInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 100, weight: .medium), placeholder: "0 cals")
+	let calorieInputView = CustomTextFieldView(font: UIFont.systemFont(ofSize: 80, weight: .medium), placeholder: "cals")
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)

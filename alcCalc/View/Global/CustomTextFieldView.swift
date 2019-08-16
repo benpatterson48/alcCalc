@@ -9,12 +9,14 @@
 import UIKit
 
 class CustomTextFieldView: UIView {
-	
+		
 	let textField: UITextField = {
 		let textField = UITextField()
 		textField.borderStyle = .none
 		textField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
 		textField.textAlignment = .center
+		textField.adjustsFontSizeToFitWidth = true
+		textField.keyboardType = .numberPad
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()

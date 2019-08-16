@@ -25,9 +25,28 @@ class AlcoholContentView: UIView {
 		title.text = "Alcohol Conversion"
 		title.textColor = UIColor.Main.text
 		title.textAlignment = .left
+		title.adjustsFontSizeToFitWidth = true 
 		title.font = UIFont.boldSystemFont(ofSize: 30)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
+	}()
+	
+	let infoButton: UIButton = {
+		let info = UIButton()
+		info.contentMode = .scaleAspectFit
+		info.translatesAutoresizingMaskIntoConstraints = false
+		info.setBackgroundImage(UIImage(named: "info"), for: .normal)
+		info.widthAnchor.constraint(equalToConstant: 25).isActive = true
+		info.heightAnchor.constraint(equalToConstant: 25).isActive = true
+		return info
+	}()
+	
+	lazy var titleStackView: UIStackView = {
+		let stack = UIStackView(arrangedSubviews: [self.title, self.infoButton])
+		stack.axis = .horizontal
+		stack.distribution = .fillProportionally
+		stack.translatesAutoresizingMaskIntoConstraints = false
+		return stack
 	}()
 	
 	let methodSwitch: UISegmentedControl = {
@@ -82,7 +101,7 @@ class AlcoholContentView: UIView {
 	
 	func addViews() {
 		self.methodView = calorieView
-		let stack = UIStackView(arrangedSubviews: [title, self.methodSwitchStack, self.methofExplanationStack, calorieView, abvView, calculateButton])
+		let stack = UIStackView(arrangedSubviews: [titleStackView, self.methodSwitchStack, self.methofExplanationStack, calorieView, abvView, calculateButton])
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .vertical
 		stack.distribution = .fillProportionally

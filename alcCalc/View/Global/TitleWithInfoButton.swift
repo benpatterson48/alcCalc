@@ -53,7 +53,7 @@ class TitleWithInfoButton: UIView {
 	}
 	
 	func createStackView() {
-		let stack = UIStackView(arrangedSubviews: [title, infoButton])
+		let stack = UIStackView(arrangedSubviews: [title])
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .horizontal
 		stack.alignment = .top
