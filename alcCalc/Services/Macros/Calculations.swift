@@ -64,7 +64,7 @@ class Calculations {
 	}
 	
 	func calculateDeficitCalories(pounds: Double) -> Double {
-		return (pounds * 0.005) * (3500 / 7)
+		return -(pounds * 0.005) * (3500 / 7)
 	}
 	
 }
