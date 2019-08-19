@@ -29,6 +29,8 @@ Fat Macros = Fat Calories / 9
 
 Equation for Finding Carbs:
 Carbs = (Goal Cals - Protein Cals + Fat Cals) / 4
+
+There are 4 calories for every gram of carbohydrate/ protein and 9 calories for every gram of fat.
 """
 )
 	

@@ -81,7 +81,7 @@ class MacroResultsView: UIView {
 	var disclaimerLabel: UILabel = {
 		let lbl = UILabel()
 		lbl.text = """
-		There are 4 calories for every gram of carbohydrate/ protein and 9 calories for every gram of fat.
+		Protein can be adjusted to 1g per pound of body weight if you're in a surplus/ maintenance, adjust fats/ carbs appropriately.
 		
 		These macros are an estimation, please seek a fitness coach or nutritionist help if you're unsure about your results or do not understand what they mean
 		"""
@@ -128,7 +128,7 @@ class MacroResultsView: UIView {
 		contentStack.translatesAutoresizingMaskIntoConstraints = false
 		contentStack.axis = .vertical
 		contentStack.distribution = .fillProportionally
-		if UIDevice.current.name == "iPhone SE" {
+		if UIDevice.current.modelName == "iPhone SE" {
 			contentStack.spacing = 10
 		} else {
 			contentStack.spacing = 20

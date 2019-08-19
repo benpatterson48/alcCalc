@@ -16,6 +16,8 @@ class Alcohol: UIViewController {
 	var contentView = UIView()
 	
 	var topView = UIView()
+	var tabHeight = CGFloat()
+	var segment = UISegmentedControl()
 	let alcoholView = AlcoholContentView()
 	
 	override func viewDidLoad() {
@@ -29,10 +31,12 @@ class Alcohol: UIViewController {
 		alcoholView.abvView.ouncesInputView.textField.keyboardType = .decimalPad
 		alcoholView.abvView.abvPercentInputView.textField.keyboardType = .decimalPad
 		
+		self.tabHeight = tabBarController?.tabBar.bounds.size.height ?? 0
+		
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
 		
-		let segment = alcoholView.methodSwitch
+		self.segment = alcoholView.methodSwitch
 		segment.addTarget(self, action: #selector(segmentedControllerIndexChanged(_:)), for: .valueChanged)
 		alcoholView.calculateButton.addTarget(self, action: #selector(calculateButtonWasPressed), for: .touchUpInside)
 		alcoholView.infoButton.addTarget(self, action: #selector(showPopupView), for: .touchUpInside)
@@ -40,8 +44,9 @@ class Alcohol: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1300)
-		scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+		segment.selectedSegmentIndex = 0
+		scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.contentView.frame.height)
+		scrollView.frame = CGRect(x: 0, y: 24, width: self.view.frame.width, height: (self.view.frame.height - tabHeight) - 24)
 	}
 	
 	func setDoneOnKeyboard() {
@@ -70,7 +75,6 @@ class Alcohol: UIViewController {
 		popup.modalTransitionStyle = .crossDissolve
 		present(popup, animated: true, completion: nil)
 	}
-	
 	
 	@objc func calculateButtonWasPressed() {
 		let alcoholResults = AlcoholResults()
@@ -157,7 +161,7 @@ class Alcohol: UIViewController {
 		topView.bottomAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
 		
 		scrollView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
-		scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 		scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		
@@ -166,10 +170,10 @@ class Alcohol: UIViewController {
 		contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 		contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
 		
-		alcoholView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
+		alcoholView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 32).isActive = true
 		alcoholView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
 		alcoholView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
-		alcoholView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+		alcoholView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
 	}
 	
 }

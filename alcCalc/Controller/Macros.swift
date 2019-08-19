@@ -17,15 +17,19 @@ class Macros: UIViewController, UIScrollViewDelegate {
 	var maleSelected: Bool = true
 	var femaleSelected: Bool = false
 	
+	var tabHeight = CGFloat()
+	
 	var topView = UIView()
 	let macrosView = MacrosContentView()
-
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		addViews()
 		setDoneOnKeyboard()
 		view.backgroundColor = .white
 		topView.backgroundColor = .white
+		
+		self.tabHeight = tabBarController?.tabBar.bounds.size.height ?? 0
 		
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
@@ -101,9 +105,8 @@ class Macros: UIViewController, UIScrollViewDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		
-		scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1300)
-		scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+		scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.contentView.frame.height)
+		scrollView.frame = CGRect(x: 0, y: 24, width: self.view.frame.width, height: (self.view.frame.height - tabHeight) - 24)
 	}
 
 	fileprivate func addViews() {
@@ -123,7 +126,7 @@ class Macros: UIViewController, UIScrollViewDelegate {
 		topView.bottomAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
 		
 		scrollView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
-		scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 		scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		
@@ -132,10 +135,10 @@ class Macros: UIViewController, UIScrollViewDelegate {
 		contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 		contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
 		
-		macrosView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
+		macrosView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 32).isActive = true
 		macrosView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
 		macrosView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
-		macrosView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+		macrosView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
 	}
 	
 }

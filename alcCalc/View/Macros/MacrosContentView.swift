@@ -153,7 +153,7 @@ class MacrosContentView: UIView {
 		majorStackView.axis = .vertical
 		majorStackView.distribution = .fillProportionally
 		majorStackView.alignment = .fill
-		majorStackView.spacing = 40
+		majorStackView.spacing = 50
 		
 		addSubview(majorStackView)
 		majorStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true

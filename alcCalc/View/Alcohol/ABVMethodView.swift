@@ -35,7 +35,7 @@ class ABVMethodView: UIView {
 		let abvStack = UIStackView(arrangedSubviews: [abvMethodTitle, abvInputStack])
 		abvStack.translatesAutoresizingMaskIntoConstraints = false
 		abvStack.axis = .vertical
-		abvStack.spacing = 70
+		abvStack.spacing = 50
 		abvStack.distribution = .fillProportionally
 		abvStack.alignment = .fill
 		
