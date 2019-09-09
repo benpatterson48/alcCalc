@@ -32,6 +32,22 @@ class MacroResults: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
 		addViews()
+		addButtonTargets()
+	}
+	
+	func addButtonTargets() {
+		contentView.ctaButton.addTarget(self, action: #selector(ctaButtonWasClicked), for: .touchUpInside)
+	}
+	
+	@objc func ctaButtonWasClicked() {
+		if let url = URL(string: "https://flexibledietinglifestyle.com/the-perfect-macro-calculator/") {
+			UIApplication.shared.open(url, options: [:])
+		} else {
+			let alert = UIAlertController(title: "Error", message: "Sorry, we couldn't open this link right now, please try again later", preferredStyle: .alert)
+			let dismiss = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+			alert.addAction(dismiss)
+			present(alert, animated: true, completion: nil)
+		}
 	}
 	
 	func initData(age: Double, weightPounds: Double, heightFeet: Double, heightInches: Double, maleSelected: Bool, activityMultiplier: Double) {

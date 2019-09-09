@@ -82,8 +82,6 @@ class MacroResultsView: UIView {
 		let lbl = UILabel()
 		lbl.text = """
 		Protein can be adjusted to 1g per pound of body weight if you're in a surplus/ maintenance, adjust fats/ carbs appropriately.
-		
-		These macros are an estimation, please seek a fitness coach or nutritionist help if you're unsure about your results or do not understand what they mean
 		"""
 		lbl.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
 		lbl.numberOfLines = 0
@@ -91,6 +89,17 @@ class MacroResultsView: UIView {
 		lbl.font = UIFont.italicSystemFont(ofSize: 12)
 		lbl.translatesAutoresizingMaskIntoConstraints = false
 		return lbl
+	}()
+	
+	var ctaButton: UIButton = {
+		let button = UIButton()
+		button.setTitleColor(.blue, for: .normal)
+		button.titleLabel?.textAlignment = .center
+		button.titleLabel?.adjustsFontSizeToFitWidth = true
+		button.setTitle("For an Example, Click Here!", for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
 	}()
 	
 	let titleLabel: UILabel = {
@@ -123,12 +132,12 @@ class MacroResultsView: UIView {
 		closeButton.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
 		closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
 		
-		let contentStack = UIStackView(arrangedSubviews: [macrosTitle, macroGoals, caloriesTitle, caloriesStack, macrosTitle, macrosStack, disclaimerTitle, disclaimerLabel])
+		let contentStack = UIStackView(arrangedSubviews: [macrosTitle, macroGoals, caloriesTitle, caloriesStack, macrosTitle, macrosStack, disclaimerTitle, disclaimerLabel, ctaButton])
 		addSubview(contentStack)
 		contentStack.translatesAutoresizingMaskIntoConstraints = false
 		contentStack.axis = .vertical
 		contentStack.distribution = .fillProportionally
-		if UIDevice.current.modelName == "iPhone SE" {
+		if UIDevice.current.modelName == "iPhone SE" || UIDevice.current.modelName == "iPhone 5" || UIDevice.current.modelName == "iPhone 5s" {
 			contentStack.spacing = 10
 		} else {
 			contentStack.spacing = 20
