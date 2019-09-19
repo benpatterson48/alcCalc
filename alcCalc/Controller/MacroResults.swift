@@ -91,15 +91,17 @@ class MacroResults: UIViewController {
 		let tdee = calculate.calculateTDEECalories(restingCalories: resting, activityMultiplier: activityMultiplier)
 		let goal = calculate.calculateGoalCalories(tdeeCalories: tdee, macroGoalsDoulbe: macroGoalsDouble)
 		
+		//add male selected to protein calc check
 		let protein = calculate.calculateProtein(weight: weightPounds, deficit: deficitSelected)
+		let adjustedProtein = calculate.checkMaxProteinLimimts(protein: protein, maleSelected: maleSelected)
 		let fat = calculate.calculateFats(goalCals: goal)
-		let carb = calculate.calculateCarbs(protein: protein, fats: fat, goalCals: goal)
+		let carb = calculate.calculateCarbs(protein: adjustedProtein, fats: fat, goalCals: goal)
 		
 		contentView.tdeeResult.text = String(Int(tdee))
 		contentView.goalResult.text = String(Int(goal))
 		contentView.restingResult.text = String(Int(resting))
 		
-		contentView.proteinResult.text = String(Int(protein))
+		contentView.proteinResult.text = String(Int(adjustedProtein))
 		contentView.carbResult.text = String(Int(carb))
 		contentView.fatResult.text = String(Int(fat))
 	}

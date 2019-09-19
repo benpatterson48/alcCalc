@@ -50,7 +50,7 @@ class MacroResultsView: UIView {
 	}()
 	
 	let macroGoals: UISegmentedControl = {
-		let items = ["Deficit", "Maintenace", "Surplus"]
+		let items = ["Deficit", "Maintenance", "Surplus"]
 		let segment = UISegmentedControl(items: items)
 		segment.selectedSegmentIndex = 0
 		segment.layer.cornerRadius = 10

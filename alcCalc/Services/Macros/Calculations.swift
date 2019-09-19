@@ -12,6 +12,24 @@ class Calculations {
 	
 	static let instance = Calculations()
 	
+	func checkMaxProteinLimimts(protein: Double, maleSelected: Bool) -> Double {
+		if maleSelected == true {
+			let max: Double = 225
+			if protein > max {
+				return max
+			} else {
+				return protein
+			}
+		} else {
+			let max: Double = 180
+			if protein > max {
+				return max
+			} else {
+				return protein
+			}
+		}
+	}
+	
 	func calculateProtein(weight: Double, deficit: Bool) -> Double {
 		if deficit == true {
 			let protein = weight * 1
