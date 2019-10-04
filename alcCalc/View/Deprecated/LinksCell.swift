@@ -70,7 +70,7 @@ class LinksCell: UITableViewCell {
         
         title.topAnchor.constraint(equalTo: icon.topAnchor).isActive = true
         title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 16).isActive = true
-        title.bottomAnchor.constraint(lessThanOrEqualTo: subTitle.topAnchor, constant: -4)
+        title.bottomAnchor.constraint(equalTo: subTitle.topAnchor, constant: -4)
         
         subTitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4).isActive = true
         subTitle.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true

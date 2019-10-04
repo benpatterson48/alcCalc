@@ -33,7 +33,7 @@ class ActivityCell: UICollectionViewCell {
 	
 	let activitySelection: UILabel = {
 		let title = UILabel()
-		title.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+		title.textColor = UIColor.lightText
 		title.textAlignment = .left
 		title.font = UIFont.systemFont(ofSize: 18)
 		title.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ class ActivityCell: UICollectionViewCell {
 	let activityExample: UILabel = {
 		let text = UILabel()
 		text.numberOfLines = 0
-		text.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+		text.textColor = UIColor.lightText
 		text.textAlignment = .left
 		text.font = UIFont.systemFont(ofSize: 16)
 		text.translatesAutoresizingMaskIntoConstraints = false
@@ -53,16 +53,16 @@ class ActivityCell: UICollectionViewCell {
 	override var isSelected: Bool {
 		didSet {
 			if self.isSelected == true {
-				self.activitySelection.textColor = .black
-				self.activityExample.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.75)
-				self.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+				self.activitySelection.textColor = UIColor.darkText
+				self.activityExample.textColor = UIColor.lightText
+				self.layer.borderColor = UIColor.alcBlue.cgColor
 				layer.borderWidth = 3.0
 				self.activitySelection.font = UIFont.systemFont(ofSize: 18, weight: .medium)
 				self.radioImage.image = UIImage(named: "selected")
 			} else {
-				self.activitySelection.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
-				self.activityExample.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
-				self.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 0.5)
+				self.activitySelection.textColor = UIColor.lightText
+				self.activityExample.textColor = UIColor.lightText
+				self.layer.borderColor = UIColor.alcBlue.withAlphaComponent(0.50).cgColor
 				layer.borderWidth = 2.0
 				self.activitySelection.font = UIFont.systemFont(ofSize: 18)
 				self.radioImage.image = UIImage(named: "unselected")
@@ -72,11 +72,11 @@ class ActivityCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .white
 		setupView()
 		layer.cornerRadius = 10
-		layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 0.5)
 		layer.borderWidth = 2.0
+		backgroundColor = UIColor.alcWhite
+		layer.borderColor = UIColor.alcBlue.withAlphaComponent(0.50).cgColor
 	}
 	
 	func setupView() {

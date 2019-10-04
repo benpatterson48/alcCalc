@@ -25,8 +25,8 @@ class Alcohol: UIViewController {
 		addViews()
 		setDoneOnKeyboard()
 		view.bindToKeyboard()
-		view.backgroundColor = .white
-		topView.backgroundColor = .white
+		view.backgroundColor = UIColor.alcWhite
+		topView.backgroundColor = UIColor.alcWhite
 		
 		alcoholView.abvView.ouncesInputView.textField.keyboardType = .decimalPad
 		alcoholView.abvView.abvPercentInputView.textField.keyboardType = .decimalPad
@@ -71,14 +71,22 @@ class Alcohol: UIViewController {
 	@objc func showPopupView() {
 		let view = AlcoholPopupView()
 		let popup = PopupVC(viewfor: view)
-		popup.modalPresentationStyle = .overCurrentContext
-		popup.modalTransitionStyle = .crossDissolve
+		if #available(iOS 13, *) {
+			popup.modalPresentationStyle = .formSheet
+		} else {
+			popup.modalPresentationStyle = .overCurrentContext
+			popup.modalTransitionStyle = .crossDissolve
+		}
 		present(popup, animated: true, completion: nil)
 	}
 	
 	@objc func calculateButtonWasPressed() {
 		let alcoholResults = AlcoholResults()
-		alcoholResults.modalPresentationStyle = .overCurrentContext
+		if #available(iOS 13, *) {
+			alcoholResults.modalPresentationStyle = .pageSheet
+		} else {
+			alcoholResults.modalPresentationStyle = .overCurrentContext
+		}
 		if caloriesSelected == true {
 			if alcoholView.calorieView.calorieInputView.textField.text != "" {
 				view.endEditing(true)

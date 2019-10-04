@@ -28,7 +28,7 @@ class MacrosContentView: UIView {
 	let title: UILabel = {
 		let title = UILabel()
 		title.text = "Estimate Macros"
-		title.textColor = UIColor.Main.text
+		title.textColor = UIColor.darkText
 		title.textAlignment = .left
 		title.adjustsFontSizeToFitWidth = true
 		title.font = UIFont.boldSystemFont(ofSize: 30)
@@ -51,8 +51,7 @@ class MacrosContentView: UIView {
 		let segment = UISegmentedControl(items: items)
 		segment.selectedSegmentIndex = 0
 		segment.layer.cornerRadius = 10
-		segment.backgroundColor = .white
-		segment.tintColor = UIColor.Main.blue
+		segment.tintColor = UIColor.alcBlue
 		segment.heightAnchor.constraint(equalToConstant: 30).isActive = true 
 		segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
 		segment.translatesAutoresizingMaskIntoConstraints = false
@@ -135,6 +134,7 @@ class MacrosContentView: UIView {
 		setupCollectionView()
 		self.activityTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
 		calculateButton.titleLabel?.attributedText = calculateButton.titleLabel?.text?.increaseLetterSpacing()
+		activityCollectionView.backgroundColor = UIColor.alcWhite
 	}
 	
 	func setupCollectionView() {

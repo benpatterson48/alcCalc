@@ -26,9 +26,9 @@ class Macros: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 		addViews()
 		setDoneOnKeyboard()
-		view.backgroundColor = .white
-		topView.backgroundColor = .white
-		
+		view.backgroundColor = UIColor.alcWhite
+		topView.backgroundColor = UIColor.alcWhite
+
 		self.tabHeight = tabBarController?.tabBar.bounds.size.height ?? 0
 		
 		scrollView.bounces = false
@@ -62,14 +62,22 @@ class Macros: UIViewController, UIScrollViewDelegate {
 	@objc func showPopupView() {
 		let view = MacroPopupView()
 		let popup = PopupVC(viewfor: view)
-		popup.modalPresentationStyle = .overCurrentContext
-		popup.modalTransitionStyle = .crossDissolve
+		if #available(iOS 13, *) {
+			popup.modalPresentationStyle = .formSheet
+		} else {
+			popup.modalPresentationStyle = .overCurrentContext
+			popup.modalTransitionStyle = .crossDissolve
+		}
 		present(popup, animated: true, completion: nil)
 	}
 	
 	@objc func calculateButtonWasPressed() {
 		let results = MacroResults()
-		results.modalPresentationStyle = .overCurrentContext
+		if #available(iOS 13, *) {
+			results.modalPresentationStyle = .pageSheet
+		} else {
+			results.modalPresentationStyle = .overCurrentContext
+		}
 		if macrosView.ageInputView.textField.text != "" && macrosView.weightInputView.textField.text != "" && macrosView.heightFeetInputView.textField.text != "" && macrosView.heightInchesInputView.textField.text != "" {
 			let age = Double(macrosView.ageInputView.textField.text!)
 			let weight = Double(macrosView.weightInputView.textField.text!)

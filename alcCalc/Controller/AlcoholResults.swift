@@ -37,9 +37,13 @@ class AlcoholResults: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		if #available(iOS 13, *) {
+			view.backgroundColor = UIColor.clear
+		} else {
+			view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
+		}
 		addViews()
 		addButtonTargets()
-		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
 		sliderValueChanging(contentView.slider)
 	}
 	
@@ -77,35 +81,35 @@ class AlcoholResults: UIViewController {
 			fatsSelected = false
 			outputSelected = "Carbs"
 			sliderValueChanging(contentView.slider)
-			contentView.carbButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-			contentView.carbButton.titleLabel?.textColor = .white
-			contentView.fatButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-			contentView.fatButton.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+			contentView.carbButton.backgroundColor = UIColor.alcBlue
+			contentView.carbButton.titleLabel?.textColor = UIColor.alcWhite
+			contentView.fatButton.backgroundColor = UIColor.lightText.withAlphaComponent(0.30)
+			contentView.fatButton.titleLabel?.textColor = UIColor.lightText
 		} else {
 			carsbSelected = false
 			fatsSelected = true
 			outputSelected = "Fats"
 			sliderValueChanging(contentView.slider)
-			contentView.fatButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-			contentView.fatButton.titleLabel?.textColor = .white
-			contentView.carbButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-			contentView.carbButton.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+			contentView.fatButton.backgroundColor = UIColor.alcBlue
+			contentView.fatButton.titleLabel?.textColor = UIColor.alcWhite
+			contentView.carbButton.backgroundColor = UIColor.lightText.withAlphaComponent(0.30)
+			contentView.carbButton.titleLabel?.textColor = UIColor.lightText
 		}
 	}
 	
 	@objc func roundedOrDecimalOptionWasChanged() {
 		if roundedSelected == true {
 			roundedSelected = false
-			contentView.roundedButton.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+			contentView.roundedButton.setTitleColor(UIColor.lightText.withAlphaComponent(0.50), for: .normal)
 			contentView.roundedButton.titleLabel?.font = UIFont.mainFont(ofSize: 16)
-			contentView.decimalButton.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
+			contentView.decimalButton.setTitleColor(UIColor.alcBlue, for: .normal)
 			contentView.decimalButton.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 18)
 			sliderValueChanging(contentView.slider)
 		} else {
 			roundedSelected = true
-			contentView.decimalButton.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+			contentView.decimalButton.setTitleColor(UIColor.lightText.withAlphaComponent(0.50), for: .normal)
 			contentView.decimalButton.titleLabel?.font = UIFont.mainFont(ofSize: 18)
-			contentView.roundedButton.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
+			contentView.roundedButton.setTitleColor(UIColor.alcBlue, for: .normal)
 			contentView.roundedButton.titleLabel?.font = UIFont.mainSemiBoldFont(ofSize: 16)
 			sliderValueChanging(contentView.slider)
 		}

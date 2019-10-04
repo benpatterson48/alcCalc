@@ -15,7 +15,7 @@ class CalculateButton: UIButton {
 		setTitle("CALCULATE", for: .normal)
 		setTitleColor(.white, for: .normal)
 		titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-		self.backgroundColor = UIColor.Main.blue
+		self.backgroundColor = UIColor.alcBlue
 		translatesAutoresizingMaskIntoConstraints = false
 		heightAnchor.constraint(equalToConstant: 50).isActive = true 
 	}

@@ -13,7 +13,7 @@ class TitleTextLabel: UILabel {
 		super.init(frame: frame)
 		numberOfLines = 0
 		textAlignment = .left
-		textColor = UIColor.Main.text
+		textColor = UIColor.darkText
 		font = UIFont.boldSystemFont(ofSize: 22)
 		translatesAutoresizingMaskIntoConstraints = false
 	}
@@ -30,7 +30,7 @@ class TitleTextLabel: UILabel {
 class SubTitleTextLabel: UILabel {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.8)
+		textColor = UIColor.lightText
 		numberOfLines = 0
 		textAlignment = .left
 		font = UIFont.systemFont(ofSize: 16, weight: .semibold)
@@ -49,7 +49,7 @@ class SubTitleTextLabel: UILabel {
 class RegularTextLabel: UILabel {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+		textColor = UIColor.lightText
 		numberOfLines = 0
 		textAlignment = .left
 		font = UIFont.systemFont(ofSize: 14, weight: .regular)

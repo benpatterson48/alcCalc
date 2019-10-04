@@ -23,7 +23,7 @@ class AlcoholContentView: UIView {
 	let title: UILabel = {
 		let title = UILabel()
 		title.text = "Alcohol Conversion"
-		title.textColor = UIColor.Main.text
+		title.textColor = UIColor.darkText
 		title.textAlignment = .left
 		title.adjustsFontSizeToFitWidth = true 
 		title.font = UIFont.boldSystemFont(ofSize: 30)
@@ -54,8 +54,8 @@ class AlcoholContentView: UIView {
 		let segment = UISegmentedControl(items: items)
 		segment.selectedSegmentIndex = 0
 		segment.layer.cornerRadius = 10
-		segment.backgroundColor = .white
-		segment.tintColor = UIColor.Main.blue
+		segment.backgroundColor = UIColor.alcWhite
+		segment.tintColor = UIColor.alcBlue
 		segment.heightAnchor.constraint(equalToConstant: 30).isActive = true
 		segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
 		segment.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +64,7 @@ class AlcoholContentView: UIView {
 	
 	let methodExplanation: UILabel = {
 		let explanation = UILabel()
-		explanation.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+		explanation.textColor = UIColor.lightText
 		explanation.numberOfLines = 0
 		explanation.textAlignment = .left 
 		explanation.font = UIFont.systemFont(ofSize: 18, weight: .medium)

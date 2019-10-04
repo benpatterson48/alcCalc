@@ -13,7 +13,7 @@ class CustomTextFieldView: UIView {
 	let textField: UITextField = {
 		let textField = UITextField()
 		textField.borderStyle = .none
-		textField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+		textField.textColor = UIColor.darkText
 		textField.textAlignment = .center
 		textField.adjustsFontSizeToFitWidth = true
 		textField.keyboardType = .numberPad
@@ -23,7 +23,7 @@ class CustomTextFieldView: UIView {
 	
 	let underline: UIView = {
 		let view = UIView()
-		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)
+		view.backgroundColor = UIColor.lightText
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.heightAnchor.constraint(equalToConstant: 2).isActive = true
 		return view
@@ -39,6 +39,8 @@ class CustomTextFieldView: UIView {
 		textField.placeholder = placeholder
 		
 		addViews()
+		
+		textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
 	}
 	
 	func addViews() {

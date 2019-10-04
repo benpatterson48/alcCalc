@@ -21,7 +21,7 @@ class TitleWithInfoButton: UIView {
 	
 	let title: UILabel = {
 		let title = UILabel()
-		title.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)
+		title.textColor = UIColor.darkText
 		title.textAlignment = .left
 		title.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
 		title.translatesAutoresizingMaskIntoConstraints = false

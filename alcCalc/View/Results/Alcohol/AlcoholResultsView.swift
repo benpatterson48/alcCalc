@@ -14,7 +14,7 @@ class AlcoholResultsView: UIView {
 		let title = UILabel()
 		title.text = "Results"
 		title.textAlignment = .left
-		title.textColor = UIColor.Main.text
+		title.textColor = UIColor.darkText
 		title.font = UIFont.boldSystemFont(ofSize: 30)
 		title.translatesAutoresizingMaskIntoConstraints = false
 		return title
@@ -24,7 +24,7 @@ class AlcoholResultsView: UIView {
 		let calories = UILabel()
 		calories.numberOfLines = 0
 		calories.textAlignment = .left
-		calories.textColor = UIColor.Main.text
+		calories.textColor = UIColor.darkText
 		calories.font = UIFont.systemFont(ofSize: 18)
 		calories.translatesAutoresizingMaskIntoConstraints = false
 		return calories
@@ -32,7 +32,7 @@ class AlcoholResultsView: UIView {
 	
 	let sliderPercentValueLabel: UILabel = {
 		let result = UILabel()
-		result.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+		result.textColor = UIColor.darkText
 		result.text = "0% Fats"
 		result.textAlignment = .right
 		result.font = UIFont.systemFont(ofSize: 18)
@@ -43,7 +43,7 @@ class AlcoholResultsView: UIView {
 	let fatButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Fats", for: .normal)
-		button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+		button.backgroundColor = UIColor.alcBlue
 		button.layer.cornerRadius = 5
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -54,9 +54,9 @@ class AlcoholResultsView: UIView {
 	let carbButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Carbs", for: .normal)
-		button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+		button.backgroundColor = UIColor.lightText.withAlphaComponent(0.30)
 		button.layer.cornerRadius = 5
-		button.titleLabel?.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
+		button.titleLabel?.textColor = UIColor.lightText
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.heightAnchor.constraint(equalToConstant: 35).isActive = true
@@ -65,7 +65,7 @@ class AlcoholResultsView: UIView {
 	
 	let fatResultsLabel: UILabel = {
 		let output = UILabel()
-		output.textColor = #colorLiteral(red: 0.1725490196, green: 0.1725490196, blue: 0.1725490196, alpha: 1)
+		output.textColor = UIColor.darkText
 		output.textAlignment = .center
 		output.adjustsFontSizeToFitWidth = true
 		output.font = UIFont.boldSystemFont(ofSize: 48)
@@ -75,7 +75,7 @@ class AlcoholResultsView: UIView {
 	
 	let cabResultsLabel: UILabel = {
 		let output = UILabel()
-		output.textColor = #colorLiteral(red: 0.1725490196, green: 0.1725490196, blue: 0.1725490196, alpha: 1)
+		output.textColor = UIColor.darkText
 		output.textAlignment = .center
 		output.adjustsFontSizeToFitWidth = true
 		output.font = UIFont.boldSystemFont(ofSize: 48)
@@ -85,7 +85,7 @@ class AlcoholResultsView: UIView {
 	
 	let slider: UISlider = {
 		let slider = UISlider()
-		slider.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+		slider.tintColor = UIColor.alcBlue
 		slider.minimumValue = 0
 		slider.maximumValue = 100
 		slider.isContinuous = true
@@ -95,7 +95,7 @@ class AlcoholResultsView: UIView {
 	
 	let roundedButton: UIButton = {
 		let button = UIButton()
-		button.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
+		button.setTitleColor(UIColor.alcBlue, for: .normal)
 		button.setTitle("Rounded", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +104,7 @@ class AlcoholResultsView: UIView {
 	
 	let decimalButton: UIButton = {
 		let button = UIButton()
-		button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+		button.setTitleColor(UIColor.lightText.withAlphaComponent(0.50), for: .normal)
 		button.setTitle("Decimal", for: .normal)
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -128,8 +128,13 @@ class AlcoholResultsView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .white
-		layer.cornerRadius = 15
+		if #available(iOS 13, *) {
+			layer.cornerRadius = 10
+			backgroundColor = .systemBackground
+		} else {
+			layer.cornerRadius = 15
+			backgroundColor = .white
+		}
 		addViews()
 	}
 	

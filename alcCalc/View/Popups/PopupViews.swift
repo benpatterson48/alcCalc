@@ -76,14 +76,24 @@ If you're in a surplus you will start with an increase of 400 calories, once you
 		return stack
 	}()
 	
+	var dismissLabel: UILabel = {
+		let label = UILabel()
+		label.text = "Tap to dismiss"
+		label.textColor = UIColor.alcBlue
+		label.textAlignment = .center
+		label.font = UIFont.systemFont(ofSize: 14)
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .white
+		backgroundColor = UIColor.alcWhite
 		addViews()
 	}
 	
 	func addViews() {
-		
+		addSubview(dismissLabel)
 		let stack = UIStackView(arrangedSubviews: [mainTitle, equationStack, activityLevelStack])
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .vertical
@@ -91,7 +101,11 @@ If you're in a surplus you will start with an increase of 400 calories, once you
 		stack.spacing = 40
 		addSubview(stack)
 		
-		stack.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+		dismissLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+		dismissLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+		dismissLabel.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -32).isActive = true
+		
+		stack.topAnchor.constraint(equalTo: dismissLabel.bottomAnchor, constant: 32).isActive = true
 		stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40).isActive = true
 		stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
 		stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
@@ -152,9 +166,19 @@ The liquid ounces of the amount of alcohol you consumed.
 		return stack
 	}()
 	
+	var dismissLabel: UILabel = {
+		let label = UILabel()
+		label.text = "Tap to dismiss"
+		label.textColor = UIColor.alcBlue
+		label.textAlignment = .center
+		label.font = UIFont.systemFont(ofSize: 14)
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .white
+		backgroundColor = UIColor.alcWhite
 		addViews()
 	}
 	
@@ -163,7 +187,7 @@ The liquid ounces of the amount of alcohol you consumed.
 	}
 	
 	func addViews() {
-		
+		addSubview(dismissLabel)
 		let stack = UIStackView(arrangedSubviews: [mainTitle, equationStack, activityLevelStack])
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = .vertical
@@ -171,7 +195,11 @@ The liquid ounces of the amount of alcohol you consumed.
 		stack.spacing = 40
 		addSubview(stack)
 		
-		stack.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
+		dismissLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+		dismissLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+		dismissLabel.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -32).isActive = true
+		
+		stack.topAnchor.constraint(equalTo: dismissLabel.bottomAnchor, constant: 32).isActive = true
 		stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40).isActive = true
 		stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
 		stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true

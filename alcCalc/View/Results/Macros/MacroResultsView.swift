@@ -54,7 +54,6 @@ class MacroResultsView: UIView {
 		let segment = UISegmentedControl(items: items)
 		segment.selectedSegmentIndex = 0
 		segment.layer.cornerRadius = 10
-		segment.backgroundColor = .white
 		segment.tintColor = UIColor.Main.blue
 		segment.heightAnchor.constraint(equalToConstant: 30).isActive = true
 		segment.setTitleTextAttributes([NSAttributedString.Key.strokeColor: UIColor(red: 51, green: 51, blue: 51, alpha: 100)], for: UIControl.State.normal)
@@ -80,10 +79,7 @@ class MacroResultsView: UIView {
 	
 	var disclaimerLabel: UILabel = {
 		let lbl = UILabel()
-		lbl.text = """
-		Protein can be adjusted to 1g per pound of body weight if you're in a surplus/ maintenance, adjust fats/ carbs appropriately.
-		"""
-		lbl.textColor = #colorLiteral(red: 1, green: 0.3647058824, blue: 0.3647058824, alpha: 1)
+		lbl.text = "Protein can be adjusted to 1g per pound of body weight if you're in a surplus/ maintenance, adjust fats/ carbs."
 		lbl.numberOfLines = 0
 		lbl.textAlignment = .center
 		lbl.font = UIFont.italicSystemFont(ofSize: 12)
@@ -93,11 +89,10 @@ class MacroResultsView: UIView {
 	
 	var ctaButton: UIButton = {
 		let button = UIButton()
-		button.setTitleColor(.blue, for: .normal)
 		button.titleLabel?.textAlignment = .center
 		button.titleLabel?.adjustsFontSizeToFitWidth = true
-		button.setTitle("For an Example, Click Here!", for: .normal)
-		button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+		button.setTitle("FULL EXAMPLE HERE", for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
@@ -105,7 +100,7 @@ class MacroResultsView: UIView {
 	let titleLabel: UILabel = {
 		let title = UILabel()
 		title.text = "Results"
-		title.textColor = UIColor.Main.text
+		title.textColor = UIColor.darkText
 		title.textAlignment = .left
 		title.font = UIFont.boldSystemFont(ofSize: 30)
 		title.translatesAutoresizingMaskIntoConstraints = false
@@ -114,8 +109,17 @@ class MacroResultsView: UIView {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .white
-		layer.cornerRadius = 15
+		if #available(iOS 13, *) {
+			layer.cornerRadius = 10
+			backgroundColor = .systemBackground
+			disclaimerLabel.textColor = .systemRed
+			ctaButton.setTitleColor(.systemBlue, for: .normal)
+		} else {
+			layer.cornerRadius = 15
+			backgroundColor = .white
+			disclaimerLabel.textColor = .red
+			ctaButton.setTitleColor(.blue, for: .normal)
+		}
 		addViews()
 		
 		macrosTitle.title.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -142,11 +146,11 @@ class MacroResultsView: UIView {
 		} else {
 			contentStack.spacing = 20
 		}
-		
+		disclaimerLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
 		contentStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24).isActive = true
 		contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
 		contentStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
-		contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+		contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40).isActive = true
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

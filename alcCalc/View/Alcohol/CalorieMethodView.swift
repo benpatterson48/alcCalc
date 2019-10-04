@@ -16,7 +16,7 @@ class CalorieMethodView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		addViews()
-		backgroundColor = .white
+		backgroundColor = UIColor.alcWhite
 	}
 	
 	func addViews() {

@@ -12,7 +12,7 @@ class SubHeaderLabel: UILabel {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+		textColor = UIColor.lightText
 		numberOfLines = 0
 		textAlignment = .center
 		translatesAutoresizingMaskIntoConstraints = false

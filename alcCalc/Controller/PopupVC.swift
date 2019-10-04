@@ -16,7 +16,14 @@ class PopupVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+		if #available(iOS 13, *) {
+			view.backgroundColor = .clear
+			addViewsForiOS13()
+			isModalInPresentation = true
+		} else {
+			view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+			addViews()
+		}
 		let tap = UITapGestureRecognizer(target: self, action: #selector(dismissView))
 		view.addGestureRecognizer(tap)
 		
@@ -24,7 +31,6 @@ class PopupVC: UIViewController {
 		scrollView.layer.cornerRadius = 10
 		contentView.layer.cornerRadius = 10
 		
-		addViews()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +47,11 @@ class PopupVC: UIViewController {
 		self.init()
 		popupContent = viewfor
 		popupContent.layer.cornerRadius = 10
-		popupContent.backgroundColor = .white
+		if #available(iOS 13, *) {
+			popupContent.backgroundColor = .systemBackground
+		} else {
+			popupContent.backgroundColor = .white
+		}
 	}
 
 	func addViews() {
@@ -64,6 +74,30 @@ class PopupVC: UIViewController {
 		
 		popupContent.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 		popupContent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+		popupContent.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+		popupContent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+	}
+	
+	func addViewsForiOS13() {
+		view.addSubview(scrollView)
+		scrollView.addSubview(contentView)
+		contentView.addSubview(popupContent)
+		scrollView.translatesAutoresizingMaskIntoConstraints = false
+		contentView.translatesAutoresizingMaskIntoConstraints = false
+		popupContent.translatesAutoresizingMaskIntoConstraints = false
+		
+		scrollView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 7/8).isActive = true
+		scrollView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 5/8).isActive = true
+		scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		scrollView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		
+		contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+		contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+		contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+		contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+		
+		popupContent.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+		popupContent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 12).isActive = true
 		popupContent.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
 		popupContent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
 	}

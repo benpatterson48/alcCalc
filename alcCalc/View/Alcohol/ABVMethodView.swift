@@ -26,7 +26,7 @@ class ABVMethodView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		addViews()
-		backgroundColor = .white
+		backgroundColor = UIColor.alcWhite
 		abvMethodTitle.title.numberOfLines = 0
 	}
 	
